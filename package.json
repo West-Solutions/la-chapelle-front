@@ -1,0 +1,24 @@
+{
+  "name": "la-chapelle-front",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "npm run build-next-layers && next dev",
+    "build": "npm run build-next-layers && next build",
+    "start": "npm run build-next-layers && next start",
+    "lint": "npm run build-next-layers && next lint",
+    "----SCRIPTS": "",
+    "build-next-layers": "node src/scripts/buildNextJsLayers.js"
+  },
+  "dependencies": {
+    "axios": "^0.26.1",
+    "dotenv": "^16.0.0",
+    "next": "12.1.5",
+    "react": "18.0.0",
+    "react-dom": "18.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.14.0",
+    "eslint-plugin-react": "^7.29.4"
+  }
+}
