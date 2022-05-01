@@ -8,7 +8,7 @@
     "start": "npm run build-next-layers && next start",
     "lint": "npm run build-next-layers && next lint",
     "----SCRIPTS": "",
-    "build-next-layers": "node src/scripts/buildNextJsLayers.js"
+    "build-next-layers": "node src/scripts/build-next-layers"
   },
   "dependencies": {
     "axios": "^0.26.1",
