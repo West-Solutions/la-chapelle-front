@@ -31,3 +31,11 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+/pages/*
+!/pages/hooks
+!/pages/api
+!/pages/_app.js
+!/pages/_document.js
+!/pages/_error.js
+!/pages/index.js
