@@ -1,13 +1,24 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const App = ({ Component, pageProps }) => {
-  return <Component {...pageProps} />;
+import "../src/styles/index.css";
+
+const App = ({ Component, pageProps, appProps }) => {
+  return <Component { ...{ pageProps, appProps }} />;
+};
+
+App.getInitialProps = async () => {
+  return {
+    appProps: {
+      name: "La Chapelle"
+    }
+  };
 };
 
 App.propTypes = {
-  Component: PropTypes.elementType.isRequired,
+  appProps: PropTypes.object.isRequired,
   pageProps: PropTypes.object.isRequired,
+  Component: PropTypes.elementType.isRequired
 };
 
 export default App;

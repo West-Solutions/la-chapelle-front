@@ -17,7 +17,7 @@ const hasRelated = (item = {}) => item.related && Object.keys(item.related).leng
 
 const whiteList = [
   "api",
-  "hooks",
+  "404.js",
   "_app.js",
   "index.js",
   "_error.js",
@@ -70,7 +70,7 @@ import PageRenderer from "@Modules/PageRenderer";
 
 export default function _nextJSPageTemplate(p){return <PageRenderer {...p} />;}
 
-export const getServerSideProps = () =>
+export const getStaticProps = () =>
   new Promise((res, rej) => {
     const URL = process.env.API_URL + "/pages/${pageId}/?populate=*";
     axios.get(URL)
@@ -127,9 +127,10 @@ const buildNextJsLayers = (items, layer = navigationsLayers[0], parent= "",) =>
 
     // Otherwise we create a page file with the slugified name
     } else if (isInternal(item) && hasRelated(item)) {
+      if (item.path === "/") return;
       const filePath =
         path.join(`${parent ? parent + "/" : ""}${explosedPath[explosedPath.length - 1]}.js`);
-      console.log(`📝 Creating page → ${filePath}`);
+      console.log(filePath);
       createTemplate(path.join(pagesDirectory, filePath), item);
     }
 
