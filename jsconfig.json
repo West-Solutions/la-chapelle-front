@@ -2,8 +2,10 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
+      "@Services/*": ["src/services/*"],
       "@Components/*": ["src/components/*"],
-      "@Modules/*": ["src/components/Modules/*"]
+      "@Modules/*": ["src/components/Modules/*"],
+      "@StrapiComponents/*": ["src/components/Strapi/*"],
     }
   }
 }

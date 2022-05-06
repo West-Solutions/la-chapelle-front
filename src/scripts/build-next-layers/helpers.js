@@ -17,7 +17,7 @@ const hasRelated = (item = {}) => item.related && Object.keys(item.related).leng
 
 const whiteList = [
   "api",
-  "hooks",
+  "404.js",
   "_app.js",
   "index.js",
   "_error.js",
@@ -64,8 +64,8 @@ const pageTemplate = item => {
  */
 
 import React from "react";
-import axios from "axios";
 
+import PageServices from "@Services/Page";
 import PageRenderer from "@Modules/PageRenderer";
 
 export default function _nextJSPageTemplate(p){return <PageRenderer {...p} />;}
@@ -127,9 +127,9 @@ const buildNextJsLayers = (items, layer = navigationsLayers[0], parent= "",) =>
 
     // Otherwise we create a page file with the slugified name
     } else if (isInternal(item) && hasRelated(item)) {
+      if (item.path === "/") return;
       const filePath =
         path.join(`${parent ? parent + "/" : ""}${explosedPath[explosedPath.length - 1]}.js`);
-      console.log(`📝 Creating page → ${filePath}`);
       createTemplate(path.join(pagesDirectory, filePath), item);
     }
 
