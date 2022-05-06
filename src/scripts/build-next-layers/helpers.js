@@ -70,15 +70,13 @@ import PageRenderer from "@Modules/PageRenderer";
 
 export default function _nextJSPageTemplate(p){return <PageRenderer {...p} />;}
 
-export const getStaticProps = async () => {
-  let p = {};
-  try {
-    p = await PageServices.get("1");
-  } catch (e) {
-    console.error(e.message);
-  }
-  return {props: {...p}};
-};
+export const getServerSideProps = () =>
+  new Promise((res, rej) => {
+    const URL = process.env.API_URL + "/pages/${pageId}/?populate=*";
+    axios.get(URL)
+      .then(({ data }) => res({ props: {...data} }))
+      .catch(rej);
+  });
 `;
 };
 
@@ -132,7 +130,6 @@ const buildNextJsLayers = (items, layer = navigationsLayers[0], parent= "",) =>
       if (item.path === "/") return;
       const filePath =
         path.join(`${parent ? parent + "/" : ""}${explosedPath[explosedPath.length - 1]}.js`);
-      console.log(filePath);
       createTemplate(path.join(pagesDirectory, filePath), item);
     }
 
