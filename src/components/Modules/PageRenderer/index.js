@@ -7,7 +7,8 @@ import ContentRenderer from "@Modules/ContentRenderer";
 const PageRenderer = ({ appProps, pageProps }) => {
   const { data } = pageProps;
 
-  if (!data.attributes) return <div>No data</div>;
+  // TODO: enhance this
+  if (!data || !data.attributes) return <div>No data</div>;
 
   return (
     <React.Fragment>
