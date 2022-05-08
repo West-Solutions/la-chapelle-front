@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import "../src/styles/index.css";
+import "../src/styles/index.scss";
 
 const App = ({ Component, pageProps, appProps }) => {
   return <Component { ...{ pageProps, appProps }} />;
