@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "npm run build-next-layers && next dev",
-    "build": "npm run build-next-layers && next build",
+    "build": "npm run build-next-layers && npm run set-colors && next build",
     "start": "next start",
     "lint": "npm run build-next-layers && next lint",
     "----SCRIPTS": "",
+    "set-colors": "node src/scripts/set-colors",
     "build-next-layers": "node src/scripts/build-next-layers"
   },
   "dependencies": {

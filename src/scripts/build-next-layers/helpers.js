@@ -70,13 +70,21 @@ import PageRenderer from "@Modules/PageRenderer";
 
 export default function _nextJSPageTemplate(p){return <PageRenderer {...p} />;}
 
-export const getServerSideProps = () =>
-  new Promise((res, rej) => {
-    const URL = process.env.API_URL + "/pages/${pageId}/?populate=*";
-    axios.get(URL)
-      .then(({ data }) => res({ props: {...data} }))
-      .catch(rej);
-  });
+export const getStaticProps = async () => {
+  let page = {};
+
+  try {
+    page = await PageServices.get("${pageId}");
+  } catch (error) {
+    console.error(error.message);
+  }
+
+  return {
+    props: {
+      ...page
+    }
+  };
+};
 `;
 };
 

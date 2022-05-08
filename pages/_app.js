@@ -8,9 +8,11 @@ const App = ({ Component, pageProps, appProps }) => {
 };
 
 App.getInitialProps = async () => {
+  const navigation = {}; // Fetch navigation data from the server
   return {
     appProps: {
-      name: "La Chapelle"
+      name: "La Chapelle",
+      navigation
     }
   };
 };
