@@ -5,7 +5,7 @@ import ContentRenderer from "@Components/Modules/ContentRenderer";
 
 const StrapiColumns = ({ left, right }) => {
   const renderCol = components => {
-    if (!components && components.length) return null;
+    if (!components || !components.length) return null;
     return  components.map(component => {
       return <ContentRenderer key={component.id} component={component} />;
     });
