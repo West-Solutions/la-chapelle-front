@@ -1,5 +1,5 @@
 export const getPosition = position => {
-  let output = "left";
+  let output = "center";
   if (position && position.data && position.data.attributes)
     output = position.data.attributes.value;
 
