@@ -2,11 +2,15 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import Title from "@StrapiComponents/Title";
+import Columns from "@Components/Strapi/Columns";
 import RichText from "@StrapiComponents/RichText";
 
 const Components = {
+  // Text
   "textes.title": Title,
   "textes.rich-text": RichText,
+  // Grid
+  "grilles.columns": Columns,
 };
 
 const ContentRenderer = ({ component }) => {
