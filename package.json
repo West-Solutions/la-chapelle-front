@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "npm run build-next-layers && next dev",
-    "build": "npm run build-next-layers && next build",
+    "build": "npm run build-next-layers && npm run set-colors && next build",
     "start": "next start",
     "lint": "npm run build-next-layers && next lint",
     "----SCRIPTS": "",
+    "set-colors": "node src/scripts/set-colors",
     "build-next-layers": "node src/scripts/build-next-layers"
   },
   "dependencies": {
@@ -23,6 +24,7 @@
     "eslint": "^8.14.0",
     "eslint-plugin-react": "^7.29.4",
     "postcss": "^8.4.13",
+    "sass": "^1.51.0",
     "tailwindcss": "^3.0.24"
   }
 }

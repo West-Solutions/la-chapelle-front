@@ -2,6 +2,8 @@ import React from "react";
 import Head from "next/head";
 import PropTypes from "prop-types";
 
+import Header from "@Display/Header";
+import Navigation from "@Display/Navigation";
 import ContentRenderer from "@Modules/ContentRenderer";
 
 const PageRenderer = ({ appProps, pageProps }) => {
@@ -13,28 +15,36 @@ const PageRenderer = ({ appProps, pageProps }) => {
   return (
     <React.Fragment>
       <Head>
-        <title>{`${appProps.name} | ${data.attributes.title}`}</title>
+        <title>{`${appProps.config.websiteName} | ${data.attributes.title}`}</title>
       </Head>
-      <main className="container mx-auto">
-        {data.attributes.Content && data.attributes.Content.length > 0 && (
-          data.attributes.Content.map(section => (
-            <ContentRenderer key={section.id} components={section} />
-          ))
-        )}
-      </main>
+      <div>
+        <Header />
+        <div className="container mx-auto relative -top-10">
+          <Navigation />
+          <main className="bg-red-500">
+            {data.attributes.pageContent && data.attributes.pageContent.length > 0 && (
+              data.attributes.pageContent.map(component => (
+                <ContentRenderer key={`${component.id}-${component.__component}`} component={component} />
+              ))
+            )}
+          </main>
+        </div>
+      </div>
     </React.Fragment>
   );
 };
 
 PageRenderer.propTypes = {
   appProps: PropTypes.shape({
-    name: PropTypes.string
+    config: PropTypes.shape({
+      websiteName: PropTypes.string
+    }).isRequired
   }).isRequired,
   pageProps: PropTypes.shape({
     data: PropTypes.shape({
       attributes: PropTypes.shape({
         title: PropTypes.string,
-        Content: PropTypes.arrayOf(
+        pageContent: PropTypes.arrayOf(
           PropTypes.shape({
             id: PropTypes.oneOfType([
               PropTypes.string, PropTypes.number

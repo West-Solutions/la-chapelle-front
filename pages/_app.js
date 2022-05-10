@@ -1,16 +1,31 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import "../src/styles/index.css";
+import ConfigServices from "@Services/Config";
+import ContactServices from "@Services/Contact";
+import { cleanResults } from "@Utils/strapi/core";
+
+import "../src/styles/index.scss";
 
 const App = ({ Component, pageProps, appProps }) => {
   return <Component { ...{ pageProps, appProps }} />;
 };
 
 App.getInitialProps = async () => {
+  const promises = [
+    ConfigServices.get(),
+    ContactServices.get()
+  ];
+
+  const [
+    config,
+    contact
+  ] = cleanResults(await Promise.all(promises));
+
   return {
     appProps: {
-      name: "La Chapelle"
+      config,
+      contact
     }
   };
 };

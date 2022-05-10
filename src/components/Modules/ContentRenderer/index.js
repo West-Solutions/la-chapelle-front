@@ -1,35 +1,32 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import Paragraph from "@StrapiComponents/Paragraph";
+import Title from "@StrapiComponents/Title";
+import Columns from "@Components/Strapi/Columns";
+import RichText from "@StrapiComponents/RichText";
 
 const Components = {
-  Paragraph
+  // Text
+  "textes.title": Title,
+  "textes.rich-text": RichText,
+  // Grid
+  "grilles.columns": Columns,
 };
 
-const ContentRenderer = ({ components }) => {
-  const { id, __component, ...rest } = components;
+const ContentRenderer = ({ component }) => {
+  const { __component } = component;
 
   // Means it's not a valid component
-  if (!id || !__component) return null;
-  const desiredComponents = Object.keys(rest);
+  if (!__component) return null;
+  const Component = Components[__component];
 
-  // Means we have no components to render
-  if (desiredComponents.length === 0) return null;
+  if (Component) return <Component {...component} />;
 
-  return (
-    <React.Fragment>
-      {desiredComponents.map((component, index) => {
-        const Component = Components[component];
-        if (Component)
-          return <Component key={`strapi-${component}-${index}`} component={rest[component]} />;
-      })}
-    </React.Fragment>
-  );
+  return null;
 };
 
 ContentRenderer.propTypes = {
-  components: PropTypes.shape({
+  component: PropTypes.shape({
     id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     __component: PropTypes.string,
   }).isRequired

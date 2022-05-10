@@ -32,6 +32,7 @@ yarn-error.log*
 # vercel
 .vercel
 
+# Automatically generated
 /pages/*
 !/pages/hooks
 !/pages/api
@@ -39,3 +40,5 @@ yarn-error.log*
 !/pages/_document.js
 !/pages/_error.js
 !/pages/index.js
+
+colors.json
