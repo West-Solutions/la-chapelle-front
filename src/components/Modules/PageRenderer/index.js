@@ -15,7 +15,7 @@ const PageRenderer = ({ appProps, pageProps }) => {
   return (
     <React.Fragment>
       <Head>
-        <title>{`${appProps.name} | ${data.attributes.title}`}</title>
+        <title>{`${appProps.config.websiteName} | ${data.attributes.title}`}</title>
       </Head>
       <div>
         <Header />
@@ -36,7 +36,9 @@ const PageRenderer = ({ appProps, pageProps }) => {
 
 PageRenderer.propTypes = {
   appProps: PropTypes.shape({
-    name: PropTypes.string
+    config: PropTypes.shape({
+      websiteName: PropTypes.string
+    }).isRequired
   }).isRequired,
   pageProps: PropTypes.shape({
     data: PropTypes.shape({

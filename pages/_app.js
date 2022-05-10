@@ -1,6 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import ConfigServices from "@Services/Config";
+import ContactServices from "@Services/Contact";
+import { cleanResults } from "@Utils/strapi/core";
+
 import "../src/styles/index.scss";
 
 const App = ({ Component, pageProps, appProps }) => {
@@ -8,11 +12,20 @@ const App = ({ Component, pageProps, appProps }) => {
 };
 
 App.getInitialProps = async () => {
-  const navigation = {}; // Fetch navigation data from the server
+  const promises = [
+    ConfigServices.get(),
+    ContactServices.get()
+  ];
+
+  const [
+    config,
+    contact
+  ] = cleanResults(await Promise.all(promises));
+
   return {
     appProps: {
-      name: "La Chapelle",
-      navigation
+      config,
+      contact
     }
   };
 };

@@ -8,10 +8,9 @@ class PageServices {
       const URL = `${API_URL}/pages/?populate=*`;
       axios.get(URL)
         .then(({ data }) => {
-          if (data && Object.keys(data).length)
-            resolve(data);
-          else
-            reject(new Error("No pages found"));
+          data
+            ? resolve(data)
+            : reject(new Error("No pages found"));
         })
         .catch(reject);
     });
@@ -22,10 +21,9 @@ class PageServices {
       const URL = `${API_URL}/pages/${id}/?populate=*`;
       axios.get(URL)
         .then(({ data }) => {
-          if (data && Object.keys(data).length)
-            resolve(data);
-          else
-            reject(new Error("No page found"));
+          data
+            ? resolve(data)
+            : reject(new Error("No pages found"));
         })
         .catch(reject);
     });
