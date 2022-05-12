@@ -97,12 +97,12 @@ const cleanLayers = () => {
       const target = path.join(pagesDirectory, item.name);
 
       if (item.isFile()) {
-        console.log(`🗑  Deleting file → ${target}`);
+        console.info(`🗑  Deleting file → ${target}`);
         fs.unlinkSync(target);
         return;
       }
       if (item.isDirectory()) {
-        console.log(`🗑  Deleting directory → ${target}`);
+        console.info(`🗑  Deleting directory → ${target}`);
         fs.rmSync(path.join(target), { recursive: true, force: true });
       }
     });
@@ -118,7 +118,7 @@ const buildNextJsLayers = (items, layer = navigationsLayers[0], parent= "",) =>
       const dirPath =
         `${parent ? parent + "/" : ""}${explosedPath[explosedPath.length - 1]}`;
       if (!fs.existsSync(pagesDirectory + "/" + dirPath)) {
-        console.log(`📂 Creating new page directory → ${dirPath}`);
+        console.info(`📂 Creating new page directory → ${dirPath}`);
         try {
           fs.mkdirSync(pagesDirectory + "/" + dirPath);
         } catch (error) {
@@ -129,7 +129,7 @@ const buildNextJsLayers = (items, layer = navigationsLayers[0], parent= "",) =>
       // If our page has content we need to create an index.js file
       if (isIndexedWrapper(item) && hasRelated(item)) {
         const indexPath = path.join(pagesDirectory, dirPath, "index.js");
-        console.log(`📝 Creating index.js in → ${dirPath}`);
+        console.info(`📝 Creating index.js in → ${dirPath}`);
         createTemplate(indexPath, item);
       }
 
@@ -143,11 +143,11 @@ const buildNextJsLayers = (items, layer = navigationsLayers[0], parent= "",) =>
 
     // If page has no children and no content, let's inform the user
     if (!isWrapper(item) && !hasRelated(item)) {
-      console.log("⏭  This page has no content nore children. Ignoring...");
+      console.info("⏭  This page has no content nore children. Ignoring...");
     }
 
     const newParent = `${parent ? parent + "/" : ""}${explosedPath[explosedPath.length - 1]}`;
-    buildNextJsLayers(item.items, navigationsLayers[navigationsLayers.indexOf(layer) + 1], newParent);
+    if (item.items) buildNextJsLayers(item.items, navigationsLayers[navigationsLayers.indexOf(layer) + 1], newParent);
     console.groupEnd();
   });
 

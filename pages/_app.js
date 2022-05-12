@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 import ConfigServices from "@Services/Config";
 import ContactServices from "@Services/Contact";
+import NavigationServices from "@Services/Navigation";
 import { cleanResults } from "@Utils/strapi/core";
 
 import "../src/styles/index.scss";
@@ -11,21 +12,25 @@ const App = ({ Component, pageProps, appProps }) => {
   return <Component { ...{ pageProps, appProps }} />;
 };
 
+
 App.getInitialProps = async () => {
   const promises = [
     ConfigServices.get(),
-    ContactServices.get()
+    ContactServices.get(),
+    NavigationServices.getMain()
   ];
 
   const [
     config,
-    contact
+    contact,
+    navigation
   ] = cleanResults(await Promise.all(promises));
 
   return {
     appProps: {
       config,
-      contact
+      contact,
+      navigation
     }
   };
 };

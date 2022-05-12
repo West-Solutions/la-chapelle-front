@@ -1,5 +1,6 @@
 export const fetchFromDataAttribute = (object = {}) => {
-  const { data = {} } = object;
+  const { data } = object;
+  if (!data) return object;
   const { attributes = {} } = data;
   return attributes;
 };
