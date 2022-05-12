@@ -18,7 +18,7 @@ const fetchColor = () =>
   });
 
 const writeColorJson = colors => {
-  console.log("Writing colors.json...");
+  console.info("Writing colors.json...");
   try {
     fs.writeFileSync(
       path.join(root, "colors.json"),
@@ -37,7 +37,7 @@ fetchColor().then(colors => {
     colorsObject[attributes.var] = attributes.hexa;
   });
   writeColorJson(colorsObject);
-  console.log("✅ Colors setted!");
+  console.info("✅ Colors setted!");
   console.groupEnd();
 }).catch(error => {
   console.error(error.message);

@@ -3,7 +3,7 @@ import Head from "next/head";
 import PropTypes from "prop-types";
 
 import Header from "@Display/Header";
-import Navigation from "@Display/Navigation";
+import Navigation from "@Components/Navigation";
 import ContentRenderer from "@Modules/ContentRenderer";
 
 const PageRenderer = ({ appProps, pageProps }) => {
@@ -20,7 +20,7 @@ const PageRenderer = ({ appProps, pageProps }) => {
       <div>
         <Header />
         <div className="container mx-auto relative -top-10">
-          <Navigation />
+          <Navigation items={appProps.navigation} />
           <main className="bg-red-500">
             {data.attributes.pageContent && data.attributes.pageContent.length > 0 && (
               data.attributes.pageContent.map(component => (
@@ -38,7 +38,10 @@ PageRenderer.propTypes = {
   appProps: PropTypes.shape({
     config: PropTypes.shape({
       websiteName: PropTypes.string
-    }).isRequired
+    }).isRequired,
+    navigation: PropTypes.arrayOf(
+      PropTypes.object
+    ).isRequired
   }).isRequired,
   pageProps: PropTypes.shape({
     data: PropTypes.shape({
