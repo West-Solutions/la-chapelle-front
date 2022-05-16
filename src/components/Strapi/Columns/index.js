@@ -1,13 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import ContentRenderer from "@Components/Modules/ContentRenderer";
+import ComponentRenderer from "@Modules/ComponentRenderer";
 
 const StrapiColumns = ({ left, right }) => {
   const renderCol = components => {
     if (!components || !components.length) return null;
     return  components.map(component => {
-      return <ContentRenderer key={component.id} component={component} />;
+      return <ComponentRenderer key={component.id} component={component} />;
     });
   };
 

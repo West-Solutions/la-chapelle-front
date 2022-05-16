@@ -4,29 +4,33 @@ import PropTypes from "prop-types";
 
 import Header from "@Display/Header";
 import Navigation from "@Components/Navigation";
-import ContentRenderer from "@Modules/ContentRenderer";
+import ComponentRenderer from "@Modules/ComponentRenderer";
 
-const PageRenderer = ({ appProps, pageProps }) => {
-  const { data } = pageProps;
+import { hasDataAndAttribute } from "@Utils/strapi/core";
 
-  // TODO: enhance this
-  if (!data || !data.attributes) return <div>No data</div>;
+const PageRenderer = ({ app, page }) => {
+  if (!hasDataAndAttribute(page)) return <div>No data</div>;
+
+  const { data } = page;
+  const { pageContent = [], title } = data.attributes;
 
   return (
     <React.Fragment>
       <Head>
-        <title>{`${appProps.config.websiteName} | ${data.attributes.title}`}</title>
+        <title>{`${app.config.websiteName} | ${title}`}</title>
       </Head>
       <div>
         <Header />
         <div className="container mx-auto relative -top-10">
-          <Navigation items={appProps.navigation} />
-          <main className="bg-red-500">
-            {data.attributes.pageContent && data.attributes.pageContent.length > 0 && (
-              data.attributes.pageContent.map(component => (
-                <ContentRenderer key={`${component.id}-${component.__component}`} component={component} />
-              ))
-            )}
+          <Navigation items={app.navigation} />
+          <main>
+            {pageContent && pageContent.map(component => (
+              <ComponentRenderer
+                key={`${component.id}-${component.__component}`}
+                component={component}
+              />
+            ))
+            }
           </main>
         </div>
       </div>
@@ -35,7 +39,7 @@ const PageRenderer = ({ appProps, pageProps }) => {
 };
 
 PageRenderer.propTypes = {
-  appProps: PropTypes.shape({
+  app: PropTypes.shape({
     config: PropTypes.shape({
       websiteName: PropTypes.string
     }).isRequired,
@@ -43,7 +47,7 @@ PageRenderer.propTypes = {
       PropTypes.object
     ).isRequired
   }).isRequired,
-  pageProps: PropTypes.shape({
+  page: PropTypes.shape({
     data: PropTypes.shape({
       attributes: PropTypes.shape({
         title: PropTypes.string,
