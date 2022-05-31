@@ -2,20 +2,26 @@ import React from "react";
 import PropTypes from "prop-types";
 
 
-const StrapiImageGallery = ({ image }) => {
-
-  return (
-    <div className={"w-full"}>
-      {image.forEach(image => {
-        return <img src={image.src.data.attributes.url} width="200px" height="200px" onError="this.onerror=null; this.src='/upload/fallbackImages';"  />;
+const StrapiImageGallery = ({ images }) => {
+  return images ?(
+    <div className={"w-full flex flex-wrap justify-center "}>
+      {images && images.data.map(image => {
+        return <img
+          key={image.attributes.url}
+          className={"w-64 h-64 object-cover rounded-md shadow-normal m-2"}
+          src={process.env.NEXT_PUBLIC_BACK_URL+image.attributes.url} />;
       }
       )}
+    </div>
+  ):(
+    <div className={"w-full"}>
+      no images
     </div>
   );
 };
 
 StrapiImageGallery.propTypes = {
-  image: PropTypes.shapeof([])
+  images: PropTypes.shape([])
 };
 
 export default StrapiImageGallery;

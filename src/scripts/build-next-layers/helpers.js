@@ -28,7 +28,7 @@ const createTemplate = (filePath = "", item ) => {
   try {
     fs.writeFileSync(
       filePath,
-      pageTemplate({...item, pageId: item.related.id })
+      pageTemplate({ ...item, pageId: item.related.id })
     );
   } catch (error) {
     console.error(error);
@@ -41,6 +41,7 @@ const createTemplate = (filePath = "", item ) => {
 
 const fetchMainNavigationStruc = () =>
   new Promise((resolve, reject) => {
+    console.log(`${process.env.API_URL}/navigation/render/main-navigation/?type=tree`);
     axios
       .get(`${process.env.API_URL}/navigation/render/main-navigation/?type=tree`)
       .then(response => {
