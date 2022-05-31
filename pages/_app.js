@@ -8,10 +8,9 @@ import { cleanResults } from "@Utils/strapi/core";
 
 import "../src/styles/index.scss";
 
-const App = ({ Component, pageProps, appProps }) => {
-  return <Component { ...{ pageProps, appProps }} />;
+const App = ({ Component, pageProps: page, app }) => {
+  return <Component { ...{ page, app }} />;
 };
-
 
 App.getInitialProps = async () => {
   const promises = [
@@ -27,7 +26,7 @@ App.getInitialProps = async () => {
   ] = cleanResults(await Promise.all(promises));
 
   return {
-    appProps: {
+    app: {
       config,
       contact,
       navigation
@@ -36,7 +35,7 @@ App.getInitialProps = async () => {
 };
 
 App.propTypes = {
-  appProps: PropTypes.object.isRequired,
+  app: PropTypes.object.isRequired,
   pageProps: PropTypes.object.isRequired,
   Component: PropTypes.elementType.isRequired
 };
