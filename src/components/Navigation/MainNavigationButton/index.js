@@ -1,17 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 import NavigationSection from "../NavigationSection";
 
 const MainNavigationButton = ({ item }) => {
+  const [dropdown, setDropdown] = useState(false);
+
   return (
-    <div>
-      <button className={`text-bold bg-${item.slug}`} >
+    <div className={`flex flex-col bg-${item.slug}`}>
+      <button
+        className="font-bold text-white"
+        type="button"
+        aria-haspopup="menu"
+        aria-expanded={dropdown ? "true" : "false"}
+        onClick={() => setDropdown((prev) => !prev)}
+      >
         {item.title}
       </button>
       {
         item.items.map(item => {
-          return <NavigationSection key={`${item.uiRouterKey}-${item.id}`} item={item} />;
+          return <NavigationSection key={`${item.uiRouterKey}-${item.id}`} item={item} dropdown={dropdown} />;
         })
       }
     </div>

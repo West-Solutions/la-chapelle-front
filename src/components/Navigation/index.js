@@ -8,7 +8,7 @@ import MainNavigationButton from "./MainNavigationButton";
 const Navigation = ({ items }) => {
   const cleanItems = cleanNavigationItems(items);
   return (
-    <nav className={"header bg-green-600"}>
+    <nav className={"header flex justify-around"}>
       {
         cleanItems.map(item => {
           return <MainNavigationButton key={`${item.uiRouterKey}-${item.id}`} item={item} />;

@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "npm run build-next-layers && next dev",
-    "build": "npm run build-next-layers && npm run set-colors && next build",
+    "dev": "npm run set-colors && npm run build-next-layers && next dev",
+    "build": "npm run set-colors && npm run build-next-layers && npm run set-colors && next build",
     "start": "next start",
     "lint": "npm run build-next-layers && next lint",
     "----SCRIPTS": "",

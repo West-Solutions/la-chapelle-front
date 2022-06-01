@@ -3,7 +3,6 @@ import Head from "next/head";
 import PropTypes from "prop-types";
 
 import Header from "@Display/Header";
-import Navigation from "@Components/Navigation";
 import ComponentRenderer from "@Modules/ComponentRenderer";
 
 import { hasDataAndAttribute } from "@Utils/strapi/core";
@@ -20,9 +19,8 @@ const PageRenderer = ({ app, page }) => {
         <title>{`${app.config.websiteName} | ${title}`}</title>
       </Head>
       <div>
-        <Header />
-        <div className="container mx-auto relative -top-10">
-          <Navigation items={app.navigation} />
+        <Header app={app}/>
+        <div className="container mx-auto mt-8">
           <main>
             {pageContent && pageContent.map(component => (
               <ComponentRenderer

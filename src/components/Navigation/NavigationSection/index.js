@@ -1,31 +1,47 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Link from "next/link";
 
-const NavigationSection = ({ item }) => (
-  <div>
-    {
-      item.type ==="WRAPPER" ? (
-        <h3 className="text-bold bg-orange-500" >
-          {item.title}
-        </h3>
-      ) : (
-        <a className="text-bold bg-orange-500" >
-          {item.title}
-        </a>
-      )
-    }
-    {
-      item.items &&
-      <ul>
-        {
-          item.items.map(item => {
-            return <li className="bg-purple-500" key={`${item.uiRouterKey}-${item.id}`}>{item.title}</li>;
-          })
-        }
-      </ul>
-    }
-  </div>
-);
+const NavigationSection = ({ item, dropdown }) => {
+  return (
+    <div className={`dropdown ${dropdown ? "show" : "hidden"}`}>
+      {
+        item.type ==="WRAPPER" ? (
+          <h3 className="text-white font-semibold  underline" >
+            {item.title}
+          </h3>
+        ) : (
+          <Link
+            href={item.path}
+          >
+            <a className="text-white font-semibold  underline" >
+              {item.title}
+            </a>
+          </Link>
+
+        )
+      }
+      {
+        item.items &&
+        <ul>
+          {
+            item.items.map(item => {
+              return <li className="text-white cursor-pointer " key={`${item.uiRouterKey}-${item.id}`}>
+                <Link
+                  href={item.path}
+                >
+                  <a>
+                    {item.title}
+                  </a>
+                </Link>
+              </li>;
+            })
+          }
+        </ul>
+      }
+    </div>
+  );
+};
 
 
 NavigationSection.propTypes = {
@@ -38,7 +54,8 @@ NavigationSection.propTypes = {
     title: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
     uiRouterKey: PropTypes.string.isRequired,
-  }).isRequired
+  }).isRequired,
+  dropdown: PropTypes.bool.isRequired
 };
 
 
