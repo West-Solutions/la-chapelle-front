@@ -6,8 +6,20 @@ import NavigationSection from "../NavigationSection";
 const MainNavigationButton = ({ item }) => {
   const [dropdown, setDropdown] = useState(false);
 
+  const onMouseEnter = () => {
+    window.innerWidth > 960 && setDropdown(true);
+  };
+
+  const onMouseLeave = () => {
+    window.innerWidth > 960 && setDropdown(false);
+  };
+
   return (
-    <div className={`flex flex-col bg-${item.slug}`}>
+    <div
+      className={`flex flex-col bg-${item.slug}`}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
       <button
         className="font-bold text-white"
         type="button"
@@ -25,6 +37,7 @@ const MainNavigationButton = ({ item }) => {
     </div>
   );
 };
+
 
 MainNavigationButton.propTypes = {
   item: PropTypes.shape({
