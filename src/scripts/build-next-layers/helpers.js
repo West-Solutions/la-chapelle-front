@@ -41,7 +41,6 @@ const createTemplate = (filePath = "", item ) => {
 
 const fetchMainNavigationStruc = () =>
   new Promise((resolve, reject) => {
-    console.log(`${process.env.API_URL}/navigation/render/main-navigation/?type=tree`);
     axios
       .get(`${process.env.API_URL}/navigation/render/main-navigation/?type=tree`)
       .then(response => {

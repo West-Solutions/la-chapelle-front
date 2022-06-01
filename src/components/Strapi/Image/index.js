@@ -3,8 +3,6 @@ import PropTypes from "prop-types";
 
 
 const StrapiImage = ({ legend, src, showLegend }) => {
-  console.log("test", legend);
-  console.log("ShowLegend", showLegend);
   return (
     <div className={"w-full justify-center p-2"}>
       <img
