@@ -11,14 +11,15 @@ const NavigationSection = ({ item, dropdown }) => {
             {item.title}
           </h3>
         ) : (
-          <Link
-            href={item.path}
-          >
-            <a className="text-white font-semibold  underline" >
+          <Link href={item.path} passHref >
+            <a
+              className="text-white font-semibold  underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               {item.title}
             </a>
           </Link>
-
         )
       }
       {
@@ -27,13 +28,19 @@ const NavigationSection = ({ item, dropdown }) => {
           {
             item.items.map(item => {
               return <li className="text-white cursor-pointer " key={`${item.uiRouterKey}-${item.id}`}>
-                <Link
-                  href={item.path}
-                >
-                  <a>
-                    {item.title}
-                  </a>
-                </Link>
+                {item.external ? (
+                  <Link href={item.path} passHref >
+                    <a target="_blank" rel="noopener noreferrer">
+                      {item.title}
+                    </a>
+                  </Link>
+                ) : (
+                  <Link href={item.path} >
+                    <a>
+                      {item.title}
+                    </a>
+                  </Link>
+                )}
               </li>;
             })
           }
@@ -46,6 +53,7 @@ const NavigationSection = ({ item, dropdown }) => {
 
 NavigationSection.propTypes = {
   item: PropTypes.shape({
+    external: PropTypes.bool,
     id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
     items: PropTypes.arrayOf(
       PropTypes.object
