@@ -3,25 +3,25 @@ import PropTypes from "prop-types";
 
 import NavigationSection from "../NavigationSection";
 
-const MainNavigationButton = ({ item }) => {
+const MainNavigationButton = ({ item, openingSide }) => {
   const [dropdown, setDropdown] = useState(false);
 
   const onMouseEnter = () => {
-    window.innerWidth > 960 && setDropdown(true);
+    setDropdown(true);
   };
 
   const onMouseLeave = () => {
-    window.innerWidth > 960 && setDropdown(false);
+    setDropdown(false);
   };
 
   return (
     <div
-      className={`flex flex-col bg-${item.slug}`}
+      className={`flex flex-1 flex-col h-16 bg-${item.slug}`}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
       <button
-        className="font-bold text-white"
+        className="font-bold text-white h-full text-lg p-2 uppercase"
         type="button"
         aria-haspopup="menu"
         aria-expanded={dropdown ? "true" : "false"}
@@ -29,11 +29,15 @@ const MainNavigationButton = ({ item }) => {
       >
         {item.title}
       </button>
-      {
-        item.items.map(item => {
-          return <NavigationSection key={`${item.uiRouterKey}-${item.id}`} item={item} dropdown={dropdown} />;
-        })
-      }
+      <div className="relative">
+        <div className="absolute left-0 right-0 shadow-normal">
+          {
+            item.items.map(subItem => {
+              return <NavigationSection key={`${subItem.uiRouterKey}-${subItem.id}`} item={subItem} dropdown={dropdown} color={item.slug} openingSide={openingSide}/>;
+            })
+          }
+        </div>
+      </div>
     </div>
   );
 };
@@ -49,7 +53,8 @@ MainNavigationButton.propTypes = {
     slug: PropTypes.string,
     title: PropTypes.string.isRequired,
     uiRouterKey: PropTypes.string.isRequired,
-  }).isRequired
+  }).isRequired,
+  openingSide: PropTypes.string
 };
 
 MainNavigationButton.defaultProps = {

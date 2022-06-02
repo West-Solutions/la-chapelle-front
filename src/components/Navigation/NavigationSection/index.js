@@ -1,19 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import Link from "next/link";
 
-const NavigationSection = ({ item, dropdown }) => {
+const NavigationSection = ({ item, dropdown, color, openingSide }) => {
+
+  const [subDropDown, setSubDropdown] = useState(false);
+  const onMouseEnter = () => {
+    setSubDropdown(true);
+  };
+
+  const onMouseLeave = () => {
+    setSubDropdown(false);
+  };
   return (
-    <div className={`dropdown ${dropdown ? "show" : "hidden"}`}>
+    <div
+      className={`bg-${color} ${dropdown ? "show" : "hidden"}`}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      onClick={() => setSubDropdown((prev) => !prev)}
+    >
       {
         item.type ==="WRAPPER" ? (
-          <h3 className="text-white font-semibold  underline" >
+          <button
+            className="text-white w-full text-xl text-center p-2 font-semibold"
+            type="button"
+            aria-haspopup="menu"
+            aria-expanded={subDropDown ? "true" : "false"} >
             {item.title}
-          </h3>
+          </button>
         ) : (
           <Link href={item.path} passHref >
             <a
-              className="text-white font-semibold  underline"
+              className="text-white text-xl text-center p-2 font-semibold"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -24,20 +42,20 @@ const NavigationSection = ({ item, dropdown }) => {
       }
       {
         item.items &&
-        <ul>
+        <ul className={`absolute ${openingSide}-full shadow-normal top-0 p-2 px-4 bg-${color} ${subDropDown ? "show" : "hidden"}`}>
           {
-            item.items.map(item => {
-              return <li className="text-white cursor-pointer " key={`${item.uiRouterKey}-${item.id}`}>
-                {item.external ? (
-                  <Link href={item.path} passHref >
+            item.items.map(subItem => {
+              return <li className="text-white cursor-pointer text-center whitespace-nowrap py-4" key={`${subItem.uiRouterKey}-${subItem.id}`}>
+                {subItem.external ? (
+                  <Link href={subItem.path} passHref >
                     <a target="_blank" rel="noopener noreferrer">
-                      {item.title}
+                      {subItem.title}
                     </a>
                   </Link>
                 ) : (
-                  <Link href={item.path} >
+                  <Link href={subItem.path} >
                     <a>
-                      {item.title}
+                      {subItem.title}
                     </a>
                   </Link>
                 )}
@@ -52,6 +70,7 @@ const NavigationSection = ({ item, dropdown }) => {
 
 
 NavigationSection.propTypes = {
+  color: PropTypes.string,
   item: PropTypes.shape({
     external: PropTypes.bool,
     id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
@@ -63,7 +82,8 @@ NavigationSection.propTypes = {
     type: PropTypes.string.isRequired,
     uiRouterKey: PropTypes.string.isRequired,
   }).isRequired,
-  dropdown: PropTypes.bool.isRequired
+  dropdown: PropTypes.bool.isRequired,
+  openingSide: PropTypes.string
 };
 
 
