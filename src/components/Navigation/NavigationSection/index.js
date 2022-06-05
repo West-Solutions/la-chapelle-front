@@ -3,9 +3,17 @@ import PropTypes from "prop-types";
 
 const NavigationSection = ({ item }) => (
   <div>
-    <button className="text-bold bg-orange-500" >
-      {item.title}
-    </button>
+    {
+      item.type ==="WRAPPER" ? (
+        <h3 className="text-bold bg-orange-500" >
+          {item.title}
+        </h3>
+      ) : (
+        <a className="text-bold bg-orange-500" >
+          {item.title}
+        </a>
+      )
+    }
     {
       item.items &&
       <ul>
@@ -28,6 +36,7 @@ NavigationSection.propTypes = {
     ),
     path: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
     uiRouterKey: PropTypes.string.isRequired,
   }).isRequired
 };

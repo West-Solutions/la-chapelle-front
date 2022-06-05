@@ -6,7 +6,7 @@ import NavigationSection from "../NavigationSection";
 const MainNavigationButton = ({ item }) => {
   return (
     <div>
-      <button className="text-bold bg-blue-500" >
+      <button className={`text-bold bg-${item.slug}`} >
         {item.title}
       </button>
       {
@@ -25,10 +25,17 @@ MainNavigationButton.propTypes = {
       PropTypes.object
     ),
     path: PropTypes.string.isRequired,
+    slug: PropTypes.string,
     title: PropTypes.string.isRequired,
     uiRouterKey: PropTypes.string.isRequired,
   }).isRequired
 };
 
+MainNavigationButton.defaultProps = {
+  item: {
+    items: [],
+    slug: "primary",
+  }
+};
 
 export default MainNavigationButton;

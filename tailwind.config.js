@@ -25,6 +25,9 @@ module.exports = {
   theme: {
     extend: {
       colors : colors || {},
+      boxShadow: {
+        "normal": "3px 3px 6px rgba(0, 0, 0, 0.4)",
+      },
     },
   },
   plugins: [],

@@ -2,16 +2,23 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import Title from "@StrapiComponents/Title";
+import Link from "@StrapiComponents/Link";
+import Image from "@Components/Strapi/Image";
+import ImagesGalery from "@StrapiComponents/ImagesGalery";
 import Columns from "@StrapiComponents/Columns";
 import RichText from "@StrapiComponents/RichText";
 //...
 
 const Components = {
   // Text
+  "textes.lien": Link,
   "textes.title": Title,
   "textes.rich-text": RichText,
   // Grid
   "grilles.columns": Columns,
+  // Media
+  "media.image": Image,
+  "media.galerie-d-images": ImagesGalery
   //...
 };
 

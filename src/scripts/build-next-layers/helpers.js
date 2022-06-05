@@ -28,7 +28,7 @@ const createTemplate = (filePath = "", item ) => {
   try {
     fs.writeFileSync(
       filePath,
-      pageTemplate({...item, pageId: item.related.id })
+      pageTemplate({ ...item, pageId: item.related.id })
     );
   } catch (error) {
     console.error(error);

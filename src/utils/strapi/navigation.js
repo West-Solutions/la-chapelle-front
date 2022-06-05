@@ -5,19 +5,19 @@
  * @description filter items recursively that are not attached to a menu or
  */
 export const cleanNavigationItems = items => {
-  const newItems = [];
-  items.forEach(item => {
-    if (!_isValidItem(item)) return;
-    if(item.items) {
-      newItems.push({
-        ...item,
-        items: cleanNavigationItems(item.items)
+  const filteredItems = [];
+  items.forEach(menu => {
+    if (!_isValidItem(menu)) return;
+    if(menu.items) {
+      filteredItems.push({
+        ...menu,
+        items: cleanNavigationItems(menu.items)
       });
       return;
     }
-    newItems.push(item);
+    filteredItems.push(menu);
   });
-  return newItems;
+  return filteredItems;
 };
 
 const _isValidItem = item => {
