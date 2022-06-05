@@ -8,13 +8,16 @@ import MainNavigationButton from "./MainNavigationButton";
 const Navigation = ({ items }) => {
   const cleanItems = cleanNavigationItems(items);
   return (
-    <nav className={"header bg-green-600"}>
-      {
-        cleanItems.map(item => {
-          return <MainNavigationButton key={`${item.uiRouterKey}-${item.id}`} item={item} />;
-        })
-      }
-    </nav>
+    <div className="relative sticky top-0 ">
+      <nav className={"header flex shadow-normal"}>
+        {
+          cleanItems.map((item, index) => {
+            const openingSide = index > cleanItems.length/2 ? "right" : "left";
+            return <MainNavigationButton key={`${item.uiRouterKey}-${item.id}`} item={item} openingSide={openingSide} />;
+          })
+        }
+      </nav>
+    </div>
   );
 };
 

@@ -21,6 +21,8 @@ module.exports = {
   safelist: [
     { pattern: /text-(left|right|center)/ },
     ...safelistColors(),
+    "left-full",
+    "right-full",
   ],
   theme: {
     extend: {
