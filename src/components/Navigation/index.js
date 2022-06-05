@@ -8,7 +8,7 @@ import MainNavigationButton from "./MainNavigationButton";
 const Navigation = ({ items }) => {
   const cleanItems = cleanNavigationItems(items);
   return (
-    <div className="relative sticky top-0 ">
+    <div className="relative">
       <nav className={"header flex shadow-normal"}>
         {
           cleanItems.map((item, index) => {

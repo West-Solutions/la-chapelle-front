@@ -1,11 +1,23 @@
 import React from "react";
 import PropTypes from "prop-types";
+
+import Hero from "@Components/Display/Hero";
 import Navigation from "@Components/Navigation";
 
 const Header = ({ className, app }) => {
+  const [top, setTop] = React.useState(0);
+  const heroRef = React.useRef(null);
+
+  React.useEffect(() => {
+    if (window && heroRef.current) {
+      const heroHeight = heroRef.current.offsetHeight;
+      if (heroHeight) setTop(-heroHeight);
+    }
+  }, []);
+
   return (
-    <header className={`header bg-blue-400 ${className}`}>
-      <div className="p-8">Header information to be updated</div>
+    <header className={`header sticky bg-blue-400 ${className}`} style={{ top }}>
+      <Hero ref={heroRef} />
       <Navigation items={app.navigation} />
     </header>
   );
