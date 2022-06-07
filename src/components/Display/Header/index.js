@@ -17,7 +17,7 @@ const Header = ({ className, app }) => {
 
   return (
     <header className={`header sticky bg-blue-400 ${className}`} style={{ top }}>
-      <Hero ref={heroRef} />
+      <div ref={heroRef}><Hero /></div>
       <Navigation items={app.navigation} />
     </header>
   );
