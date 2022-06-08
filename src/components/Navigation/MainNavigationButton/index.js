@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 
 import NavigationSection from "../NavigationSection";
@@ -7,18 +7,35 @@ const MainNavigationButton = ({ item, openingSide }) => {
   const [dropdown, setDropdown] = useState(false);
 
   const onMouseEnter = () => {
-    setDropdown(true);
+    window.innerWidth >= 1280 && setDropdown(true);
   };
 
   const onMouseLeave = () => {
-    setDropdown(false);
+    window.innerWidth >= 1280 && setDropdown(false);
   };
+
+  // Change the dropdown state when user click outside
+  useEffect(() => {
+    const handler = (event) => {
+      if (dropdown && ref.current && !ref.current.contains(event.target)) {
+        setDropdown(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => {
+      // Cleanup the event listener
+      document.removeEventListener("mousedown", handler);
+    };
+  }, [dropdown]);
+
+  let ref = useRef();
 
   return (
     <div
       className={`flex flex-1 flex-col h-16 bg-${item.slug}`}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
+      ref={ref}
     >
       <button
         className="font-bold text-white h-full text-lg p-2 uppercase"
@@ -30,7 +47,7 @@ const MainNavigationButton = ({ item, openingSide }) => {
         {item.title}
       </button>
       <div className="relative">
-        <div className="absolute left-0 right-0 shadow-normal">
+        <div className="md:absolute left-0 right-0 shadow-normal">
           {
             item.items.map(subItem => {
               return <NavigationSection key={`${subItem.uiRouterKey}-${subItem.id}`} item={subItem} dropdown={dropdown} color={item.slug} openingSide={openingSide}/>;
