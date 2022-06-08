@@ -72,9 +72,14 @@ const NavigationSection = ({ item, dropdown, color, openingSide }) => {
                   href={subItem.path}
                 >
                   {subItem.external ? (
-                    <a target="_blank" rel="noopener noreferrer" className="h-full w-full text-white text-xl text-center py-2 px-4">
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="h-full w-full text-white text-xl text-center py-2 px-4"
+                    >
                       {subItem.title}
-                    </a> ) : (
+                    </a>
+                  ) : (
                     <a className="text-white text-xl text-center py-2 px-4">
                       {subItem.title}
                     </a>
