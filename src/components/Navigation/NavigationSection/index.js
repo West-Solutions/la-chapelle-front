@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import Link from "next/link";
 
@@ -6,18 +6,36 @@ const NavigationSection = ({ item, dropdown, color, openingSide }) => {
 
   const [subDropDown, setSubDropdown] = useState(false);
   const onMouseEnter = () => {
-    setSubDropdown(true);
+    window.innerWidth >= 1280 && setSubDropdown(true);
   };
 
   const onMouseLeave = () => {
-    setSubDropdown(false);
+    window.innerWidth >= 1280 && setSubDropdown(false);
   };
+
+  // Change the dropdown state when user click outside
+  useEffect(() => {
+    const handler = (event) => {
+      if (subDropDown && ref.current && !ref.current.contains(event.target)) {
+        setSubDropdown(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => {
+      // Cleanup the event listener
+      document.removeEventListener("mousedown", handler);
+    };
+  }, [subDropDown]);
+
+  const ref = useRef();
+
   return (
     <div
       className={`bg-${color} ${dropdown ? "show" : "hidden"}`}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       onClick={() => setSubDropdown((prev) => !prev)}
+      ref={ref}
     >
       {
         item.type ==="WRAPPER" ? (
@@ -42,7 +60,7 @@ const NavigationSection = ({ item, dropdown, color, openingSide }) => {
       }
       {
         item.items &&
-        <ul className={`absolute ${openingSide}-full shadow-normal top-0 p-2 px-4 bg-${color} ${subDropDown ? "show" : "hidden"}`}>
+        <ul className={`md:absolute ${openingSide}-full shadow-normal top-0 p-2 px-4 bg-${color} ${subDropDown ? "show" : "hidden"}`}>
           {
             item.items.map(subItem => {
               return <li className="text-white cursor-pointer text-center whitespace-nowrap py-4" key={`${subItem.uiRouterKey}-${subItem.id}`}>
