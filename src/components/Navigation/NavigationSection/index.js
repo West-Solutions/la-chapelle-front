@@ -42,12 +42,15 @@ const NavigationSection = ({ item, dropdown, color, openingSide }) => {
           <button
             className="text-white w-full text-xl text-center p-2 font-semibold"
             type="button"
-            aria-haspopup="menu"
-            aria-expanded={subDropDown ? "true" : "false"} >
+          >
             {item.title}
           </button>
         ) : (
-          <Link href={item.path} passHref >
+          <Link
+            href={item.path}
+            passHref
+            className="h-full w-full text-white text-xl text-center p-2 font-semibold"
+          >
             <a
               className="text-white text-xl text-center p-2 font-semibold"
               target="_blank"
@@ -60,27 +63,27 @@ const NavigationSection = ({ item, dropdown, color, openingSide }) => {
       }
       {
         item.items &&
-        <ul className={`md:absolute ${openingSide}-full shadow-normal top-0 p-2 px-4 bg-${color} ${subDropDown ? "show" : "hidden"}`}>
+        <div className={`md:absolute ${openingSide}-full flex flex-col shadow-normal top-0 bg-${color} ${subDropDown ? "show" : "hidden"}`}>
           {
             item.items.map(subItem => {
-              return <li className="text-white cursor-pointer text-center whitespace-nowrap py-4" key={`${subItem.uiRouterKey}-${subItem.id}`}>
-                {subItem.external ? (
-                  <Link href={subItem.path} passHref >
-                    <a target="_blank" rel="noopener noreferrer">
+              return (
+                <Link
+                  key={`${subItem.uiRouterKey}-${subItem.id}`}
+                  href={subItem.path}
+                >
+                  {subItem.external ? (
+                    <a target="_blank" rel="noopener noreferrer" className="h-full w-full text-white text-xl text-center py-2 px-4">
+                      {subItem.title}
+                    </a> ) : (
+                    <a className="text-white text-xl text-center py-2 px-4">
                       {subItem.title}
                     </a>
-                  </Link>
-                ) : (
-                  <Link href={subItem.path} >
-                    <a>
-                      {subItem.title}
-                    </a>
-                  </Link>
-                )}
-              </li>;
+                  )}
+                </Link>
+              );
             })
           }
-        </ul>
+        </div>
       }
     </div>
   );
