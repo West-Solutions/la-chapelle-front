@@ -1,3 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+// SHOULD COME LAST TO OVERIDE TAILWIND
+@import './ckeditor.scss';
