@@ -49,7 +49,7 @@ const NavigationSection = ({ item, dropdown, color, openingSide }) => {
           <Link
             href={item.path}
             passHref
-            className="h-full w-full text-white text-xl text-center p-2 font-semibold"
+            className="text-white text-xl text-center p-2 font-semibold"
           >
             <a
               className="text-white text-xl text-center p-2 font-semibold"
@@ -71,19 +71,13 @@ const NavigationSection = ({ item, dropdown, color, openingSide }) => {
                   key={`${subItem.uiRouterKey}-${subItem.id}`}
                   href={subItem.path}
                 >
-                  {subItem.external ? (
-                    <a
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="h-full w-full text-white text-xl text-center py-2 px-4"
-                    >
-                      {subItem.title}
-                    </a>
-                  ) : (
-                    <a className="text-white text-xl text-center py-2 px-4">
-                      {subItem.title}
-                    </a>
-                  )}
+                  <a
+                    target={subItem.external ? "_blank" : ""}
+                    rel={subItem.external ? "noopener noreferrer" : ""}
+                    className="text-white text-xl text-center py-2 px-4"
+                  >
+                    {subItem.title}
+                  </a>
                 </Link>
               );
             })
