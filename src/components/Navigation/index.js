@@ -7,12 +7,12 @@ import MainNavigationButton from "./MainNavigationButton";
 
 const Navigation = ({ items }) => {
   const cleanItems = cleanNavigationItems(items);
-  const [mobileDropdown, setMobileDropdown] = useState(true);
+  const [mobileDropdown, setMobileDropdown] = useState(false);
 
   // initialize the dropdown state for mobile screen
   useEffect(() => {
-    if (window.innerWidth < 768) {
-      setMobileDropdown(false);
+    if (window.innerWidth >= 768) {
+      setMobileDropdown(true);
     }
   }, []);
 
@@ -51,33 +51,18 @@ const Navigation = ({ items }) => {
           className="outline-none md:hidden mobile-menu-button m-4 self-end"
           onClick= {() => setMobileDropdown((prev) => !prev)}
         >
-          {mobileDropdown ? (
-            <svg
-              className="w-8 h-8 text-white"
-              x-show="!showMenu"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              viewBox="2 -3 12 24"
-              stroke="currentColor"
-            >
+          <svg
+            className="w-8 h-8 text-white"
+            strokeWidth="2"
+            viewBox={mobileDropdown ? "2 -3 12 24" : "0 0 24 24"}
+            stroke="currentColor"
+          >
+            {mobileDropdown ? (
               <path d="M 0,0 l 16,16 M 16,0 l -16,16" />
-            </svg>
-          ) : (
-            <svg
-              className="w-8 h-8 text-white"
-              x-show="showMenu"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
+            ) : (
               <path d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          )}
+            )}
+          </svg>
         </button>
 
         { mobileDropdown && (
