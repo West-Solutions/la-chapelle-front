@@ -11,7 +11,7 @@ const StrapiParagraph = ({ text }) => {
 
   return (
     <div
-      className="ck-content"
+      className="ck-content w-full"
       dangerouslySetInnerHTML={{ __html: parsedText }}
     />
   );

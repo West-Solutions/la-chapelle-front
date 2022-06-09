@@ -20,10 +20,12 @@ const NavigationSection = ({ item, dropdown, color, openingSide }) => {
         setSubDropdown(false);
       }
     };
-    document.addEventListener("mousedown", handler);
+    document.addEventListener("click", handler);
+    document.addEventListener("touchstart", handler);
     return () => {
       // Cleanup the event listener
-      document.removeEventListener("mousedown", handler);
+      document.removeEventListener("click", handler);
+      document.removeEventListener("touchstart", handler);
     };
   }, [subDropDown]);
 

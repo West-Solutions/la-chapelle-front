@@ -21,10 +21,12 @@ const MainNavigationButton = ({ item, openingSide }) => {
         setDropdown(false);
       }
     };
-    document.addEventListener("mousedown", handler);
+    document.addEventListener("click", handler);
+    document.addEventListener("touchstart", handler);
     return () => {
       // Cleanup the event listener
-      document.removeEventListener("mousedown", handler);
+      document.removeEventListener("click", handler);
+      document.removeEventListener("touchstart", handler);
     };
   }, [dropdown]);
 
