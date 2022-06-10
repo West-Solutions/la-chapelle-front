@@ -2,5 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @import url("https://unpkg.com/leaflet@1.8.0/dist/leaflet.css");
+// SHOULD COME LAST TO OVERIDE TAILWIND
+@import './ckeditor.scss';
