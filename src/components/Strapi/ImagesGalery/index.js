@@ -25,6 +25,7 @@ const StrapiImageGallery = ( { images, Affichage, isColumn } ) => {
       statusFormatter={(current, total) => `${current} / ${total}`}
       transitionTime={800}
       thumbWidth={80}
+      useKeyboardArrows={true}
     >
       {images && images.data.map(image => {
         return (
