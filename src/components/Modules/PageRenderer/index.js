@@ -3,6 +3,7 @@ import Head from "next/head";
 import PropTypes from "prop-types";
 
 import Header from "@Display/Header";
+import Footer from "@Display/Footer";
 import ComponentRenderer from "@Modules/ComponentRenderer";
 
 import { hasDataAndAttribute } from "@Utils/strapi/core";
@@ -20,17 +21,16 @@ const PageRenderer = ({ app, page }) => {
       </Head>
       <div>
         <Header app={app}/>
-        <div className="container mx-auto mt-8">
-          <main>
-            {pageContent && pageContent.map(component => (
-              <ComponentRenderer
-                key={`${component.id}-${component.__component}`}
-                component={component}
-              />
-            ))
-            }
-          </main>
-        </div>
+        <main className="container mx-auto mt-8">
+          {pageContent && pageContent.map(component => (
+            <ComponentRenderer
+              key={`${component.id}-${component.__component}`}
+              component={component}
+            />
+          ))
+          }
+        </main>
+        <Footer app={app} />
       </div>
     </React.Fragment>
   );
