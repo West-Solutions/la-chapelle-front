@@ -6,7 +6,15 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 
-const StrapiImageGallery = ( { images, Affichage } ) => {
+const StrapiImageGallery = ( { images, Affichage, isColumn } ) => {
+
+  let carrouselClass = "max-h-160 shadow-normal rounded-md mx-2 mb-2";
+  let galleryClass = "justify-center grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 xl:gap-4 mx-2";
+
+  if (isColumn) {
+    carrouselClass= "max-h-160 shadow-normal rounded-md mx-2 mb-2";
+    galleryClass= "justify-center grid grid-cols-2 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 xl:gap-2 mx-2 mb-2";
+  }
 
   return Affichage==="Carrousel" ? (
     <Carousel
@@ -20,14 +28,14 @@ const StrapiImageGallery = ( { images, Affichage } ) => {
     >
       {images && images.data.map(image => {
         return (
-          <div key={`slide-${image.attributes.url}`} className="max-h-160 shadow-normal rounded-md mx-2 mb-2">
+          <div key={`slide-${image.attributes.url}`} className={carrouselClass}>
             <img alt="" src={process.env.NEXT_PUBLIC_BACK_URL+image.attributes.url} className="rounded-md shadow-normal object-center object-cover max-h-60 sm:max-h-80 md:max-h-96 lg:max-h-128 xl:max-h-144"/>
           </div>
         );
       })}
     </Carousel>
   ) : (
-    <div className={"justify-center grid grid-cols-5 gap-2 xl:gap-4 mx-2"}>
+    <div className={galleryClass}>
       {images && images.data.map(image => {
         return <img
           key={image.attributes.url}
@@ -41,7 +49,8 @@ const StrapiImageGallery = ( { images, Affichage } ) => {
 
 StrapiImageGallery.propTypes = {
   Affichage: PropTypes.string,
-  images: PropTypes.shape([])
+  images: PropTypes.shape([]),
+  isColumn: PropTypes.bool,
 };
 
 export default StrapiImageGallery;
