@@ -23,9 +23,11 @@ const StrapiImageGallery = ( { images, Affichage, isColumn } ) => {
       centerMode
       centerSlidePercentage={85}
       statusFormatter={(current, total) => `${current} / ${total}`}
-      transitionTime={800}
+      transitionTime={300}
       thumbWidth={80}
       useKeyboardArrows={true}
+      swipeScrollTolerance={25}
+      showThumbs={false}
     >
       {images && images.data.map(image => {
         return (
