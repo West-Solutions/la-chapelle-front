@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import Link from "next/link";
 
@@ -6,30 +6,53 @@ const NavigationSection = ({ item, dropdown, color, openingSide }) => {
 
   const [subDropDown, setSubDropdown] = useState(false);
   const onMouseEnter = () => {
-    setSubDropdown(true);
+    window.innerWidth >= 1280 && setSubDropdown(true);
   };
 
   const onMouseLeave = () => {
-    setSubDropdown(false);
+    window.innerWidth >= 1280 && setSubDropdown(false);
   };
+
+  // Change the dropdown state when user click outside
+  useEffect(() => {
+    const handler = (event) => {
+      if (subDropDown && ref.current && !ref.current.contains(event.target)) {
+        setSubDropdown(false);
+      }
+    };
+    document.addEventListener("click", handler);
+    document.addEventListener("touchstart", handler);
+    return () => {
+      // Cleanup the event listener
+      document.removeEventListener("click", handler);
+      document.removeEventListener("touchstart", handler);
+    };
+  }, [subDropDown]);
+
+  const ref = useRef();
+
   return (
     <div
       className={`bg-${color} ${dropdown ? "show" : "hidden"}`}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       onClick={() => setSubDropdown((prev) => !prev)}
+      ref={ref}
     >
       {
         item.type ==="WRAPPER" ? (
           <button
             className="text-white w-full text-xl text-center p-2 font-semibold"
             type="button"
-            aria-haspopup="menu"
-            aria-expanded={subDropDown ? "true" : "false"} >
+          >
             {item.title}
           </button>
         ) : (
-          <Link href={item.path} passHref >
+          <Link
+            href={item.path}
+            passHref
+            className="text-white text-xl text-center p-2 font-semibold"
+          >
             <a
               className="text-white text-xl text-center p-2 font-semibold"
               target="_blank"
@@ -42,27 +65,26 @@ const NavigationSection = ({ item, dropdown, color, openingSide }) => {
       }
       {
         item.items &&
-        <ul className={`absolute ${openingSide}-full shadow-normal top-0 p-2 px-4 bg-${color} ${subDropDown ? "show" : "hidden"}`}>
+        <div className={`md:absolute ${openingSide}-full flex flex-col shadow-normal top-0 bg-${color} ${subDropDown ? "show" : "hidden"}`}>
           {
             item.items.map(subItem => {
-              return <li className="text-white cursor-pointer text-center whitespace-nowrap py-4" key={`${subItem.uiRouterKey}-${subItem.id}`}>
-                {subItem.external ? (
-                  <Link href={subItem.path} passHref >
-                    <a target="_blank" rel="noopener noreferrer">
-                      {subItem.title}
-                    </a>
-                  </Link>
-                ) : (
-                  <Link href={subItem.path} >
-                    <a>
-                      {subItem.title}
-                    </a>
-                  </Link>
-                )}
-              </li>;
+              return (
+                <Link
+                  key={`${subItem.uiRouterKey}-${subItem.id}`}
+                  href={subItem.path}
+                >
+                  <a
+                    target={subItem.external ? "_blank" : ""}
+                    rel={subItem.external ? "noopener noreferrer" : ""}
+                    className="text-white text-xl text-center py-2 px-4"
+                  >
+                    {subItem.title}
+                  </a>
+                </Link>
+              );
             })
           }
-        </ul>
+        </div>
       }
     </div>
   );

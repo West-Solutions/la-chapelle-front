@@ -12,7 +12,7 @@ const PageRenderer = ({ app, page }) => {
   if (!hasDataAndAttribute(page)) return <div>No data</div>;
 
   const { data } = page;
-  const { pageContent = [], title } = data.attributes;
+  const { Contenu = [], title } = data.attributes;
 
   return (
     <React.Fragment>
@@ -22,7 +22,7 @@ const PageRenderer = ({ app, page }) => {
       <div>
         <Header app={app}/>
         <main className="container mx-auto mt-8">
-          {pageContent && pageContent.map(component => (
+          {Contenu && Contenu.map(component => (
             <ComponentRenderer
               key={`${component.id}-${component.__component}`}
               component={component}
@@ -49,7 +49,7 @@ PageRenderer.propTypes = {
     data: PropTypes.shape({
       attributes: PropTypes.shape({
         title: PropTypes.string,
-        pageContent: PropTypes.arrayOf(
+        Contenu: PropTypes.arrayOf(
           PropTypes.shape({
             id: PropTypes.oneOfType([
               PropTypes.string, PropTypes.number
