@@ -6,9 +6,7 @@ import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 
-const Map = ({ style }) => {
-  // Should come from the backend
-  const position = [48.3839907,-1.8250437];
+const Map = ({ style, position }) => {
 
   return (
     <div style={style}>
@@ -35,7 +33,8 @@ Map.propTypes = {
   style: PropTypes.shape({
     height: PropTypes.string.isRequired,
     width: PropTypes.string.isRequired
-  })
+  }),
+  position: PropTypes.arrayOf()
 };
 
 export default Map;
