@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { PhoneOutlined, MapOutlined, MailOutline } from "@material-ui/icons";
+import Icon from "@mui/material/Icon";
 
 import ContactInfoItem from "./item";
 
@@ -11,7 +11,7 @@ const ContactInfo = ({ contact }) => {
   return (
     <div className="flex flex-col gap-2">
       <ContactInfoItem
-        icon={<MapOutlined />}
+        icon={<Icon>map</Icon>}
         text={(
           <div>
             <div>{contact.street}</div>
@@ -20,7 +20,7 @@ const ContactInfo = ({ contact }) => {
         )}
       />
       <ContactInfoItem
-        icon={<PhoneOutlined />}
+        icon={<Icon>phone</Icon>}
         text={(
           <a href={`tel:${contact.phoneNumber}`}>
             {contact.phoneNumber}
@@ -28,7 +28,7 @@ const ContactInfo = ({ contact }) => {
         )}
       />
       <ContactInfoItem
-        icon={<MailOutline />}
+        icon={<Icon>email</Icon>}
         text={(
           <a href={`mailto:${contact.email}`}>
             {contact.email}

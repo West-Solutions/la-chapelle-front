@@ -12,8 +12,9 @@
     "build-next-layers": "node src/scripts/build-next-layers"
   },
   "dependencies": {
-    "@material-ui/core": "^4.12.4",
-    "@material-ui/icons": "^4.11.3",
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
+    "@mui/icons-material": "^5.8.4",
     "axios": "^0.26.1",
     "child_process": "^1.0.2",
     "dotenv": "^16.0.0",
@@ -22,7 +23,7 @@
     "next": "12.1.5",
     "react": "18.0.0",
     "react-dom": "18.0.0",
-    "react-leaflet": "^4.0.0"
+    "react-leaflet": "^4.0.0",
     "react-responsive-carousel": "^3.2.23"
   },
   "devDependencies": {
