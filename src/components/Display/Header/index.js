@@ -17,7 +17,7 @@ const Header = ({ className, app }) => {
 
   return (
     <header className={`header sticky bg-primary md:bg-blue-400 z-50 ${className}`} style={{ top }}>
-      <div ref={heroRef}><Hero /></div>
+      <div ref={heroRef}><Hero config={app.config} contact={app.contact}/></div>
       <Navigation items={app.navigation} />
     </header>
   );
@@ -26,7 +26,11 @@ const Header = ({ className, app }) => {
 Header.propTypes = {
   className: PropTypes.string,
   app: PropTypes.shape({
-    navigation: PropTypes.arrayOf()
+    config: PropTypes.shape({}),
+    contact: PropTypes.shape({}),
+    navigation: PropTypes.arrayOf(
+      PropTypes.shape({})
+    )
   }).isRequired
 };
 
