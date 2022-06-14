@@ -12,7 +12,7 @@ const StrapiColumns = ({ left, right }) => {
   };
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2">
+    <div className="grid grid-cols-1 md:grid-cols-2 w-full">
       <div className="w-full bg-orange-400">
         {renderCol(left)}
       </div>
