@@ -7,7 +7,7 @@ const StrapiColumns = ({ left, right }) => {
   const renderCol = components => {
     if (!components || !components.length) return null;
     return  components.map(component => {
-      return <ComponentRenderer key={component.id} component={component} />;
+      return <ComponentRenderer key={component.id} component={{ ...component, isColumn: true }} />;
     });
   };
 
