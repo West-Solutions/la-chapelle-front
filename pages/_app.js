@@ -18,7 +18,7 @@ const App = ({ Component, pageProps: page, app }) => {
           href="https://fonts.googleapis.com/icon?family=Material+Icons"
         />
       </Head>
-      <Component { ...{ page, app }} />;
+      <Component { ...{ page, app }} />
     </React.Fragment>
   );
 };

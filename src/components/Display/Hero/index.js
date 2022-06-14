@@ -24,6 +24,8 @@ const Hero = ({ config, contact }) => {
     zipCode
   } = contact;
 
+  const splitOpeningHours = shortOpeningHours.split("\n");
+
   return(
     <div
       className="hidden md:flex flex-row h-80 w-full justify-between"
@@ -59,12 +61,12 @@ const Hero = ({ config, contact }) => {
             )}
           />
           <ContactInfoItem
-            icon={<Icon>phone</Icon>}
-            text={(
+            icon={<Icon>schedule</Icon>}
+            text={
               <div>
-                {shortOpeningHours}
+                {splitOpeningHours.map(element => <p key={element}>{element}</p>)}
               </div>
-            )}
+            }
           />
           <ContactInfoItem
             icon={<Icon>phone</Icon>}
@@ -91,7 +93,7 @@ const Hero = ({ config, contact }) => {
             )}
           />
           <ContactInfoItem
-            icon={<Icon>Facebook</Icon>}
+            icon={<Icon>facebook</Icon>}
             text={(
               <Link
                 href={facebook}
