@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import Link from "next/link";
 import Icon from "@mui/material/Icon";
 
 import ContactInfoItem from "./item";
@@ -22,17 +23,21 @@ const ContactInfo = ({ contact }) => {
       <ContactInfoItem
         icon={<Icon>phone</Icon>}
         text={(
-          <a href={`tel:${contact.phoneNumber}`}>
-            {contact.phoneNumber}
-          </a>
+          <Link href={`tel:${contact.phoneNumber}`}>
+            <a href={`tel:${contact.phoneNumber}`}>
+              {contact.phoneNumber}
+            </a>
+          </Link>
         )}
       />
       <ContactInfoItem
         icon={<Icon>email</Icon>}
         text={(
-          <a href={`mailto:${contact.email}`}>
-            {contact.email}
-          </a>
+          <Link href={`mailto:${contact.email}`}>
+            <a>
+              {contact.email}
+            </a>
+          </Link>
         )}
       />
     </div>
