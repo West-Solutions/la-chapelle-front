@@ -21,6 +21,7 @@ const whiteList = [
   "_app.js",
   "index.js",
   "_error.js",
+  "actualites",
   "_document.js"
 ];
 
