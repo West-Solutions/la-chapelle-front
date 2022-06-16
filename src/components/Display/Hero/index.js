@@ -30,7 +30,7 @@ const Hero = ({ config, contact }) => {
     <div
       className="hidden md:flex flex-row h-80 w-full justify-between"
       style={{
-        backgroundImage: `url(${process.env.NEXT_PUBLIC_BACK_URL+principalImage.data[0].attributes.url})`,
+        backgroundImage: `url(${process.env.NEXT_PUBLIC_BACK_URL+principalImage.data.attributes.url})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
@@ -123,7 +123,7 @@ Hero.propTypes = {
       })
     }),
     principalImage: PropTypes.shape({
-      data: PropTypes.arrayOf(PropTypes.shape({
+      data: PropTypes.shape(PropTypes.shape({
         attributes: PropTypes.shape({
           url: PropTypes.string
         })
