@@ -6,6 +6,9 @@ import Icon from "@mui/material/Icon";
 
 import ContactInfoItem from "@Display/ContactInfo/item";
 
+import { pathAsAbsolute } from "@Utils/strapi/media";
+import { fetchFromDataAttribute } from "@Utils/strapi/core";
+
 const Hero = ({ config, contact }) => {
 
   const {
@@ -24,25 +27,24 @@ const Hero = ({ config, contact }) => {
     zipCode
   } = contact;
 
+  const backgroundUrl = pathAsAbsolute(fetchFromDataAttribute(principalImage).url);
+  const logoUrl = pathAsAbsolute(fetchFromDataAttribute(logo).url);
 
   return(
     <div
       className="hidden md:flex flex-row h-80 w-full justify-between"
       style={{
-        backgroundImage: `url(${process.env.NEXT_PUBLIC_BACK_URL+principalImage.data.attributes.url})`,
+        backgroundImage: `url(${backgroundUrl})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
     >
       <div className="ml-10 mt-10">
-        <Link
-          href="/"
-        >
+        <Link href="/">
           <a>
             <img
-              key={logo.data.attributes.url}
               className={"object-center w-60 h-auto p-2 bg-white bg-opacity-80 rounded-md"}
-              src={process.env.NEXT_PUBLIC_BACK_URL+logo.data.attributes.url}
+              src={logoUrl}
             />
           </a>
         </Link>
@@ -70,9 +72,7 @@ const Hero = ({ config, contact }) => {
           <ContactInfoItem
             icon={<Icon>phone</Icon>}
             text={(
-              <Link
-                href={`tel:${phoneNumber}`}
-              >
+              <Link href={`tel:${phoneNumber}`}>
                 <a>
                   {phoneNumber}
                 </a>
@@ -82,9 +82,7 @@ const Hero = ({ config, contact }) => {
           <ContactInfoItem
             icon={<Icon>email</Icon>}
             text={(
-              <Link
-                href={`mailto:${email}`}
-              >
+              <Link href={`mailto:${email}`}>
                 <a>
                   Nous contacter
                 </a>
@@ -94,9 +92,7 @@ const Hero = ({ config, contact }) => {
           <ContactInfoItem
             icon={<Icon>facebook</Icon>}
             text={(
-              <Link
-                href={facebook}
-              >
+              <Link href={facebook}>
                 <a
                   target="_blank"
                   rel="noopener noreferrer"
