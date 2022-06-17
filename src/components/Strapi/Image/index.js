@@ -8,10 +8,10 @@ const StrapiImage = ({ legend, src, showLegend }) => {
     <div className="w-full justify-center">
       <div className="w-full rounded-md shadow-normal relative">
         <Image
+          className="rounded-md"
           width="100%"
           height="100%"
           layout="responsive"
-          style={{ "borderRadius": "6px" }}
           objectFit="cover"
           objectPosition="center"
           src={process.env.NEXT_PUBLIC_BACK_URL+src.data.attributes.url}
