@@ -36,6 +36,7 @@ yarn-error.log*
 /pages/*
 !/pages/hooks
 !/pages/api
+!/pages/actualites
 !/pages/_app.js
 !/pages/_document.js
 !/pages/_error.js
