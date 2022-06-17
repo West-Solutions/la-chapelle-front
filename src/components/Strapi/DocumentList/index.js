@@ -12,7 +12,7 @@ const DocumentList = (props) => {
   const { sectionColor, type: rawType } = props;
   const [documents, setDocuments] = React.useState([]);
 
-  const { unifiedType } = fetchFromDataAttribute(rawType) || {};
+  const { unifiedType } = fetchFromDataAttribute(rawType);
 
   React.useEffect(() => {
     if (!unifiedType) return;
