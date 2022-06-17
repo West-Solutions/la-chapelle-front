@@ -7,6 +7,7 @@ import Image from "@Components/Strapi/Image";
 import ImagesGalery from "@StrapiComponents/ImagesGalery";
 import Columns from "@StrapiComponents/Columns";
 import RichText from "@StrapiComponents/RichText";
+import Trombinoscope from "@StrapiComponents/Trombinoscope";
 //...
 
 const Components = {
@@ -18,7 +19,8 @@ const Components = {
   "grilles.columns": Columns,
   // Media
   "media.image": Image,
-  "media.galerie-d-images": ImagesGalery
+  "media.galerie-d-images": ImagesGalery,
+  "media.trombinoscope": Trombinoscope
   //...
 };
 
