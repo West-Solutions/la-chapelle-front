@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import Head from "next/head";
 import PropTypes from "prop-types";
+
+import useColor from "@Hooks/useColor";
+import ColorsContext from "@Contexts/ColorsContext";
 
 import Header from "@Display/Header";
 import Footer from "@Display/Footer";
@@ -10,6 +13,9 @@ import { hasDataAndAttribute } from "@Utils/strapi/core";
 
 const PageRenderer = ({ app, page }) => {
   if (!hasDataAndAttribute(page)) return <div>No data</div>;
+
+  const colors = useContext(ColorsContext);
+  const sectionColor = useColor(colors);
 
   const { data } = page;
   const { Contenu = [], title } = data.attributes;
@@ -25,7 +31,7 @@ const PageRenderer = ({ app, page }) => {
           {Contenu && Contenu.map(component => (
             <ComponentRenderer
               key={`${component.id}-${component.__component}`}
-              component={component}
+              component={{ ...component, sectionColor }}
             />
           ))
           }
