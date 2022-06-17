@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import Link from "next/link";
+import Image from "next/image";
 import Icon from "@mui/material/Icon";
 
 import ContactInfoItem from "@Display/ContactInfo/item";
@@ -32,24 +33,19 @@ const Hero = ({ config, contact }) => {
 
   return(
     <div
-      className="hidden md:flex flex-row h-80 w-full justify-between"
-      style={{
-        backgroundImage: `url(${backgroundUrl})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
+      className="hidden md:flex flex-row h-auto w-full justify-between"
     >
-      <div className="ml-10 mt-10">
+      <div className="ml-10 mt-10 z-[1]">
         <Link href="/">
-          <a>
-            <img
-              className={"object-center w-60 h-auto p-2 bg-white bg-opacity-80 rounded-md"}
+          <a className="block relative w-60 h-36 p-2 bg-white bg-opacity-80 rounded-md">
+            <Image
+              layout="fill"
               src={logoUrl}
             />
           </a>
         </Link>
       </div>
-      <div className="text-xl flex flex-col bg-gray-100 bg-opacity-70 p-4 h-full 2xl:w-2/6 xl:w-2/5 lg:w-1/2 w-3/5">
+      <div className="text-xl flex flex-col bg-gray-100 bg-opacity-70 p-4 h-full 2xl:w-2/6 xl:w-2/5 lg:w-1/2 w-3/5 z-[1]">
         <div className="flex flex-col gap-2">
           <h2 className="text-center font-bold text-4xl mb-2">{websiteName}</h2>
           <ContactInfoItem
@@ -104,6 +100,14 @@ const Hero = ({ config, contact }) => {
           />
         </div>
       </div>
+      <Image
+        className="z-0"
+        alt="background"
+        src={backgroundUrl}
+        layout="fill"
+        objectFit="cover"
+        quality={100}
+      />
     </div>
   );
 };
