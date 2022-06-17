@@ -24,7 +24,6 @@ const Hero = ({ config, contact }) => {
     zipCode
   } = contact;
 
-  const splitOpeningHours = shortOpeningHours.split("\n");
 
   return(
     <div
@@ -64,7 +63,7 @@ const Hero = ({ config, contact }) => {
             icon={<Icon>schedule</Icon>}
             text={
               <div>
-                {splitOpeningHours.map(element => <p key={element}>{element}</p>)}
+                {shortOpeningHours.split("\n").map(element => <p key={element}>{element}</p>)}
               </div>
             }
           />
