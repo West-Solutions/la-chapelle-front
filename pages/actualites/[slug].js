@@ -3,9 +3,7 @@ import React from "react";
 import NewsServices from "@Services/News";
 import PageRenderer from "@Modules/PageRenderer";
 
-const newsPage = props => {
-  return <PageRenderer {...props} />;
-};
+const newsPage = props => <PageRenderer {...props} />;
 
 export async function getStaticPaths() {
   const { data: pages } = await NewsServices.getAll();
