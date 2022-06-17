@@ -5,7 +5,7 @@ import Person from "@Display/Person";
 
 const StrapiTrombinoscope = ({ trombinoscopes }) => {
 
-  const persons = trombinoscopes.data;
+  const { data: persons } = trombinoscopes;
 
   return (
     <div className=" grid grid-cols-5 gap-4 gap-y-8 pb-5">
@@ -18,11 +18,7 @@ const StrapiTrombinoscope = ({ trombinoscopes }) => {
 
 StrapiTrombinoscope.propTypes = {
   trombinoscopes: PropTypes.shape({
-    data: PropTypes.shape({
-      persons: PropTypes.arrayOf(
-        PropTypes.shape({}),
-      ),
-    }).isRequired,
+    data: PropTypes.arrayOf().isRequired,
   }).isRequired,
 };
 
