@@ -10,11 +10,11 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const StrapiImageGallery = ( { images, Affichage, isColumn } ) => {
 
-  let carrouselClass = "max-h-160 shadow-normal rounded-md mx-2 mb-2";
+  let carrouselClass = "max-h-60 sm:max-h-80 md:max-h-96 lg:max-h-128 xl:max-h-144 shadow-normal rounded-md mx-2";
   let galleryClass = "justify-center grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 xl:gap-4 mx-2";
 
   if (isColumn) {
-    carrouselClass= "max-h-160 shadow-normal rounded-md mx-2 mb-2";
+    carrouselClass= "max-h-160 shadow-normal rounded-md mx-2";
     galleryClass= "justify-center grid grid-cols-2 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 xl:gap-2 mx-2 mb-2";
   }
 
@@ -33,13 +33,13 @@ const StrapiImageGallery = ( { images, Affichage, isColumn } ) => {
     >
       {images && images.data.map(image => {
         return (
-          <div key={`slide-${image.attributes.url}`} className={`${carrouselClass} relative`}>
-            <div className="rounded-md shadow-normal object-center object-cover max-h-60 sm:max-h-80 md:max-h-96 lg:max-h-128 xl:max-h-144">
+          <div key={`slide-${image.attributes.url}`} className={`${carrouselClass}`}>
+            <div className="rounded-md relative">
               <Image
+                className="rounded-md"
                 width="100%"
                 height="100%"
                 layout="responsive"
-                style={{ "borderRadius": "6px" }}
                 objectFit="cover"
                 objectPosition="center"
                 src={process.env.NEXT_PUBLIC_BACK_URL+image.attributes.url}
@@ -58,7 +58,12 @@ const StrapiImageGallery = ( { images, Affichage, isColumn } ) => {
             className={"object-center object-cover rounded-md shadow-normal w-full h-full aspect-square relative"}
           >
             <Image
-              layout="fill"
+              width="100%"
+              height="100%"
+              layout="responsive"
+              style={{ "borderRadius": "6px" }}
+              objectFit="cover"
+              objectPosition="center"
               src={process.env.NEXT_PUBLIC_BACK_URL+image.attributes.url}
             />
           </div>
