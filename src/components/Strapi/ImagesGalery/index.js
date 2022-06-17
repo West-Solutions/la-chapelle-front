@@ -61,6 +61,7 @@ const StrapiImageGallery = ( { images, Affichage, isColumn } ) => {
               width="100%"
               height="100%"
               layout="responsive"
+              sizes="100%"
               style={{ "borderRadius": "6px" }}
               objectFit="cover"
               objectPosition="center"
