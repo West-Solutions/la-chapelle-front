@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import Image from "next/image";
 
 import { Carousel } from "react-responsive-carousel";
+import { pathAsAbsolute } from "@Utils/strapi/media";
+import { fetchFromDataAttribute } from "@Utils/strapi/core";
 
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
@@ -33,14 +35,14 @@ const StrapiImageGallery = ( { images, Affichage, isColumn } ) => {
     >
       {images && images.data.map(image => {
         return (
-          <div key={`slide-${image.attributes.url}`} className={`${carrouselClass}`}>
+          <div key={`slide-${pathAsAbsolute(fetchFromDataAttribute(image.attributes).url)}`} className={`${carrouselClass}`}>
             <Image
               width="100%"
               height="100%"
               layout="responsive"
               objectFit="cover"
               objectPosition="center"
-              src={process.env.NEXT_PUBLIC_BACK_URL+image.attributes.url}
+              src={pathAsAbsolute(fetchFromDataAttribute(image.attributes).url)}
             />
           </div>
         );
