@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import Image from "next/image";
+
 import { Carousel } from "react-responsive-carousel";
 
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -31,8 +33,18 @@ const StrapiImageGallery = ( { images, Affichage, isColumn } ) => {
     >
       {images && images.data.map(image => {
         return (
-          <div key={`slide-${image.attributes.url}`} className={carrouselClass}>
-            <img alt="" src={process.env.NEXT_PUBLIC_BACK_URL+image.attributes.url} className="rounded-md shadow-normal object-center object-cover max-h-60 sm:max-h-80 md:max-h-96 lg:max-h-128 xl:max-h-144"/>
+          <div key={`slide-${image.attributes.url}`} className={`${carrouselClass} relative`}>
+            <div className="rounded-md shadow-normal object-center object-cover max-h-60 sm:max-h-80 md:max-h-96 lg:max-h-128 xl:max-h-144">
+              <Image
+                width="100%"
+                height="100%"
+                layout="responsive"
+                style={{ "borderRadius": "6px" }}
+                objectFit="cover"
+                objectPosition="center"
+                src={process.env.NEXT_PUBLIC_BACK_URL+image.attributes.url}
+              />
+            </div>
           </div>
         );
       })}
@@ -40,10 +52,17 @@ const StrapiImageGallery = ( { images, Affichage, isColumn } ) => {
   ) : (
     <div className={galleryClass}>
       {images && images.data.map(image => {
-        return <img
-          key={image.attributes.url}
-          className={"object-center object-cover rounded-md shadow-normal w-full h-full aspect-square"}
-          src={process.env.NEXT_PUBLIC_BACK_URL+image.attributes.url} />;
+        return (
+          <div
+            key={image.attributes.url}
+            className={"object-center object-cover rounded-md shadow-normal w-full h-full aspect-square relative"}
+          >
+            <Image
+              layout="fill"
+              src={process.env.NEXT_PUBLIC_BACK_URL+image.attributes.url}
+            />
+          </div>
+        );
       }
       )}
     </div>
