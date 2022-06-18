@@ -3,9 +3,9 @@ import axios from "axios";
 const { API_URL } = process.env;
 
 class NewsServices {
-  getAll() {
+  getAll(params) {
     return new Promise((resolve, reject) => {
-      axios.get(`${API_URL}/actualites`)
+      axios.get(`${API_URL}/actualites`, { params })
         .then(({ data }) => resolve(data))
         .catch(reject);
     });
@@ -13,7 +13,7 @@ class NewsServices {
 
   get(slug) {
     return new Promise((resolve, reject) => {
-      axios.get(`${API_URL}/actualites?slug=${slug}&populate=*`)
+      axios.get(`${API_URL}/actualites`, { params: { slug, populate: "*" } })
         .then(({ data }) => resolve(data))
         .catch(reject);
     });
