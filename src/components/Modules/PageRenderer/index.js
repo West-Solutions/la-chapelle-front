@@ -5,8 +5,6 @@ import PropTypes from "prop-types";
 import useColor from "@Hooks/useColor";
 import ColorsContext from "@Contexts/ColorsContext";
 
-import Header from "@Display/Header";
-import Footer from "@Display/Footer";
 import ComponentRenderer from "@Modules/ComponentRenderer";
 
 import { hasDataAndAttribute } from "@Utils/strapi/core";
@@ -26,7 +24,6 @@ const PageRenderer = ({ app, page }) => {
         <title>{`${app.config.websiteName} | ${title}`}</title>
       </Head>
       <div>
-        <Header app={app}/>
         <main className="container mx-auto mt-8">
           {Contenu && Contenu.map(component => (
             <ComponentRenderer
@@ -36,7 +33,6 @@ const PageRenderer = ({ app, page }) => {
           ))
           }
         </main>
-        <Footer app={app} />
       </div>
     </React.Fragment>
   );

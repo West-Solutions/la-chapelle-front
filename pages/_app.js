@@ -9,6 +9,8 @@ import NavigationServices from "@Services/Navigation";
 
 import { cleanResults } from "@Utils/strapi/core";
 
+import Header from "@Display/Header";
+import Footer from "@Display/Footer";
 import ColorsContext from "@Contexts/ColorsContext";
 
 import "../src/styles/index.scss";
@@ -23,7 +25,11 @@ const App = ({ Component, pageProps: page, app }) => {
         />
       </Head>
       <ColorsContext.Provider value={app.colors}>
-        <Component { ...{ page, app }} />
+        <>
+          <Header app={app}/>
+          <Component { ...{ page, app }} />
+          <Footer app={app} />
+        </>
       </ColorsContext.Provider>
     </React.Fragment>
   );

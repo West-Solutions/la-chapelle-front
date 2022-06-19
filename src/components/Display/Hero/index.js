@@ -32,18 +32,14 @@ const Hero = ({ config, contact }) => {
 
   return(
     <div
-      className="hidden md:flex flex-row h-80 w-full justify-between"
-      style={{
-        backgroundImage: `url(${backgroundUrl})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
+      className={"hidden md:flex flex-row h-80 w-full justify-between bg-cover bg-center"}
+      style={{ backgroundImage: `url(${backgroundUrl})` }}
     >
       <div className="ml-10 mt-10">
         <Link href="/">
           <a>
             <img
-              className={"object-center w-60 h-auto p-2 bg-white bg-opacity-80 rounded-md"}
+              className="object-center w-60 h-auto p-2 bg-white bg-opacity-80 rounded-md"
               src={logoUrl}
             />
           </a>
@@ -73,9 +69,7 @@ const Hero = ({ config, contact }) => {
             icon={<Icon>phone</Icon>}
             text={(
               <Link href={`tel:${phoneNumber}`}>
-                <a>
-                  {phoneNumber}
-                </a>
+                <a>{phoneNumber}</a>
               </Link>
             )}
           />
@@ -83,9 +77,7 @@ const Hero = ({ config, contact }) => {
             icon={<Icon>email</Icon>}
             text={(
               <Link href={`mailto:${email}`}>
-                <a>
-                  Nous contacter
-                </a>
+                <a>{email}</a>
               </Link>
             )}
           />
@@ -93,10 +85,7 @@ const Hero = ({ config, contact }) => {
             icon={<Icon>facebook</Icon>}
             text={(
               <Link href={facebook}>
-                <a
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a target="_blank" rel="noopener noreferrer">
                   Facebook
                 </a>
               </Link>
