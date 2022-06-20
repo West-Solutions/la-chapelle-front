@@ -6,7 +6,7 @@ import { fetchFromDataAttribute } from "@Utils/strapi/core";
 
 const StrapiImage = ({ legend, src, showLegend }) => {
   return (
-    <div className={"w-full justify-center mt-10"}>
+    <div className={"w-full justify-center"}>
       <img
         key={`${src}-${legend}`}
         className={"w-full rounded-md shadow-normal"}
