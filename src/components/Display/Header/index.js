@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import Hero from "@Components/Display/Hero";
 import Navigation from "@Components/Navigation";
 
-const Header = ({ className, app }) => {
+const Header = ({ app }) => {
   const [top, setTop] = React.useState(0);
   const heroRef = React.useRef(null);
 
@@ -16,7 +16,7 @@ const Header = ({ className, app }) => {
   }, []);
 
   return (
-    <header className={`header sticky bg-primary md:bg-blue-400 z-50 ${className}`} style={{ top }}>
+    <header className="header sticky bg-primary md:bg-blue-400 z-50" style={{ top }}>
       <div ref={heroRef}><Hero config={app.config} contact={app.contact}/></div>
       <Navigation items={app.navigation} />
     </header>
