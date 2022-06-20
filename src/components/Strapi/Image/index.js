@@ -1,14 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import { pathAsAbsolute } from "@Utils/strapi/media";
+import { fetchFromDataAttribute } from "@Utils/strapi/core";
 
 const StrapiImage = ({ legend, src, showLegend }) => {
   return (
-    <div className={"w-full justify-center"}>
+    <div className={"w-full justify-center mt-10"}>
       <img
         key={`${src}-${legend}`}
         className={"w-full rounded-md shadow-normal"}
-        src={process.env.NEXT_PUBLIC_BACK_URL+src.data.attributes.url}
+        src={pathAsAbsolute(fetchFromDataAttribute(src).url)}
       />
       {showLegend && <p className={"text-center text-gray-600 text-xs mt-2"}>{legend}</p>}
     </div>
