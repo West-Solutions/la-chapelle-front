@@ -34,7 +34,7 @@ const MainNavigationButton = ({ item, openingSide }) => {
 
   return (
     <div
-      className={`flex flex-1 flex-col h-16 bg-${item.slug}`}
+      className={`flex flex-1 flex-col min-h-16 bg-${item.slug}`}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       ref={ref}

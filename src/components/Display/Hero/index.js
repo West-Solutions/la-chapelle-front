@@ -32,7 +32,7 @@ const Hero = ({ config, contact }) => {
 
   return(
     <div
-      className={"hidden md:flex flex-row h-80 w-full justify-between bg-cover bg-center"}
+      className={"hidden md:flex flex-row h-auto w-full justify-between bg-cover bg-center"}
       style={{ backgroundImage: `url(${backgroundUrl})` }}
     >
       <div className="ml-10 mt-10">
