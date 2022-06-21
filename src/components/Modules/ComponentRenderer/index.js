@@ -22,7 +22,7 @@ const Components = {
   // Media
   "media.image": Image,
   "media.galerie-d-images": ImagesGalery,
-  "media.trombinoscope": Trombinoscope
+  "media.trombinoscope": Trombinoscope,
   "media.liste-de-documents": DocumentList
   //...
 };
