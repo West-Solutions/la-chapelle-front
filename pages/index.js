@@ -6,17 +6,19 @@ import QuickAccesses from "@Services/QuickAccesses";
 
 import PageRenderer from "@Modules/PageRenderer";
 
-const IndexPage = props => {
+const IndexPage = (props) => {
   return <PageRenderer {...props} />;
 };
 
 export const getStaticProps = async () => {
   let page = {};
-  const { data: news } = await NewsServices.getAll({ populate: "illustration" });
-  const { data: quickAccesses } = await QuickAccesses.getAll();
+  let news = {};
+  let quickAccesses = {};
 
   try {
     page = await PageServices.get("1");
+    news = await NewsServices.getAll({ populate: "illustration" });
+    quickAccesses = await QuickAccesses.getAll();
   } catch (error) {
     console.error(error.message);
   }
@@ -24,8 +26,8 @@ export const getStaticProps = async () => {
   return {
     props: {
       ...page,
-      news,
-      quickAccesses
+      news: news.data,
+      quickAccesses: quickAccesses.data
     }
   };
 };
