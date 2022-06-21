@@ -6,7 +6,8 @@ import { pathAsAbsolute } from "@Utils/strapi/media";
 import { fetchFromDataAttribute } from "@Utils/strapi/core";
 
 const HomeNews = ({ news }) => {
-  const { title, slug, illustration, description } = news;
+  //const { title, slug, illustration, description } = news;
+  const { title, slug, illustration } = news;
 
   return (
     <Link href={`/actualites/${slug}`}>

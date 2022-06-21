@@ -8,7 +8,7 @@ const StrapiHome = ({
   newsNumber,
   quickAccessNumber,
   news,
-  quickAccesses,
+  //quickAccesses,
   sectionColor
 }) => {
   sortNews(news);
