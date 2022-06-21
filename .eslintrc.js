@@ -43,6 +43,6 @@ module.exports = {
     "arrow-spacing": [
       "error", { "before": true, "after": true }
     ],
-    "no-console": 0
+    "no-console": ["error", { allow: ["warn", "error", "group", "groupEnd", "info"] }]
   }
 };

@@ -3,6 +3,8 @@
     "baseUrl": ".",
     "paths": {
       "@Utils/*": ["src/utils/*"],
+      "@Hooks/*": ["src/Hooks/*"],
+      "@Contexts/*": ["src/Contexts/*"],
       "@Services/*": ["src/services/*"],
       "@Components/*": ["src/components/*"],
       "@StrapiUtils/*": ["src/utils/strapi/*"],
