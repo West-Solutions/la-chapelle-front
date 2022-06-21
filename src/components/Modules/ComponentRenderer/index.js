@@ -6,8 +6,10 @@ import Title from "@StrapiComponents/Title";
 import Image from "@Components/Strapi/Image";
 import Columns from "@StrapiComponents/Columns";
 import RichText from "@StrapiComponents/RichText";
+import Trombinoscope from "@StrapiComponents/Trombinoscope";
 import ImagesGalery from "@StrapiComponents/ImagesGalery";
-import DocumentList from "@Components/Strapi/DocumentList";
+import DocumentList from "@StrapiComponents/DocumentList";
+
 //...
 
 const Components = {
@@ -20,6 +22,7 @@ const Components = {
   // Media
   "media.image": Image,
   "media.galerie-d-images": ImagesGalery,
+  "media.trombinoscope": Trombinoscope,
   "media.liste-de-documents": DocumentList
   //...
 };
