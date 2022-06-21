@@ -11,7 +11,8 @@ const Person = ({ person }) => {
     <div className="border rounded-md shadow-normal">
       <img
         className="object-center object-cover rounded-t-md aspect-square w-full"
-        src={pathAsAbsolute(fetchFromDataAttribute(photo).url)} alt={denomination}
+        src={pathAsAbsolute(fetchFromDataAttribute(photo).url)}
+        alt={denomination}
       />
       <div className="px-2 text-center">
         <p>{denomination}</p>
