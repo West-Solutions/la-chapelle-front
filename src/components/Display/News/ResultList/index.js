@@ -3,6 +3,8 @@ import Link from "next/link";
 import PropTypes from "prop-types";
 
 import { beautifyDate } from "@Utils/date";
+import { pathAsAbsolute } from "@Utils/strapi/media";
+import { fetchFromDataAttribute } from "@Utils/strapi/core";
 
 const NewsResultList = ({ news }) => {
   return (
@@ -18,11 +20,11 @@ const NewsResultList = ({ news }) => {
               <div className="h-full aspect-square">
                 <img
                   className="w-full h-full object-cover rounded-l"
-                  src="https://via.placeholder.com/150"
+                  src={pathAsAbsolute(fetchFromDataAttribute(attributes.illustration).url)}
                 />
               </div>
               <div className=" flex flex-col justify-center gap-2 p-2 border border-l-0 border-slate-100 h-full">
-                <h6 className="text-xl font-medium text-actualite">{attributes.Titre}</h6>
+                <h6 className="text-xl font-medium text-actualite">{attributes.title}</h6>
                 <p className="h-[40px] md:h-[53px] text-sm md:text-base overflow-hidden">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod, nisi eu consectetur consectetur, nisl nisi consectetur, nisi nisi consectetur, nisi nisiconsectetur, nisi nisi consectetur, nisi nisi consectetur</p>
                 <div className="text-sm"><span>Mis à jour le {beautifyDate(attributes.updatedAt)}</span></div>
               </div>

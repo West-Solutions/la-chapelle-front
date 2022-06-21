@@ -5,7 +5,7 @@ const { API_URL } = process.env;
 class NewsServices {
   getAll(params) {
     return new Promise((resolve, reject) => {
-      axios.get(`${API_URL}/actualites`, { params })
+      axios.get(`${API_URL}/actualites`, { params: { ...params, populate: "*" } })
         .then(({ data }) => resolve(data))
         .catch(reject);
     });
