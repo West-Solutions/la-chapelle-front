@@ -1,6 +1,9 @@
 import React from "react";
 
 import PageServices from "@Services/Page";
+import NewsServices from "@Services/News";
+import QuickAccesses from "@Services/QuickAccesses";
+
 import PageRenderer from "@Modules/PageRenderer";
 
 const IndexPage = props => {
@@ -9,6 +12,8 @@ const IndexPage = props => {
 
 export const getStaticProps = async () => {
   let page = {};
+  const { data: news } = await NewsServices.getAll({ populate: "illustration" });
+  const { data: quickAccesses } = await QuickAccesses.getAll();
 
   try {
     page = await PageServices.get("1");
@@ -18,7 +23,9 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      ...page
+      ...page,
+      news,
+      quickAccesses
     }
   };
 };

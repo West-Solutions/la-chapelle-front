@@ -15,7 +15,7 @@ const PageRenderer = ({ app, page }) => {
   const colors = useContext(ColorsContext);
   const sectionColor = useColor(colors);
 
-  const { data } = page;
+  const { data, news, quickAccesses } = page;
   const { Contenu = [], title } = data.attributes;
 
   return (
@@ -26,10 +26,16 @@ const PageRenderer = ({ app, page }) => {
       <div>
         <main className="container mx-auto mt-8">
           {Contenu && Contenu.map(component => (
-            <ComponentRenderer
-              key={`${component.id}-${component.__component}`}
-              component={{ ...component, sectionColor }}
-            />
+            component.__component === "grilles.home" ? (
+              <ComponentRenderer
+                key={`${component.id}-${component.__component}`}
+                component={{ ...component, sectionColor, news, quickAccesses }}
+              />) : (
+              <ComponentRenderer
+                key={`${component.id}-${component.__component}`}
+                component={{ ...component, sectionColor }}
+              />
+            )
           ))
           }
         </main>
@@ -59,7 +65,9 @@ PageRenderer.propTypes = {
           })
         )
       })
-    })
+    }),
+    news: PropTypes.arrayOf(),
+    quickAccesses: PropTypes.arrayOf()
   }).isRequired
 };
 

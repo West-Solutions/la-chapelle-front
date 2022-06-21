@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import Home from "@StrapiComponents/Home";
 import Link from "@StrapiComponents/Link";
 import Title from "@StrapiComponents/Title";
 import Image from "@Components/Strapi/Image";
@@ -9,7 +10,6 @@ import RichText from "@StrapiComponents/RichText";
 import Trombinoscope from "@StrapiComponents/Trombinoscope";
 import ImagesGalery from "@StrapiComponents/ImagesGalery";
 import DocumentList from "@StrapiComponents/DocumentList";
-
 //...
 
 const Components = {
@@ -19,6 +19,7 @@ const Components = {
   "textes.rich-text": RichText,
   // Grid
   "grilles.columns": Columns,
+  "grilles.home": Home,
   // Media
   "media.image": Image,
   "media.galerie-d-images": ImagesGalery,
