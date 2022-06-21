@@ -3,9 +3,9 @@ import React from "react";
 import NewsServices from "@Services/News";
 import PageRenderer from "@Modules/PageRenderer";
 
-const newsPage = props => <PageRenderer {...props} />;
+const NewsPage = props => <PageRenderer {...props} />;
 
-export async function getStaticPaths() {
+export const getStaticPaths = async () => {
   const { data: pages } = await NewsServices.getAll();
 
   return {
@@ -16,16 +16,16 @@ export async function getStaticPaths() {
     })),
     fallback: false,
   };
-}
+};
 
-export async function getStaticProps({ params }) {
-  const { data } = await NewsServices.get(params.slug);
+export const getStaticProps = async ({ params }) => {
+  const { data } = await NewsServices.getBySlug(params.slug, { populate: "*" });
   const page = data[0];
 
   return {
     props: { data: page },
     revalidate: 1,
   };
-}
+};
 
-export default newsPage;
+export default NewsPage;
