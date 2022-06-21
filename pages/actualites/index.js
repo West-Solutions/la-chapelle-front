@@ -15,7 +15,7 @@ const NewsIndexPage = ({ page }) => {
 };
 
 export const getStaticProps = async () => {
-  const { data } = await NewsServices.getAll();
+  const { data } = await NewsServices.getAll({ populate: "*" });
 
   return {
     props: { news: data },

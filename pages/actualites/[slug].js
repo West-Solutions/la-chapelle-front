@@ -19,7 +19,7 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params }) => {
-  const { data } = await NewsServices.get(params.slug);
+  const { data } = await NewsServices.getBySlug(params.slug, { populate: "*" });
   const page = data[0];
 
   return {
