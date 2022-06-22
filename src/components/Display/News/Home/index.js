@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import PropTypes from "prop-types";
 
@@ -8,19 +8,35 @@ import { fetchFromDataAttribute } from "@Utils/strapi/core";
 const HomeNews = ({ news }) => {
   const { title, slug, illustration, description } = news;
 
+  const [showDescription, setShowDescription] = useState(false);
+
+  const onMouseEnter = () => {
+    window.innerWidth >= 1280 && setShowDescription(true);
+  };
+
+  const onMouseLeave = () => {
+    window.innerWidth >= 1280 && setShowDescription(false);
+  };
+
   return (
     <Link href={`/actualites/${slug}`}>
-      <a className='shadow-lg hover:shadow-normal rounded-lg overflow-hidden border border-zinc-500 aspect-auto'>
-        <div className='h-full w-full'>
-          <div className='h-3/4 overflow-hidden items-center'>
+      <a
+        className="shadow-lg hover:shadow-normal rounded-lg overflow-hidden border border-zinc-500 h-40 md:h-60 xl:h-80"
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+      >
+        <div className="h-full w-full">
+          <div className={`${showDescription ? "h-0" : "h-3/4"} overflow-hidden items-center transition-all duration-500`}>
             <img
-              className='h-full w-full object-cover object-center'
+              className= "h-full w-full object-cover object-center"
               src={pathAsAbsolute(fetchFromDataAttribute(illustration).url)}
             />
           </div>
-          <div className='h-1/4 flex justify-center items-center'>
-            <h3 className='text-xl md:text-2xl text-center font-medium'>{title}</h3>
-            <p className='hidden'>{description}</p>
+          <div className="flex flex-col overflow-hidden items-center transition-all duration-500">
+            <h3 className={`text-xl md:text-2xl text-center font-medium transition-all duration-700 ${showDescription ? "my-4" : "my-6 mb-96"}`}>
+              {title}
+            </h3>
+            <p className="p-4">{description}</p>
           </div>
         </div>
       </a>
