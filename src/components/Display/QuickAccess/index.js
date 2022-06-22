@@ -23,7 +23,7 @@ const QuickAccess = ({ quickAccesses }) => {
             />
           </div>
           <div className='h-1/3 flex justify-center items-center'>
-            <h3 className="text-lg md:text-xl xl:text-2xl text-center font-medium text-actualite">
+            <h3 className="md:text-xl xl:text-2xl text-center font-medium text-actualite">
               {titre}
             </h3>
           </div>

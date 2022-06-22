@@ -21,7 +21,7 @@ const HomeNews = ({ news }) => {
   return (
     <Link href={`/actualites/${slug}`}>
       <a
-        className="shadow-lg hover:shadow-normal rounded-lg overflow-hidden border border-zinc-500 h-40 md:h-60 xl:h-80"
+        className="shadow-lg hover:shadow-normal rounded-lg overflow-hidden border border-zinc-500 h-40 sm:h-64 md:h-80 lg:h-64 xl:h-80"
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
       >
@@ -33,7 +33,7 @@ const HomeNews = ({ news }) => {
             />
           </div>
           <div className="flex flex-col overflow-hidden items-center transition-all duration-500">
-            <h3 className={`text-xl md:text-2xl text-center font-medium transition-all duration-700 ${showDescription ? "my-4" : "my-6 mb-96"}`}>
+            <h3 className={`sm:text-2xl text-center font-medium transition-all duration-700 ${showDescription ? "my-4" : "my-2 md:my-6 lg:my-3 xl:my-6 mb-96"}`}>
               {title}
             </h3>
             <p className="p-4">{description}</p>
