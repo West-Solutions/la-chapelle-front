@@ -6,23 +6,21 @@ import { pathAsAbsolute } from "@Utils/strapi/media";
 import { fetchFromDataAttribute } from "@Utils/strapi/core";
 
 const HomeNews = ({ news }) => {
-  //const { title, slug, illustration, description } = news;
-  const { title, slug, illustration } = news;
+  const { title, slug, illustration, description } = news;
 
   return (
     <Link href={`/actualites/${slug}`}>
-      <a className='shadow-normal rounded-lg overflow-hidden'>
-        <div className='h-80 items-center rounded shadow hover:shadow-lg hover:cursor-pointer transition-transform '>
-          <div className='h-60 w-full overflow-hidden'>
+      <a className='shadow-lg hover:shadow-normal rounded-lg overflow-hidden border border-zinc-500 aspect-auto'>
+        <div className='h-full w-full'>
+          <div className='h-3/4 overflow-hidden items-center'>
             <img
-              className='hover:hidden w-full object-cover object-center'
+              className='h-full w-full object-cover object-center'
               src={pathAsAbsolute(fetchFromDataAttribute(illustration).url)}
             />
           </div>
-          <div>
-            <h3 className='text-2xl text-center font-medium text-actualite'>
-              {title}
-            </h3>
+          <div className='h-1/4 flex justify-center items-center'>
+            <h3 className='text-xl md:text-2xl text-center font-medium'>{title}</h3>
+            <p className='hidden'>{description}</p>
           </div>
         </div>
       </a>
@@ -33,11 +31,10 @@ const HomeNews = ({ news }) => {
 HomeNews.propTypes = {
   news: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-      attributes: PropTypes.shape({
-        Titre: PropTypes.string,
-        description: PropTypes.string
-      })
+      description: PropTypes.string,
+      illustration: PropTypes.shape({}),
+      slug: PropTypes.string,
+      title: PropTypes.string
     })
   )
 };

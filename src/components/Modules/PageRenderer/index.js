@@ -24,20 +24,26 @@ const PageRenderer = ({ app, page }) => {
         <title>{`${app.config.websiteName} | ${title}`}</title>
       </Head>
       <div>
-        <main className="container mx-auto mt-8">
-          {Contenu && Contenu.map(component => (
-            component.__component === "grilles.home" ? (
-              <ComponentRenderer
-                key={`${component.id}-${component.__component}`}
-                component={{ ...component, sectionColor, news, quickAccesses }}
-              />) : (
-              <ComponentRenderer
-                key={`${component.id}-${component.__component}`}
-                component={{ ...component, sectionColor }}
-              />
-            )
-          ))
-          }
+        <main className="container mx-auto m-8">
+          {Contenu &&
+            Contenu.map(component =>
+              component.__component === "grilles.home" ? (
+                <ComponentRenderer
+                  key={`${component.id}-${component.__component}`}
+                  component={{
+                    ...component,
+                    sectionColor,
+                    news,
+                    quickAccesses
+                  }}
+                />
+              ) : (
+                <ComponentRenderer
+                  key={`${component.id}-${component.__component}`}
+                  component={{ ...component, sectionColor }}
+                />
+              )
+            )}
         </main>
       </div>
     </React.Fragment>
@@ -49,9 +55,7 @@ PageRenderer.propTypes = {
     config: PropTypes.shape({
       websiteName: PropTypes.string
     }).isRequired,
-    navigation: PropTypes.arrayOf(
-      PropTypes.object
-    ).isRequired
+    navigation: PropTypes.arrayOf(PropTypes.object).isRequired
   }).isRequired,
   page: PropTypes.shape({
     data: PropTypes.shape({
@@ -59,9 +63,7 @@ PageRenderer.propTypes = {
         title: PropTypes.string,
         Contenu: PropTypes.arrayOf(
           PropTypes.shape({
-            id: PropTypes.oneOfType([
-              PropTypes.string, PropTypes.number
-            ])
+            id: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
           })
         )
       })

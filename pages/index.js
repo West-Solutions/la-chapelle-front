@@ -17,8 +17,18 @@ export const getStaticProps = async () => {
 
   try {
     page = await PageServices.get("1");
-    news = await NewsServices.getAll({ populate: "illustration" });
-    quickAccesses = await QuickAccesses.getAll();
+
+    const { newsNumber, quickAccessNumber } = page.data.attributes.Contenu.find(
+      (c) => c.__component === "grilles.home"
+    );
+    news = await NewsServices.getAll({
+      populate: "illustration",
+      sort: ["homePage:desc", "startDate:desc"],
+      "pagination[pageSize]": newsNumber
+    });
+    quickAccesses = await QuickAccesses.getAll({
+      "pagination[pageSize]": quickAccessNumber
+    });
   } catch (error) {
     console.error(error.message);
   }
