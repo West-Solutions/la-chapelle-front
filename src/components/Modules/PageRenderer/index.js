@@ -18,6 +18,20 @@ const PageRenderer = ({ app, page }) => {
   const { data, news, quickAccesses } = page;
   const { Contenu = [], title } = data.attributes;
 
+  const getComponentProps = (component) => {
+    return component.__component === "grilles.home" ?
+      {
+        ...component,
+        sectionColor,
+        news,
+        quickAccesses
+      } :
+      {
+        ...component,
+        sectionColor
+      };
+  };
+
   return (
     <React.Fragment>
       <Head>
@@ -27,22 +41,10 @@ const PageRenderer = ({ app, page }) => {
         <main className="container mx-auto m-8">
           {Contenu &&
             Contenu.map(component =>
-              component.__component === "grilles.home" ? (
-                <ComponentRenderer
-                  key={`${component.id}-${component.__component}`}
-                  component={{
-                    ...component,
-                    sectionColor,
-                    news,
-                    quickAccesses
-                  }}
-                />
-              ) : (
-                <ComponentRenderer
-                  key={`${component.id}-${component.__component}`}
-                  component={{ ...component, sectionColor }}
-                />
-              )
+              <ComponentRenderer
+                key={`${component.id}-${component.__component}`}
+                component={getComponentProps(component)}
+              />
             )}
         </main>
       </div>
