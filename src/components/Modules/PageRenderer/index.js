@@ -39,13 +39,12 @@ const PageRenderer = ({ app, page }) => {
       </Head>
       <div>
         <main className="container mx-auto m-8">
-          {Contenu &&
-            Contenu.map(component =>
-              <ComponentRenderer
-                key={`${component.id}-${component.__component}`}
-                component={getComponentProps(component)}
-              />
-            )}
+          {Contenu && Contenu.map(component =>
+            <ComponentRenderer
+              key={`${component.id}-${component.__component}`}
+              component={getComponentProps(component)}
+            />
+          )}
         </main>
       </div>
     </React.Fragment>
@@ -57,7 +56,7 @@ PageRenderer.propTypes = {
     config: PropTypes.shape({
       websiteName: PropTypes.string
     }).isRequired,
-    navigation: PropTypes.arrayOf(PropTypes.object).isRequired
+    navigation: PropTypes.arrayOf().isRequired
   }).isRequired,
   page: PropTypes.shape({
     data: PropTypes.shape({

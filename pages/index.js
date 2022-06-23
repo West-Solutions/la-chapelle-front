@@ -4,9 +4,11 @@ import PageServices from "@Services/Page";
 import NewsServices from "@Services/News";
 import QuickAccesses from "@Services/QuickAccesses";
 
+import { fetchFromDataAttribute } from "@Utils/strapi/core";
+
 import PageRenderer from "@Modules/PageRenderer";
 
-const IndexPage = (props) => {
+const IndexPage = props => {
   return <PageRenderer {...props} />;
 };
 
@@ -18,7 +20,7 @@ export const getStaticProps = async () => {
   try {
     page = await PageServices.get("1");
 
-    const { newsNumber, quickAccessNumber } = page.data.attributes.Contenu.find(
+    const { newsNumber, quickAccessNumber } = fetchFromDataAttribute(page).Contenu.find(
       (c) => c.__component === "grilles.home"
     );
     news = await NewsServices.getAll({

@@ -21,14 +21,14 @@ const HomeNews = ({ news }) => {
   return (
     <Link href={`/actualites/${slug}`}>
       <a
-        className="shadow-lg hover:shadow-normal rounded-lg overflow-hidden border border-zinc-500 h-40 sm:h-64 md:h-80 lg:h-64 xl:h-80"
+        className="shadow-lg hover:shadow-normal rounded-md overflow-hidden border border-zinc-500 h-40 sm:h-64 md:h-80 lg:h-64 xl:h-80"
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
       >
         <div className="h-full w-full">
           <div className={`${showDescription ? "h-0" : "h-3/4"} overflow-hidden items-center transition-all duration-500`}>
             <img
-              className= "h-full w-full object-cover object-center"
+              className="h-full w-full object-cover object-center"
               src={pathAsAbsolute(fetchFromDataAttribute(illustration).url)}
             />
           </div>
