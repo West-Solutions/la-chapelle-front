@@ -3,12 +3,16 @@ import PropTypes from "prop-types";
 
 import Link from "next/link";
 
+import { fetchFromDataAttribute } from "@Utils/strapi/core";
+
 const ButtonLink = ({ text, src, color, position }) => {
 
   const isInternal = src.startsWith("/");
+  const positionValue = fetchFromDataAttribute(position).value;
+  const linkPosition = positionValue === "left" ? "justify-start" : positionValue === "right" ? "justify-end" : "justify-center";
 
   return (
-    <div className={`w-full flex justify-${position}`}>
+    <div className={`w-full flex ${linkPosition}`}>
       { isInternal ? (
         <Link href={src}>
           <a

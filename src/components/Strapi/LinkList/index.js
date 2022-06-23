@@ -3,12 +3,7 @@ import PropTypes from "prop-types";
 
 import ButtonLink from "@Components/Controls/Button/Link";
 
-import { fetchFromDataAttribute } from "@Utils/strapi/core";
-
-
 const StrapiLinkList = ({ link, position, row, sectionColor }) => {
-  const listPosition = fetchFromDataAttribute(position).value === "left" ? "start" :
-    fetchFromDataAttribute(position).value === "right" ? "end" : "center";
   let listLinkClass = "w-full grid grid-cols-1 gap-2";
 
   if (row) {
@@ -23,7 +18,7 @@ const StrapiLinkList = ({ link, position, row, sectionColor }) => {
           text={description}
           src={lien}
           color={sectionColor}
-          position={listPosition}
+          position={position}
         />
       ))}
     </div>
