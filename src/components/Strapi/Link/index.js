@@ -1,24 +1,24 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Link from "next/link";
 
+import ButtonLink from "@Components/Controls/Button/Link";
 
-const StrapiLink = ({ description, lien }) => {
-
+const StrapiLink = ({ description, lien, sectionColor, position }) => {
   return (
-    <div className={"w-full"}>
-      <Link href={lien}>
-        <a className="w-8 color-orange h-8 rounded">
-          {description}
-        </a>
-      </Link>
-    </div>
+    <ButtonLink
+      text={description}
+      src={lien}
+      color={sectionColor}
+      position={position}
+    />
   );
 };
 
 StrapiLink.propTypes = {
   description: PropTypes.string,
-  lien: PropTypes.string
+  lien: PropTypes.string,
+  sectionColor: PropTypes.string,
+  position: PropTypes.shape({}),
 };
 
 export default StrapiLink;

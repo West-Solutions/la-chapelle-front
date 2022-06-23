@@ -4,8 +4,9 @@ import PropTypes from "prop-types";
 import Home from "@StrapiComponents/Home";
 import Link from "@StrapiComponents/Link";
 import Title from "@StrapiComponents/Title";
-import Image from "@Components/Strapi/Image";
+import Image from "@StrapiComponents/Image";
 import Columns from "@StrapiComponents/Columns";
+import LinkList from "@StrapiComponents/LinkList";
 import RichText from "@StrapiComponents/RichText";
 import Trombinoscope from "@StrapiComponents/Trombinoscope";
 import ImagesGalery from "@StrapiComponents/ImagesGalery";
@@ -17,6 +18,7 @@ const Components = {
   "textes.lien": Link,
   "textes.title": Title,
   "textes.rich-text": RichText,
+  "textes.liste-de-liens": LinkList,
   // Grid
   "grilles.columns": Columns,
   "grilles.home": Home,

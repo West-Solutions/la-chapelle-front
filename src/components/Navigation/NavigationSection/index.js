@@ -51,7 +51,6 @@ const NavigationSection = ({ item, dropdown, color, openingSide }) => {
           <Link
             href={item.path}
             passHref
-            className="text-white text-xl text-center p-2 font-semibold"
           >
             <a
               className="text-white text-xl text-center p-2 font-semibold"
