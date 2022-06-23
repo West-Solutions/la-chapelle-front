@@ -19,7 +19,7 @@ const StrapiImageGallery = ( { images, Affichage, isColumn } ) => {
     galleryClass= "justify-center grid grid-cols-2 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 xl:gap-2 mx-2 mb-2";
   }
 
-  return Affichage==="Carrousel" ? (
+  return Affichage === "Carrousel" ? (
     <Carousel
       infiniteLoop
       className="w-full rounded-md overflow-hidden"
@@ -42,12 +42,17 @@ const StrapiImageGallery = ( { images, Affichage, isColumn } ) => {
     </Carousel>
   ) : (
     <div className={galleryClass}>
-      {images && images.data.map(image => {
-        return <img
-          key={image.attributes.url}
-          className={"object-center object-cover rounded-md shadow-normal w-full h-full aspect-square"}
-          src={pathAsAbsolute(fetchFromDataAttribute(image).url)} />;
-      }
+      {images && images.data.map((image, index) => {
+        return (
+          <div key={image.attributes.url} className="relative h-full w-full">
+            <img
+              loading={index <= 4 ? "" : "lazy"}
+              className={"object-center object-cover rounded-md shadow-normal relative w-full h-full aspect-square z-10"}
+              src={pathAsAbsolute(fetchFromDataAttribute(image).url)}
+            />
+            <div className="absolute top-0 left-0 right-0 bottom-0 rounded-md bg-gray-300 animate-pulse z-0" />
+          </div>
+        );}
       )}
     </div>
   );
