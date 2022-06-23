@@ -1,3 +1,5 @@
+const defaultTheme = require("tailwindcss/defaultTheme");
+
 const colors = require("./colors.json");
 
 const safelistColors = () => {
@@ -37,7 +39,11 @@ module.exports = {
       minHeight: {
         "16": "4rem",
         "80": "20rem",
-      }
+      },
+    },
+    screens: {
+      "xs": "475px",
+      ...defaultTheme.screens,
     },
   },
   plugins: [],

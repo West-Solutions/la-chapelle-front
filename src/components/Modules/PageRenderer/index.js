@@ -15,8 +15,22 @@ const PageRenderer = ({ app, page }) => {
   const colors = useContext(ColorsContext);
   const sectionColor = useColor(colors);
 
-  const { data } = page;
+  const { data, news, quickAccesses } = page;
   const { Contenu = [], title } = data.attributes;
+
+  const getComponentProps = (component) => {
+    return component.__component === "grilles.home" ?
+      {
+        ...component,
+        sectionColor,
+        news,
+        quickAccesses
+      } :
+      {
+        ...component,
+        sectionColor
+      };
+  };
 
   return (
     <React.Fragment>
@@ -24,14 +38,13 @@ const PageRenderer = ({ app, page }) => {
         <title>{`${app.config.websiteName} | ${title}`}</title>
       </Head>
       <div>
-        <main className="container mx-auto mt-8">
-          {Contenu && Contenu.map(component => (
+        <main className="container mx-auto m-8">
+          {Contenu && Contenu.map(component =>
             <ComponentRenderer
               key={`${component.id}-${component.__component}`}
-              component={{ ...component, sectionColor }}
+              component={getComponentProps(component)}
             />
-          ))
-          }
+          )}
         </main>
       </div>
     </React.Fragment>
@@ -43,9 +56,7 @@ PageRenderer.propTypes = {
     config: PropTypes.shape({
       websiteName: PropTypes.string
     }).isRequired,
-    navigation: PropTypes.arrayOf(
-      PropTypes.object
-    ).isRequired
+    navigation: PropTypes.arrayOf().isRequired
   }).isRequired,
   page: PropTypes.shape({
     data: PropTypes.shape({
@@ -53,13 +64,13 @@ PageRenderer.propTypes = {
         title: PropTypes.string,
         Contenu: PropTypes.arrayOf(
           PropTypes.shape({
-            id: PropTypes.oneOfType([
-              PropTypes.string, PropTypes.number
-            ])
+            id: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
           })
         )
       })
-    })
+    }),
+    news: PropTypes.arrayOf(),
+    quickAccesses: PropTypes.arrayOf()
   }).isRequired
 };
 
