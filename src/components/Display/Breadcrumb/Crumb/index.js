@@ -19,7 +19,7 @@ const Crumb = ({ text, href, last=false, isLink }) => {
       ) : (
         <span>{text}</span>
       )}
-      {!last && <span>&nbsp;{">"}&nbsp;</span>}
+      <span>&nbsp;{">"}&nbsp;</span>
     </div>
   );
 };
