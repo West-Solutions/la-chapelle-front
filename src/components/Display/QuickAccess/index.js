@@ -2,13 +2,13 @@ import React from "react";
 import Link from "next/link";
 import PropTypes from "prop-types";
 
-import { isInternalLink } from "@Utils/core";
+import { isRelativeLink } from "@Utils/core";
 import { pathAsAbsolute } from "@Utils/strapi/media";
 import { fetchFromDataAttribute } from "@Utils/strapi/core";
 
 const QuickAccess = ({ quickAccesses }) => {
   const { titre, lien, logo } = quickAccesses;
-  const internalLink = isInternalLink(lien);
+  const internalLink = isRelativeLink(lien);
   return (
     <Link href={lien}>
       <a

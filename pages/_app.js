@@ -15,6 +15,8 @@ import ColorsContext from "@Contexts/ColorsContext";
 
 import "../src/styles/index.scss";
 
+import Breadcrumb from "@Display/Breadcrumb";
+
 const App = ({ Component, pageProps: page, app }) => {
   return (
     <React.Fragment>
@@ -27,6 +29,7 @@ const App = ({ Component, pageProps: page, app }) => {
       <ColorsContext.Provider value={app.colors}>
         <>
           <Header app={app}/>
+          <Breadcrumb app={app} />
           <Component { ...{ page, app }} />
           <Footer app={app} />
         </>
