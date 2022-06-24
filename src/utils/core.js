@@ -10,7 +10,7 @@ export const isRelativeLink = (link = "") =>
 
 
 /**
- * Find recursively current page and determine if it is an INTERNAL link
+ * Find recursively current route location inside navigation and return object with title and link information
  * @param {*} navigation Navigation object from strapi
  * @param {*} route Router object from next
  * @returns {object} True if the link is an internal link
