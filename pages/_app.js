@@ -2,6 +2,7 @@ import React from "react";
 import Head from "next/head";
 import PropTypes from "prop-types";
 
+import NewsServices from "@Services/News";
 import ColorsServices from "@Services/Colors";
 import ConfigServices from "@Services/Config";
 import ContactServices from "@Services/Contact";
@@ -43,18 +44,21 @@ App.getInitialProps = async () => {
     ConfigServices.get(),
     ContactServices.get(),
     ColorsServices.getAll(),
-    NavigationServices.getMain()
+    NavigationServices.getMain(),
+    NewsServices.getAll({ populate: "illustration" })
   ];
 
   const [
     config,
     contact,
     colors,
-    navigation
+    navigation,
+    news,
   ] = cleanResults(await Promise.all(promises));
 
   return {
     app: {
+      news,
       colors,
       config,
       contact,

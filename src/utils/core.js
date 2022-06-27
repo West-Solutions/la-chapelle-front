@@ -18,6 +18,7 @@ export const isRelativeLink = (link = "") =>
 export const getRouteInformation= (navigation, route, slug="") => {
   const currentSlug = slug === "" ? route[0] : `${slug}-${route[0]}`;
   const currentItem = navigation.find(item => item.slug === currentSlug);
+  if (!currentItem && route[0] !== "actualites") return ({});
 
   //To be change when Actualities page is implemented
   if(route.length === 1 && route[0] === "actualites") {

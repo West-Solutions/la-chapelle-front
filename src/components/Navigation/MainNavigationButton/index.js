@@ -49,7 +49,7 @@ const MainNavigationButton = ({ item, openingSide }) => {
         {item.title}
       </button>
       <div className="relative">
-        <div className="md:absolute left-0 right-0 shadow-normal">
+        <div className={`md:absolute left-0 right-0 ${openingSide === "left" ? "shadow-normal-left" : "shadow-normal"}`}>
           {
             item.items.map(subItem => {
               return <NavigationSection key={`${subItem.uiRouterKey}-${subItem.id}`} item={subItem} dropdown={dropdown} color={item.slug} openingSide={openingSide}/>;

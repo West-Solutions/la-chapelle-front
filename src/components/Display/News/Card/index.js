@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { pathAsAbsolute } from "@Utils/strapi/media";
 import { fetchFromDataAttribute } from "@Utils/strapi/core";
 
-const HomeNews = ({ news }) => {
+const NewsCard = ({ news }) => {
   const { title, slug, illustration, description } = news;
 
   const [showDescription, setShowDescription] = useState(false);
@@ -44,19 +44,17 @@ const HomeNews = ({ news }) => {
   );
 };
 
-HomeNews.propTypes = {
-  news: PropTypes.arrayOf(
-    PropTypes.shape({
-      description: PropTypes.string,
-      illustration: PropTypes.shape({}),
-      slug: PropTypes.string,
-      title: PropTypes.string
-    })
-  )
+NewsCard.propTypes = {
+  news: PropTypes.shape({
+    description: PropTypes.string,
+    illustration: PropTypes.shape({}),
+    slug: PropTypes.string,
+    title: PropTypes.string
+  })
 };
 
-HomeNews.defaultProps = {
-  news: []
+NewsCard.defaultProps = {
+  news: {}
 };
 
-export default HomeNews;
+export default NewsCard;

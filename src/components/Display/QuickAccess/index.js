@@ -35,13 +35,11 @@ const QuickAccess = ({ quickAccesses }) => {
 };
 
 QuickAccess.propTypes = {
-  quickAccesses: PropTypes.arrayOf(
-    PropTypes.shape({
-      titre: PropTypes.string,
-      lien: PropTypes.string,
-      logo: PropTypes.shape({})
-    })
-  )
+  quickAccesses: PropTypes.shape({
+    titre: PropTypes.string,
+    lien: PropTypes.string,
+    logo: PropTypes.shape({})
+  })
 };
 
 QuickAccess.defaultProps = {

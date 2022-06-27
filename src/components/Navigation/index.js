@@ -69,7 +69,7 @@ const Navigation = ({ items }) => {
 
         { mobileDropdown && (
           cleanItems.map((item, index) => {
-            const openingSide = index > cleanItems.length/2 ? "right" : "left";
+            const openingSide = index > cleanItems.length/2 ? "left" : "right";
             return <MainNavigationButton key={`${item.uiRouterKey}-${item.id}`} item={item} openingSide={openingSide} />;
           })
         )}

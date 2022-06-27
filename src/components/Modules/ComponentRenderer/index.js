@@ -8,6 +8,7 @@ import Image from "@StrapiComponents/Image";
 import Columns from "@StrapiComponents/Columns";
 import LinkList from "@StrapiComponents/LinkList";
 import RichText from "@StrapiComponents/RichText";
+import NewsList from "@Components/Strapi/NewsList";
 import Trombinoscope from "@StrapiComponents/Trombinoscope";
 import ImagesGalery from "@StrapiComponents/ImagesGalery";
 import DocumentList from "@StrapiComponents/DocumentList";
@@ -22,6 +23,7 @@ const Components = {
   // Grid
   "grilles.columns": Columns,
   "grilles.home": Home,
+  "grilles.liste-des-actualites": NewsList,
   // Media
   "media.image": Image,
   "media.galerie-d-images": ImagesGalery,
