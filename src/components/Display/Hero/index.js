@@ -106,13 +106,7 @@ Hero.propTypes = {
         })
       })
     }),
-    principalImage: PropTypes.shape({
-      data: PropTypes.shape(PropTypes.shape({
-        attributes: PropTypes.shape({
-          url: PropTypes.string
-        })
-      }))
-    }),
+    principalImage: PropTypes.shape({}),
     shortOpeningHours: PropTypes.string,
     websiteName: PropTypes.string,
   }),

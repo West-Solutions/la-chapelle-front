@@ -1,17 +1,20 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import HomeNews from "@Display/News/Home/";
+import NewsCard from "@Display/News/Card";
 import QuickAccess from "@Display/QuickAccess";
 
-const StrapiHome = ({ news, quickAccesses, sectionColor }) => {
+const StrapiHome = ({ app, page, sectionColor }) => {
+  const { news } = app;
+  const { quickAccesses } = page;
+
   return (
     <div className={"w-full flex flex-col-reverse lg:flex-row gap-4 md:gap-10 lg:gap-20"}>
       <div className={"w-full lg:w-2/3"}>
         <h2 className={`text-4xl pb-4 text-${sectionColor}`}>Actualités</h2>
         <div className='grid grid-cols-2 gap-4'>
           {news.map(({ id, attributes }) => (
-            <HomeNews key={id} news={attributes} />
+            <NewsCard key={id} news={attributes} />
           ))}
         </div>
       </div>
@@ -28,11 +31,19 @@ const StrapiHome = ({ news, quickAccesses, sectionColor }) => {
 };
 
 StrapiHome.propTypes = {
-  news: PropTypes.arrayOf(),
-  newsNumber: PropTypes.number,
-  quickAccesses: PropTypes.arrayOf(),
-  quickAccessNumber: PropTypes.number,
+  app: PropTypes.shape({
+    news: PropTypes.arrayOf(PropTypes.shape({}))
+  }),
+  page: PropTypes.shape({
+    quickAccesses: PropTypes.arrayOf(PropTypes.shape({})),
+  }),
   sectionColor: PropTypes.string
+};
+
+StrapiHome.defaultProps = {
+  app: {},
+  page: {},
+  sectionColor: ""
 };
 
 export default StrapiHome;

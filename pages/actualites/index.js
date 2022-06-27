@@ -9,7 +9,7 @@ const NewsIndexPage = ({ page }) => {
 
   return (
     <main className="container mx-auto">
-      <NewsResultList news={news || []} />
+      <NewsResultList news={news} />
     </main>
   );
 };

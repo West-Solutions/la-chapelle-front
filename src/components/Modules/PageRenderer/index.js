@@ -15,22 +15,8 @@ const PageRenderer = ({ app, page }) => {
   const colors = useContext(ColorsContext);
   const sectionColor = useColor(colors);
 
-  const { data, news, quickAccesses } = page;
+  const { data } = page;
   const { Contenu = [], title } = data.attributes;
-
-  const getComponentProps = (component) => {
-    return component.__component === "grilles.home" ?
-      {
-        ...component,
-        sectionColor,
-        news,
-        quickAccesses
-      } :
-      {
-        ...component,
-        sectionColor
-      };
-  };
 
   return (
     <React.Fragment>
@@ -42,7 +28,7 @@ const PageRenderer = ({ app, page }) => {
           {Contenu && Contenu.map(component =>
             <ComponentRenderer
               key={`${component.id}-${component.__component}`}
-              component={getComponentProps(component)}
+              component={{ ...component, sectionColor, app, page }}
             />
           )}
         </main>
@@ -55,8 +41,9 @@ PageRenderer.propTypes = {
   app: PropTypes.shape({
     config: PropTypes.shape({
       websiteName: PropTypes.string
-    }).isRequired,
-    navigation: PropTypes.arrayOf().isRequired
+    }),
+    news: PropTypes.arrayOf(PropTypes.shape({})),
+    navigation: PropTypes.arrayOf(PropTypes.shape({}))
   }).isRequired,
   page: PropTypes.shape({
     data: PropTypes.shape({
@@ -69,8 +56,7 @@ PageRenderer.propTypes = {
         )
       })
     }),
-    news: PropTypes.arrayOf(),
-    quickAccesses: PropTypes.arrayOf()
+    quickAccesses: PropTypes.arrayOf(PropTypes.shape({}))
   }).isRequired
 };
 

@@ -34,7 +34,7 @@ Map.propTypes = {
     height: PropTypes.string.isRequired,
     width: PropTypes.string.isRequired
   }),
-  position: PropTypes.arrayOf()
+  position: PropTypes.arrayOf(PropTypes.number)
 };
 
 export default Map;

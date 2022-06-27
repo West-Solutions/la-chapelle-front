@@ -30,7 +30,7 @@ const Breadcrumb = ({ app }) => {
 
 Breadcrumb.propTypes = {
   app: PropTypes.shape({
-    navigation: PropTypes.shape({})
+    navigation: PropTypes.arrayOf(PropTypes.shape({}))
   }).isRequired
 };
 
