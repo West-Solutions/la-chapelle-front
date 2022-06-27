@@ -12,11 +12,11 @@ const StrapiTitle = ({ text, semantic, color, position }) => {
   const findHtmlTag = (text, semantic, className) => {
     switch (semantic) {
     case "H1":
-      return <h1 className={`${className} text-6xl`}>{text}</h1>;
+      return <h1 className={`${className} text-4xl`}>{text}</h1>;
     case "H2":
-      return <h2 className={`${className} text-6xl my-20`}>{text}</h2>;
+      return <h2 className={`${className} text-3xl`}>{text}</h2>;
     case "H3":
-      return <h3 className={`${className} text-3xl my-6`}>{text}</h3>;
+      return <h3 className={`${className} text-xl`}>{text}</h3>;
     case "H4":
       return <h4 className={`${className} text-lg`}>{text}</h4>;
     case "H5":
@@ -29,7 +29,7 @@ const StrapiTitle = ({ text, semantic, color, position }) => {
   };
 
   return (
-    <div className={`w-full text-${colorClass}`}>
+    <div className={`w-full py-2 text-${colorClass}`}>
       {findHtmlTag(text, semantic, `text-${positionClass}`)}
     </div>
   );

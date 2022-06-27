@@ -12,19 +12,19 @@ const QuickAccess = ({ quickAccesses }) => {
   return (
     <Link href={lien}>
       <a
-        className="shadow-lg hover:shadow-normal rounded-md border border-zinc-500 bg-white p-2 aspect-square overflow-hidden"
+        className="shadow-lg hover:shadow-normal rounded-md border border-zinc-500 bg-white p-2 xs:aspect-square overflow-hidden"
         target={`${internalLink ? "" : "_blank"}`}
         rel={`${internalLink ? "" : "noopener noreferrer"}`}
       >
-        <div className='h-full w-full'>
-          <div className='h-2/3 overflow-hidden flex items-center'>
+        <div className="h-full w-full">
+          <div className="h-2/3 overflow-hidden flex items-center">
             <img
               className="h-full w-full text-xl object-contain rounded-t-md"
               src={pathAsAbsolute(fetchFromDataAttribute(logo).url)}
             />
           </div>
-          <div className='h-1/3 flex justify-center items-center'>
-            <h3 className="md:text-xl xl:text-2xl text-center font-medium">
+          <div className="h-1/3 flex text-zinc-700 w-full justify-center items-center border-t">
+            <h3 className="xl:text-lg leading-none xl:leading-none text-center">
               {titre}
             </h3>
           </div>
