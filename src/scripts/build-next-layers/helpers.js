@@ -18,6 +18,7 @@ const hasRelated = (item = {}) => item.related && Object.keys(item.related).leng
 const whiteList = [
   "api",
   "404.js",
+  "preview",
   "_app.js",
   "index.js",
   "_error.js",
