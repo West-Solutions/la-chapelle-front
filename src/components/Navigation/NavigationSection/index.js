@@ -68,7 +68,7 @@ const NavigationSection = ({ item, dropdown, color, openingSide }) => {
       {
         item.items &&
         <div className={`md:absolute ${
-          openingSide === "left" ? "right-full shadow-normal-right" : " left-full shadow-normal"
+          openingSide === "left" ? "right-full shadow-normal-left" : " left-full shadow-normal"
         } flex flex-col top-0 bg-${color} ${subDropDown ? "show" : "hidden"}`}>
           {
             item.items.map(subItem => {
