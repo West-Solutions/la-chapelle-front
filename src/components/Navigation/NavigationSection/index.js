@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
+import { Icon } from "@mui/material";
 import PropTypes from "prop-types";
 import Link from "next/link";
 
 const NavigationSection = ({ item, dropdown, color, openingSide }) => {
-
   const [subDropDown, setSubDropdown] = useState(false);
   const onMouseEnter = () => {
     window.innerWidth >= 1280 && setSubDropdown(true);
@@ -33,7 +33,7 @@ const NavigationSection = ({ item, dropdown, color, openingSide }) => {
 
   return (
     <div
-      className={`bg-${color} ${dropdown ? "show" : "hidden"}`}
+      className={`bg-${color} ${dropdown ? "show" : "hidden"} md:relative`}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       onClick={() => setSubDropdown((prev) => !prev)}
@@ -42,10 +42,13 @@ const NavigationSection = ({ item, dropdown, color, openingSide }) => {
       {
         item.type ==="WRAPPER" ? (
           <button
-            className="text-white w-full text-xl text-center p-2 font-semibold"
+            className={`text-white w-full text-xl text-center p-2 relative font-semibold ${openingSide === "left" ? "md:pl-4" : "md:pr-4"}`}
             type="button"
           >
             {item.title}
+            <div className={`absolute top-2.5  ${openingSide === "left" ? "md:left-1" : "md:right-1"}`}>
+              <Icon className="hidden md:block">{`chevron_${openingSide}`}</Icon>
+            </div>
           </button>
         ) : (
           <Link
@@ -53,8 +56,8 @@ const NavigationSection = ({ item, dropdown, color, openingSide }) => {
             passHref
           >
             <a
-              className="text-white text-xl text-center p-2 font-semibold"
-              target="_blank"
+              className="text-white text-xl text-center p-2 font-semibold block w-full"
+              target={item.external ? "_blank" : ""}
               rel="noopener noreferrer"
             >
               {item.title}
@@ -64,7 +67,9 @@ const NavigationSection = ({ item, dropdown, color, openingSide }) => {
       }
       {
         item.items &&
-        <div className={`md:absolute ${openingSide}-full flex flex-col shadow-normal top-0 bg-${color} ${subDropDown ? "show" : "hidden"}`}>
+        <div className={`md:absolute ${
+          openingSide === "left" ? "right-full shadow-normal-right" : " left-full shadow-normal"
+        } flex flex-col top-0 bg-${color} ${subDropDown ? "show" : "hidden"}`}>
           {
             item.items.map(subItem => {
               return (
