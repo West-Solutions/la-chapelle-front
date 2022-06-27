@@ -25,6 +25,7 @@ const PageRenderer = ({ app, page }) => {
       </Head>
       <div>
         <main className="container mx-auto m-8">
+          <h1 className={`w-full text-6xl font-bold text-center text-${sectionColor}`}>{title}</h1>
           {Contenu && Contenu.map(component =>
             <ComponentRenderer
               key={`${component.id}-${component.__component}`}

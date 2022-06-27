@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
+
+import useColor from "@Hooks/useColor";
+import ColorsContext from "@Contexts/ColorsContext";
 
 import NewsServices from "@Services/News";
 import NewsResultList from "@Display/News/ResultList";
@@ -7,8 +10,12 @@ import NewsResultList from "@Display/News/ResultList";
 const NewsIndexPage = ({ page }) => {
   const { news } = page || {};
 
+  const colors = useContext(ColorsContext);
+  const sectionColor = useColor(colors);
+
   return (
     <main className="container mx-auto">
+      <h1 className={`text-6xl font-bold w-full m-auto text-center text-${sectionColor}`}>Actualités</h1>
       <NewsResultList news={news} />
     </main>
   );
