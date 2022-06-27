@@ -5,9 +5,9 @@ import PageRenderer from "@Modules/PageRenderer";
 
 const PagePreview = page =>  <PageRenderer {...page} />;
 
-export const getServerSideProps = async ({ params }) => {
-  const { pageId } = params;
-  const page = await PageServices.get(pageId);
+export const getServerSideProps = async ({ query }) => {
+  const { id } = query;
+  const page = await PageServices.get(id);
 
   return {
     props: { ...page }

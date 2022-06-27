@@ -7,9 +7,9 @@ const NewsPreview = page => {
   return <PageRenderer {...page} />;
 };
 
-export const getServerSideProps = async ({ params }) => {
-  const { newsId } = params;
-  const page = await NewsServices.get(newsId);
+export const getServerSideProps = async ({ query }) => {
+  const { id } = query;
+  const page = await NewsServices.get(id);
 
   return {
     props: { ...page },
