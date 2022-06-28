@@ -5,6 +5,7 @@ import useColor from "@Hooks/useColor";
 import ColorsContext from "@Contexts/ColorsContext";
 
 import NewsServices from "@Services/News";
+import Title from "@Display/Title";
 import NewsResultList from "@Display/News/ResultList";
 
 const NewsIndexPage = ({ page }) => {
@@ -15,7 +16,7 @@ const NewsIndexPage = ({ page }) => {
 
   return (
     <main className="container mx-auto">
-      <h1 className={`text-6xl font-bold w-full m-auto text-center text-${sectionColor}`}>Actualités</h1>
+      <Title text="Actualités" semantic="H1" color={sectionColor} position="center" />
       <NewsResultList news={news} />
     </main>
   );

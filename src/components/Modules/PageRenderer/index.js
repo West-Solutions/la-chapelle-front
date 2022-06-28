@@ -5,6 +5,8 @@ import PropTypes from "prop-types";
 import useColor from "@Hooks/useColor";
 import ColorsContext from "@Contexts/ColorsContext";
 
+import Title from "@Display/Title";
+
 import ComponentRenderer from "@Modules/ComponentRenderer";
 
 import { hasDataAndAttribute } from "@Utils/strapi/core";
@@ -25,7 +27,7 @@ const PageRenderer = ({ app, page }) => {
       </Head>
       <div>
         <main className="container mx-auto m-8">
-          <h1 className={`w-full text-6xl font-bold text-center text-${sectionColor}`}>{title}</h1>
+          <Title text={title} semantic="H1" color={sectionColor} position="center" />
           {Contenu && Contenu.map(component =>
             <ComponentRenderer
               key={`${component.id}-${component.__component}`}
