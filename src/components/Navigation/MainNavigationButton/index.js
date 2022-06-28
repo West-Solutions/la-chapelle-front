@@ -22,11 +22,11 @@ const MainNavigationButton = ({ item, openingSide }) => {
       }
     };
     document.addEventListener("click", handler);
-    document.addEventListener("touchstart", handler);
+    document.addEventListener("touchend", handler);
     return () => {
       // Cleanup the event listener
       document.removeEventListener("click", handler);
-      document.removeEventListener("touchstart", handler);
+      document.removeEventListener("touchend", handler);
     };
   }, [dropdown]);
 
