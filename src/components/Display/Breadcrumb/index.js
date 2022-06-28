@@ -20,7 +20,7 @@ const Breadcrumb = ({ app }) => {
   }, [router.asPath]);
 
   return (
-    <div className="bg-zinc-100">
+    <div className="bg-zinc-100 hidden md:block">
       <div className="flex flex-row gap-2 container mx-auto p-4 pb-0">
         {breadcrumbs.map((crumb, idx) => (
           <Crumb {...crumb} key={crumb.href} last={idx === breadcrumbs.length - 1} />
