@@ -1,12 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { getColor } from "@StrapiUtils/color";
 import { getPosition } from "@StrapiUtils/position";
 
 const Title = ({ text, semantic, color, position }) => {
-
-  const colorClass = getColor(color);
   const positionClass = getPosition(position);
 
   const findHtmlTag = (text, semantic, className) => {
@@ -29,7 +26,7 @@ const Title = ({ text, semantic, color, position }) => {
   };
 
   return (
-    <div className={`w-full text-${colorClass}`}>
+    <div className={`w-full text-${color}`}>
       {findHtmlTag(text, semantic, `text-${positionClass}`)}
     </div>
   );
@@ -37,7 +34,7 @@ const Title = ({ text, semantic, color, position }) => {
 
 Title.propTypes = {
   text: PropTypes.string,
-  color: PropTypes.object,
+  color: PropTypes.string,
   position: PropTypes.string,
   semantic: PropTypes.string
 };
