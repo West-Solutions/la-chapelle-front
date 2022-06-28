@@ -21,11 +21,11 @@ const NavigationSection = ({ item, dropdown, color, openingSide }) => {
       }
     };
     document.addEventListener("click", handler);
-    document.addEventListener("touchend", handler);
+    document.addEventListener("touchstart", handler);
     return () => {
       // Cleanup the event listener
       document.removeEventListener("click", handler);
-      document.removeEventListener("touchend", handler);
+      document.removeEventListener("touchstart", handler);
     };
   }, [subDropDown]);
 

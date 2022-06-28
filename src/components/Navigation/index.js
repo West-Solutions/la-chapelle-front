@@ -1,13 +1,22 @@
 import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
+import Link from "next/link";
+
+import Icon from "@mui/material/Icon";
 
 import { cleanNavigationItems } from "@Utils/strapi/navigation";
 
 import MainNavigationButton from "./MainNavigationButton";
 
-const Navigation = ({ items }) => {
+import { pathAsAbsolute } from "@Utils/strapi/media";
+import { fetchFromDataAttribute } from "@Utils/strapi/core";
+
+const Navigation = ({ items, config }) => {
   const cleanItems = cleanNavigationItems(items);
+  const { favicon } = config;
   const [mobileDropdown, setMobileDropdown] = useState(false);
+
+  const faviconUrl = pathAsAbsolute(fetchFromDataAttribute(favicon).url);
 
   // initialize the dropdown state for mobile screen
   useEffect(() => {
@@ -36,11 +45,11 @@ const Navigation = ({ items }) => {
       }
     };
     document.addEventListener("click", handler);
-    document.addEventListener("touchend", handler);
+    document.addEventListener("touchstart", handler);
     return () => {
       // Cleanup the event listener
       document.removeEventListener("click", handler);
-      document.removeEventListener("touchend", handler);
+      document.removeEventListener("touchstart", handler);
     };
   }, [mobileDropdown]);
 
@@ -49,24 +58,25 @@ const Navigation = ({ items }) => {
   return (
     <div className="relative">
       <nav className={"header flex flex-col md:flex-row shadow-normal"}  ref={ref}>
-        <button
-          className="outline-none md:hidden mobile-menu-button m-4 self-end"
-          onClick= {() => setMobileDropdown((prev) => !prev)}
-          ontouchstart={() => setMobileDropdown((prev) => !prev)}
-        >
-          <svg
-            className="w-8 h-8 text-white"
-            strokeWidth="2"
-            viewBox={mobileDropdown ? "2 -3 12 24" : "0 0 24 24"}
-            stroke="currentColor"
+        <div className="w-full flex justify-between text-white md:hidden h-12">
+          <Link href="/">
+            <a>
+              <img
+                className="p-2 h-12"
+                src={faviconUrl}
+              />
+            </a>
+          </Link>
+          <button
+            onClick= {() => setMobileDropdown((prev) => !prev)}
           >
             {mobileDropdown ? (
-              <path d="M 0,0 l 16,16 M 16,0 l -16,16" />
+              <Icon>closeicon</Icon>
             ) : (
-              <path d="M4 6h16M4 12h16M4 18h16" />
+              <Icon>menuicon</Icon>
             )}
-          </svg>
-        </button>
+          </button>
+        </div>
 
         { mobileDropdown && (
           cleanItems.map((item, index) => {
@@ -82,7 +92,10 @@ const Navigation = ({ items }) => {
 Navigation.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.object
-  ).isRequired
+  ).isRequired,
+  config: PropTypes.shape({
+    favicon: PropTypes.shape({})
+  })
 };
 
 
