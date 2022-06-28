@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/router";
 import PropTypes from "prop-types";
 import Link from "next/link";
 
@@ -14,9 +15,11 @@ import { fetchFromDataAttribute } from "@Utils/strapi/core";
 const Navigation = ({ items, config }) => {
   const cleanItems = cleanNavigationItems(items);
   const { favicon } = config;
+  const faviconUrl = pathAsAbsolute(fetchFromDataAttribute(favicon).url);
+
   const [mobileDropdown, setMobileDropdown] = useState(false);
 
-  const faviconUrl = pathAsAbsolute(fetchFromDataAttribute(favicon).url);
+  const router = useRouter();
 
   // initialize the dropdown state for mobile screen
   useEffect(() => {
@@ -52,6 +55,12 @@ const Navigation = ({ items, config }) => {
       document.removeEventListener("touchstart", handler);
     };
   }, [mobileDropdown]);
+
+  useEffect(() => {
+    if (window.innerWidth < 768) {
+      setMobileDropdown(false);
+    }
+  },[router.asPath]);
 
   let ref = useRef();
 

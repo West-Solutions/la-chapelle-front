@@ -36,7 +36,6 @@ const NavigationSection = ({ item, dropdown, color, openingSide }) => {
       className={`bg-${color} ${dropdown ? "show" : "hidden"} md:relative`}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      onClick={() => setSubDropdown((prev) => !prev)}
       ref={ref}
     >
       {
@@ -44,6 +43,7 @@ const NavigationSection = ({ item, dropdown, color, openingSide }) => {
           <button
             className={`text-white w-full text-xl text-center p-2 relative font-semibold ${openingSide === "left" ? "md:pl-4" : "md:pr-4"}`}
             type="button"
+            onClick={() => setSubDropdown((prev) => !prev)}
           >
             {item.title}
             <div className={`absolute top-2.5  ${openingSide === "left" ? "md:left-1" : "md:right-1"}`}>

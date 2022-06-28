@@ -1,10 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/router";
 import PropTypes from "prop-types";
 
 import NavigationSection from "../NavigationSection";
 
 const MainNavigationButton = ({ item, openingSide }) => {
   const [dropdown, setDropdown] = useState(false);
+
+  const router = useRouter();
 
   const onMouseEnter = () => {
     window.innerWidth >= 1280 && setDropdown(true);
@@ -30,6 +33,10 @@ const MainNavigationButton = ({ item, openingSide }) => {
     };
   }, [dropdown]);
 
+  useEffect(() => {
+    setDropdown(false);
+  },[router.asPath]);
+
   let ref = useRef();
 
   return (
@@ -42,8 +49,6 @@ const MainNavigationButton = ({ item, openingSide }) => {
       <button
         className="font-bold text-white h-full text-lg p-2 uppercase"
         type="button"
-        aria-haspopup="menu"
-        aria-expanded={dropdown ? "true" : "false"}
         onClick={() => setDropdown((prev) => !prev)}
       >
         {item.title}
