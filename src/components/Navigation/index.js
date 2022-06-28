@@ -3,9 +3,6 @@ import { useRouter } from "next/router";
 import PropTypes from "prop-types";
 import Link from "next/link";
 
-import MenuIcon from "@mui/icons-material/Menu";
-import CloseIcon from "@mui/icons-material/Close";
-
 import { cleanNavigationItems } from "@Utils/strapi/navigation";
 
 import MainNavigationButton from "./MainNavigationButton";
