@@ -9,7 +9,7 @@ const Crumb = ({ text, href, last=false, isLink }) => {
   }
 
   return (
-    <div>
+    <div className="flex flex-row gap-2 text-center">
       {isLink ? (
         <Link href={href}>
           <a className="hover:underline">
@@ -19,7 +19,7 @@ const Crumb = ({ text, href, last=false, isLink }) => {
       ) : (
         <span>{text}</span>
       )}
-      <span>&nbsp;{">"}&nbsp;</span>
+      <span>{">"}</span>
     </div>
   );
 };
