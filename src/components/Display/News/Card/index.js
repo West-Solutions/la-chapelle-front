@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Icon } from "@mui/material";
 import Link from "next/link";
 import PropTypes from "prop-types";
 
@@ -21,7 +22,7 @@ const NewsCard = ({ news }) => {
   return (
     <Link href={`/actualites/${slug}`}>
       <a
-        className="shadow-lg hover:shadow-normal rounded-md overflow-hidden border border-zinc-500 h-40 sm:h-64 md:h-80 lg:h-64 xl:h-80"
+        className="shadow-lg hover:shadow-normal bg-white rounded-md overflow-hidden border border-zinc-500 h-40 sm:h-64 md:h-80 lg:h-64 xl:h-80"
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
       >
@@ -32,11 +33,17 @@ const NewsCard = ({ news }) => {
               src={pathAsAbsolute(fetchFromDataAttribute(illustration).url)}
             />
           </div>
-          <div className="flex flex-col overflow-hidden items-center transition-all duration-500">
-            <h3 className={`sm:text-2xl text-center font-medium transition-all duration-700 ${showDescription ? "my-4" : "my-2 md:my-6 lg:my-3 xl:my-6 mb-96"}`}>
+          <div className="flex flex-col h-full overflow-hidden items-center transition-all duration-500">
+            <h3 className={`sm:text-xl text-center transition-all duration-700 ${showDescription ? "my-4" : "my-2 md:my-6 lg:my-3 xl:my-6 mb-96"}`}>
               {title}
             </h3>
-            <p className="p-4">{description}</p>
+            <div className="flex h-full flex-col w-full justify-between p-4">
+              <p className="max-h-[190px] line-clamp-[7]">{description}</p>
+              <p className="hover:underline w-full text-right text-zinc-600 flex items-center justify-end">
+                Lire la suite
+                <Icon className="block">chevron_right</Icon>
+              </p>
+            </div>
           </div>
         </div>
       </a>
