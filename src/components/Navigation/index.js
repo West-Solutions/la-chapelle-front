@@ -52,6 +52,7 @@ const Navigation = ({ items }) => {
         <button
           className="outline-none md:hidden mobile-menu-button m-4 self-end"
           onClick= {() => setMobileDropdown((prev) => !prev)}
+          ontouchstart={() => setMobileDropdown((prev) => !prev)}
         >
           <svg
             className="w-8 h-8 text-white"
