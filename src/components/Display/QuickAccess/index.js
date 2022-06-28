@@ -23,7 +23,7 @@ const QuickAccess = ({ quickAccesses }) => {
               src={pathAsAbsolute(fetchFromDataAttribute(logo).url)}
             />
           </div>
-          <div className="h-1/3 flex text-zinc-700 w-full justify-center items-center border-t">
+          <div className="h-1/3 flex text-zinc-700 w-full justify-center items-center border-t pt-3 pb-2">
             <h3 className="xl:text-lg leading-none xl:leading-none text-center">
               {titre}
             </h3>

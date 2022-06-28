@@ -12,7 +12,7 @@ import { fetchFromDataAttribute } from "@Utils/strapi/core";
 
 const Navigation = ({ items, config }) => {
   const cleanItems = cleanNavigationItems(items);
-  const { favicon } = config;
+  const { favicon, websiteName } = config;
   const faviconUrl = pathAsAbsolute(fetchFromDataAttribute(favicon).url);
 
   const [mobileDropdown, setMobileDropdown] = useState(false);
@@ -67,11 +67,12 @@ const Navigation = ({ items, config }) => {
       <nav className={"header flex flex-col md:flex-row shadow-normal"}  ref={ref}>
         <div className="w-full flex justify-between text-white md:hidden h-16">
           <Link href="/">
-            <a>
+            <a className="flex items-center">
               <img
                 className="p-2 h-16"
                 src={faviconUrl}
               />
+              <span className="w-1/2 text-center">{websiteName}</span>
             </a>
           </Link>
           <button
@@ -109,7 +110,8 @@ Navigation.propTypes = {
     PropTypes.object
   ).isRequired,
   config: PropTypes.shape({
-    favicon: PropTypes.shape({})
+    favicon: PropTypes.shape({}),
+    websiteName: PropTypes.string
   })
 };
 
