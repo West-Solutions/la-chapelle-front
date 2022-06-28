@@ -81,11 +81,18 @@ const Navigation = ({ items, config }) => {
             className="p-3"
             onClick= {() => setMobileDropdown((prev) => !prev)}
           >
-            {mobileDropdown ? (
-              <CloseIcon fontSize="large"/>
-            ) : (
-              <MenuIcon fontSize="large"/>
-            )}
+            <svg
+              className="w-8 h-8 text-white"
+              strokeWidth="2"
+              viewBox={mobileDropdown ? "2 -3 12 24" : "0 0 24 24"}
+              stroke="currentColor"
+            >
+              {mobileDropdown ? (
+                <path d="M 0,0 l 16,16 M 16,0 l -16,16" />
+              ) : (
+                <path d="M4 6h16M4 12h16M4 18h16" />
+              )}
+            </svg>
           </button>
         </div>
 
