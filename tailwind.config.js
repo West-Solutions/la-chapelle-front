@@ -27,6 +27,9 @@ module.exports = {
     "right-full",
   ],
   theme: {
+    fontFamily: {
+      sans: ["Roboto", "sans-serif"]
+    },
     extend: {
       colors : colors || {},
       boxShadow: {
@@ -47,5 +50,7 @@ module.exports = {
       ...defaultTheme.screens,
     },
   },
-  plugins: [],
+  plugins: [
+    require("@tailwindcss/line-clamp"),
+  ],
 };
