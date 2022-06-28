@@ -77,12 +77,13 @@ const Navigation = ({ items, config }) => {
             </a>
           </Link>
           <button
+            className="p-3"
             onClick= {() => setMobileDropdown((prev) => !prev)}
           >
             {mobileDropdown ? (
-              <Icon>closeicon</Icon>
+              <Icon className="text-4xl" >closeicon</Icon>
             ) : (
-              <Icon>menuicon</Icon>
+              <Icon className="text-4xl" >menuicon</Icon>
             )}
           </button>
         </div>
