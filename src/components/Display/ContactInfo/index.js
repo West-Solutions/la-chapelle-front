@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import Link from "next/link";
-import Icon from "@mui/material/Icon";
+import { Icon } from "@mui/material";
 
 import ContactInfoItem from "./item";
 
