@@ -44,7 +44,7 @@ const createTemplate = (filePath = "", item ) => {
 const fetchMainNavigationStruc = () =>
   new Promise((resolve, reject) => {
     axios
-      .get(`${process.env.API_URL}/navigation/render/main-navigation/?type=tree`)
+      .get(`${process.env.API_URL}/navigation/render/main-navigation/?type=TREE`)
       .then(response => {
         resolve(response.data);
       })
