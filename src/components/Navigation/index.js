@@ -58,11 +58,11 @@ const Navigation = ({ items, config }) => {
   return (
     <div className="relative">
       <nav className={"header flex flex-col md:flex-row shadow-normal"}  ref={ref}>
-        <div className="w-full flex justify-between text-white md:hidden h-12">
+        <div className="w-full flex justify-between text-white md:hidden h-16">
           <Link href="/">
             <a>
               <img
-                className="p-2 h-12"
+                className="p-2 h-16"
                 src={faviconUrl}
               />
             </a>
