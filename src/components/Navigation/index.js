@@ -3,7 +3,8 @@ import { useRouter } from "next/router";
 import PropTypes from "prop-types";
 import Link from "next/link";
 
-import Icon from "@mui/material/Icon";
+import MenuIcon from "@mui/icons-material/Menu";
+import CloseIcon from "@mui/icons-material/Close";
 
 import { cleanNavigationItems } from "@Utils/strapi/navigation";
 
@@ -81,9 +82,9 @@ const Navigation = ({ items, config }) => {
             onClick= {() => setMobileDropdown((prev) => !prev)}
           >
             {mobileDropdown ? (
-              <Icon className="text-4xl" >closeicon</Icon>
+              <CloseIcon fontSize="large"/>
             ) : (
-              <Icon className="text-4xl" >menuicon</Icon>
+              <MenuIcon fontSize="large"/>
             )}
           </button>
         </div>
