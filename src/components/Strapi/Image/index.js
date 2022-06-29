@@ -32,7 +32,8 @@ StrapiImage.propTypes = {
       })
     })
   }),
-  showLegend: PropTypes.bool
+  showLegend: PropTypes.bool,
+  position: PropTypes.shape({})
 };
 
 export default StrapiImage;
