@@ -26,7 +26,7 @@ const PageRenderer = ({ app, page }) => {
         <title>{`${app.config.websiteName} | ${title}`}</title>
       </Head>
       <div className="bg-zinc-100">
-        <main className="container mx-auto p-4">
+        <main className="container mx-auto p-4 md:px-20">
           <Title text={title} semantic="H1" color={sectionColor} position="center" />
           {Contenu && Contenu.map(component =>
             <ComponentRenderer
