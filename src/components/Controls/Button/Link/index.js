@@ -4,12 +4,12 @@ import PropTypes from "prop-types";
 import Link from "next/link";
 
 import { isRelativeLink } from "@Utils/core";
-import { fetchFromDataAttribute } from "@Utils/strapi/core";
+import { getPosition } from "@StrapiUtils/position";
 
 const ButtonLink = ({ text, src, color, position }) => {
 
   const isInternal = isRelativeLink(src);
-  const positionValue = fetchFromDataAttribute(position).value;
+  const positionValue = getPosition(position);
   const linkPosition = positionValue === "left" ? "justify-start" : positionValue === "right" ? "justify-end" : "justify-center";
 
   return (

@@ -4,12 +4,18 @@ import PropTypes from "prop-types";
 import { pathAsAbsolute } from "@Utils/strapi/media";
 import { fetchFromDataAttribute } from "@Utils/strapi/core";
 
-const StrapiImage = ({ legend, src, showLegend }) => {
+import { getPosition } from "@StrapiUtils/position";
+
+const StrapiImage = ({ legend, src, showLegend, position }) => {
+
+  const positionValue = getPosition(position);
+
+  const imagePosition = positionValue === "left" ? "justify-start" : positionValue === "right" ? "justify-end" : "justify-center";
   return (
-    <div className={"w-full justify-center"}>
+    <div className={`w-full flex ${imagePosition}`}>
       <img
         key={`${src}-${legend}`}
-        className={"w-full rounded-md shadow-normal"}
+        className="w-auto rounded-md shadow-normal  max-h-[80vh]"
         src={pathAsAbsolute(fetchFromDataAttribute(src).url)}
       />
       {showLegend && <p className={"text-center text-gray-600 text-xs mt-2"}>{legend}</p>}
@@ -26,7 +32,8 @@ StrapiImage.propTypes = {
       })
     })
   }),
-  showLegend: PropTypes.bool
+  showLegend: PropTypes.bool,
+  position: PropTypes.shape({})
 };
 
 export default StrapiImage;

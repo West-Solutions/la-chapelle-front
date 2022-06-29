@@ -9,7 +9,7 @@ const Title = ({ text, semantic, color, position }) => {
   const findHtmlTag = (text, semantic, className) => {
     switch (semantic) {
     case "H1":
-      return <h1 className={`${className} text-4xl my-12 lg:text-6xl lg:my-20 font-semibold`}>{text}</h1>;
+      return <h1 className={`${className} text-4xl my-6 lg:text-6xl font-semibold`}>{text}</h1>;
     case "H2":
       return <h2 className={`${className}  text-3xl my-4 lg:text-4xl font-semibold`}>{text}</h2>;
     case "H3":
