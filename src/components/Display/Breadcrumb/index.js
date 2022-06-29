@@ -21,7 +21,7 @@ const Breadcrumb = ({ app }) => {
 
   return (
     <div className="bg-zinc-100 hidden md:block">
-      <div className="flex flex-row gap-2 container mx-auto p-4 pb-0">
+      <div className="flex flex-row gap-2 container mx-auto p-4 md:px-20 pb-0">
         {breadcrumbs.map((crumb, idx) => (
           <Crumb {...crumb} key={crumb.href} last={idx === breadcrumbs.length - 1} />
         ))}
