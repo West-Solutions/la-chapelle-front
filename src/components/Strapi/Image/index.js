@@ -9,7 +9,7 @@ const StrapiImage = ({ legend, src, showLegend }) => {
     <div className={"w-full justify-center"}>
       <img
         key={`${src}-${legend}`}
-        className={"w-full rounded-md shadow-normal"}
+        className={"w-auto rounded-md shadow-normal  max-h-[80vh]"}
         src={pathAsAbsolute(fetchFromDataAttribute(src).url)}
       />
       {showLegend && <p className={"text-center text-gray-600 text-xs mt-2"}>{legend}</p>}

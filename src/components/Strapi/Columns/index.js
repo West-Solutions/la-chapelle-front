@@ -7,7 +7,7 @@ const StrapiColumns = ({ left, right, sectionColor }) => {
   const renderCol = components => {
     if (!components || !components.length) return null;
     return(
-      <div className="w-full grid grid-cols-1 gap-2">
+      <div className="w-full flex flex-col gap-4">
         {
           components.map(component => {
             return <ComponentRenderer key={component.id} component={{ ...component, isColumn: true, sectionColor }} />;
