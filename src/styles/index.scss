@@ -4,6 +4,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+//Disable highlight when touch button or link on mobile device
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
 
 @import url("https://unpkg.com/leaflet@1.8.0/dist/leaflet.css");
 // SHOULD COME LAST TO OVERIDE TAILWIND

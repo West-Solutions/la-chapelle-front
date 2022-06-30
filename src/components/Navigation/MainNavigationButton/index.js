@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
+import { Icon } from "@mui/material";
 import PropTypes from "prop-types";
 
 import NavigationSection from "../NavigationSection";
@@ -25,11 +26,9 @@ const MainNavigationButton = ({ item, openingSide }) => {
       }
     };
     document.addEventListener("click", handler);
-    document.addEventListener("touchstart", handler);
     return () => {
       // Cleanup the event listener
       document.removeEventListener("click", handler);
-      document.removeEventListener("touchstart", handler);
     };
   }, [dropdown]);
 
@@ -47,11 +46,14 @@ const MainNavigationButton = ({ item, openingSide }) => {
       ref={ref}
     >
       <button
-        className="font-bold text-white h-full text-lg p-2 uppercase"
+        className="font-bold text-white h-full text-lg p-2 uppercase relative"
         type="button"
         onClick={() => setDropdown((prev) => !prev)}
       >
         {item.title}
+        <div className="absolute block md:hidden top-2 right-2.5">
+          <Icon className={`${dropdown ? "origin-center rotate-90" : ""} transition-all`}>chevron_right</Icon>
+        </div>
       </button>
       <div className="relative">
         <div className={`md:absolute left-0 right-0 ${openingSide === "left" ? "shadow-normal-left" : "shadow-normal"}`}>
