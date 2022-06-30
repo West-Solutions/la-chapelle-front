@@ -40,14 +40,20 @@ ButtonLink.propTypes = {
   text: PropTypes.string,
   src: PropTypes.string,
   color: PropTypes.string,
-  position: PropTypes.string
+  position: PropTypes.shape({})
 };
 
 ButtonLink.defaultProps = {
   color: "",
   text: "",
   src: "",
-  position: "start"
+  position: {
+    data: {
+      attributes: {
+        value: "justify-center"
+      }
+    }
+  }
 };
 
 export default ButtonLink;

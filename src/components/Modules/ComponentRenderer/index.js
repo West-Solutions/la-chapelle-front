@@ -8,6 +8,7 @@ import Image from "@StrapiComponents/Image";
 import Columns from "@StrapiComponents/Columns";
 import LinkList from "@StrapiComponents/LinkList";
 import RichText from "@StrapiComponents/RichText";
+import Document from "@Components/Strapi/Document";
 import NewsList from "@Components/Strapi/NewsList";
 import Trombinoscope from "@StrapiComponents/Trombinoscope";
 import ImagesGalery from "@StrapiComponents/ImagesGalery";
@@ -28,7 +29,8 @@ const Components = {
   "media.image": Image,
   "media.galerie-d-images": ImagesGalery,
   "media.trombinoscope": Trombinoscope,
-  "media.liste-de-documents": DocumentList
+  "media.liste-de-documents": DocumentList,
+  "media.document": Document
   //...
 };
 
