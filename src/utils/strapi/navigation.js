@@ -20,6 +20,10 @@ export const cleanNavigationItems = items => {
   return filteredItems;
 };
 
+export const cleanPath = path => {
+  return path.split("/").map(item => item.trim()).join("/");
+};
+
 const _isValidItem = item => {
   if (!item.menuAttached) return false;
   if (item.type === "WRAPPER" && item.items.length === 0) return false;
