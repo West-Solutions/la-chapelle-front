@@ -21,11 +21,9 @@ const NavigationSection = ({ item, dropdown, color, openingSide }) => {
       }
     };
     document.addEventListener("click", handler);
-    //document.addEventListener("touchstart", handler);
     return () => {
       // Cleanup the event listener
       document.removeEventListener("click", handler);
-      //document.removeEventListener("touchstart", handler);
     };
   }, [subDropDown]);
 
@@ -48,6 +46,9 @@ const NavigationSection = ({ item, dropdown, color, openingSide }) => {
             {item.title}
             <div className={`absolute hidden md:block top-2.5  ${openingSide === "left" ? "md:left-1" : "md:right-1"}`}>
               <Icon>{`chevron_${openingSide}`}</Icon>
+            </div>
+            <div className="absolute block md:hidden top-2 right-2.5">
+              <Icon className={`${subDropDown ? "origin-center rotate-90" : ""} transition-all`}>chevron_right</Icon>
             </div>
           </button>
         ) : (
