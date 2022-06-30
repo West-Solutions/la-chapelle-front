@@ -20,6 +20,11 @@ export const cleanNavigationItems = items => {
   return filteredItems;
 };
 
+/**
+ * Function to prevent from extra space in the navigation paths
+ * @param {string} path path to clean
+ * @returns {string} cleaned path without whitespaces
+ */
 export const cleanPath = path => {
   return path.split("/").map(item => item.trim()).join("/");
 };
