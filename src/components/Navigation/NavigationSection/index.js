@@ -3,6 +3,8 @@ import { Icon } from "@mui/material";
 import PropTypes from "prop-types";
 import Link from "next/link";
 
+import { cleanPath } from "@Utils/strapi/navigation";
+
 const NavigationSection = ({ item, dropdown, color, openingSide }) => {
   const [subDropDown, setSubDropdown] = useState(false);
   const onMouseEnter = () => {
@@ -53,7 +55,7 @@ const NavigationSection = ({ item, dropdown, color, openingSide }) => {
           </button>
         ) : (
           <Link
-            href={item.path}
+            href={cleanPath(item.path)}
             passHref
           >
             <a
@@ -76,7 +78,7 @@ const NavigationSection = ({ item, dropdown, color, openingSide }) => {
               return (
                 <Link
                   key={`${subItem.uiRouterKey}-${subItem.id}`}
-                  href={subItem.path}
+                  href={cleanPath(subItem.path)}
                 >
                   <a
                     target={subItem.external ? "_blank" : ""}

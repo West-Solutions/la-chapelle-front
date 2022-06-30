@@ -118,7 +118,7 @@ const buildNextJsLayers = (items, layer = navigationsLayers[0], parent= "",) =>
     // In the case our page as children, we need to create a directory for it
     if (isWrapper(item)) {
       const dirPath =
-        `${parent ? parent + "/" : ""}${explosedPath[explosedPath.length - 1]}`;
+        `${parent ? parent + "/" : ""}${explosedPath[explosedPath.length - 1].trim()}`;
       if (!fs.existsSync(pagesDirectory + "/" + dirPath)) {
         console.info(`📂 Creating new page directory → ${dirPath}`);
         try {
@@ -139,7 +139,7 @@ const buildNextJsLayers = (items, layer = navigationsLayers[0], parent= "",) =>
     } else if (isInternal(item) && hasRelated(item)) {
       if (item.path === "/") return;
       const filePath =
-        path.join(`${parent ? parent + "/" : ""}${explosedPath[explosedPath.length - 1]}.js`);
+        path.join(`${parent ? parent + "/" : ""}${explosedPath[explosedPath.length - 1].trim()}.js`);
       createTemplate(path.join(pagesDirectory, filePath), item);
     }
 
@@ -148,7 +148,7 @@ const buildNextJsLayers = (items, layer = navigationsLayers[0], parent= "",) =>
       console.info("⏭  This page has no content nore children. Ignoring...");
     }
 
-    const newParent = `${parent ? parent + "/" : ""}${explosedPath[explosedPath.length - 1]}`;
+    const newParent = `${parent ? parent + "/" : ""}${explosedPath[explosedPath.length - 1].trim()}`;
     if (item.items) buildNextJsLayers(item.items, navigationsLayers[navigationsLayers.indexOf(layer) + 1], newParent);
     console.groupEnd();
   });
