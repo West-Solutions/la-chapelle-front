@@ -21,11 +21,11 @@ const NavigationSection = ({ item, dropdown, color, openingSide }) => {
       }
     };
     document.addEventListener("click", handler);
-    document.addEventListener("touchstart", handler);
+    //document.addEventListener("touchstart", handler);
     return () => {
       // Cleanup the event listener
       document.removeEventListener("click", handler);
-      document.removeEventListener("touchstart", handler);
+      //document.removeEventListener("touchstart", handler);
     };
   }, [subDropDown]);
 
@@ -46,8 +46,8 @@ const NavigationSection = ({ item, dropdown, color, openingSide }) => {
             onClick={() => setSubDropdown((prev) => !prev)}
           >
             {item.title}
-            <div className={`absolute top-2.5  ${openingSide === "left" ? "md:left-1" : "md:right-1"}`}>
-              <Icon className="hidden md:block">{`chevron_${openingSide}`}</Icon>
+            <div className={`absolute hidden md:block top-2.5  ${openingSide === "left" ? "md:left-1" : "md:right-1"}`}>
+              <Icon>{`chevron_${openingSide}`}</Icon>
             </div>
           </button>
         ) : (

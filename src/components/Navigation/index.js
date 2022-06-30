@@ -46,11 +46,11 @@ const Navigation = ({ items, config }) => {
       }
     };
     document.addEventListener("click", handler);
-    document.addEventListener("touchstart", handler);
+    //document.addEventListener("touchstart", handler);
     return () => {
       // Cleanup the event listener
       document.removeEventListener("click", handler);
-      document.removeEventListener("touchstart", handler);
+      //document.removeEventListener("touchstart", handler);
     };
   }, [mobileDropdown]);
 
