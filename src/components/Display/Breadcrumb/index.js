@@ -10,20 +10,25 @@ const Breadcrumb = ({ app }) => {
   const router = useRouter();
   const breadcrumbs = React.useMemo(() => {
     const asPathNestedRoutes = router.asPath.split("/").filter(v => v.length > 0);
-    const crumblist = asPathNestedRoutes.map((_, idx) => {
-      const href = "/" + asPathNestedRoutes.slice(0, idx + 1).join("/");
-      const { isLink, title } = getRouteInformation(app.navigation, asPathNestedRoutes.slice(0, idx + 1));
-      return { href, text: title, isLink };
-    });
+    const crumblist =
+      asPathNestedRoutes
+        .map((_, idx) => {
+          const href = "/" + asPathNestedRoutes.slice(0, idx + 1).join("/");
+          const { isLink, title } = getRouteInformation(
+            app.navigation, asPathNestedRoutes.slice(0, idx + 1)
+          );
+          return { href, text: title, isLink };
+        })
+        .filter(({ text }) => !!text);
 
     return [{ href: "/", text: "Accueil", isLink: true }, ...crumblist];
   }, [router.asPath]);
 
   return (
-    <div className="bg-zinc-100 hidden md:block">
+    <div className="hidden md:block">
       <div className="flex flex-row gap-2 container mx-auto p-4 md:px-20 pb-0">
-        {breadcrumbs.map((crumb, idx) => (
-          <Crumb {...crumb} key={crumb.href} last={idx === breadcrumbs.length - 1} />
+        {breadcrumbs.filter(({ text }) => !!text).map((crumb, idx) => (
+          <Crumb {...crumb} key={crumb.href} last={ idx === breadcrumbs.length - 1} />
         ))}
       </div>
     </div>

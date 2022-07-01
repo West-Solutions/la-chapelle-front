@@ -28,12 +28,14 @@ const App = ({ Component, pageProps: page, app }) => {
         />
       </Head>
       <ColorsContext.Provider value={app.colors}>
-        <>
-          <Header app={app}/>
-          <Breadcrumb app={app} />
-          <Component { ...{ page, app }} />
+        <div className="min-h-screen flex flex-col justify-between bg-zinc-100">
+          <div>
+            <Header app={app}/>
+            <Breadcrumb app={app} />
+            <Component { ...{ page, app }} />
+          </div>
           <Footer app={app} />
-        </>
+        </div>
       </ColorsContext.Provider>
     </React.Fragment>
   );
