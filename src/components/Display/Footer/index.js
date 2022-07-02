@@ -15,7 +15,7 @@ const Footer = ({ app }) => {
 
   return (
     <footer className="bg-pied-de-page text-white">
-      <div className="container flex flex-col md:flex-row gap-4 justify-between items-center mx-auto p-4 overflow-hidden">
+      <div className="container mx-auto flex flex-col align-middle md:flex-row gap-8 md:justify-between p-4 md:px-0 items-center overflow-hidden">
         <ContactInfo contact={contact} />
         <MapWithNoSSR style={{ height, width }} position={position} />
         <OpeningDays openingDays={openingDays} />
