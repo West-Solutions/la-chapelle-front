@@ -29,6 +29,43 @@
     --ck-z-default: 1;
   }
 
+  h1 {
+    font-weight: 600;
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--current);
+  }
+
+  h2 {
+    font-weight: 600;
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    color: var(--current);
+
+  }
+
+  h3 {
+    font-weight: 600;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    color: var(--current);
+  }
+
+  h4 {
+    font-weight: 600;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    color: var(--current);
+  }
+
   /* ckeditor5-block-quote/theme/blockquote.css */
   blockquote {
     overflow: hidden;
@@ -102,7 +139,11 @@
   }
   /* ckeditor5-image/theme/image.css */
   .image img {
-    border: solid 1px hsl(0, 0%, 80%);
+    border-radius: 0.375rem;
+    --tw-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+    --tw-shadow-colored: 3px 3px 6px var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+    border-radius: 0.375rem;
     display: block;
     margin: 0 auto;
     max-width: 100%;
