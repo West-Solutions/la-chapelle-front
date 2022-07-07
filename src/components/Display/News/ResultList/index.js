@@ -8,7 +8,7 @@ import { fetchFromDataAttribute } from "@Utils/strapi/core";
 
 const NewsResultList = ({ news }) => {
   return (
-    <div className="flex flex-col max-w-3xl m-auto gap-4 md:gap-8">
+    <div className="flex flex-col max-w-3xl m-auto gap-4 md:gap-8 mb-8">
       {news.map(({ id, attributes }) => {
         const { title, updatedAt, illustration, slug, description } = attributes;
         return (
@@ -16,7 +16,7 @@ const NewsResultList = ({ news }) => {
             key={id}
             href={`/actualites/${slug}`}
           >
-            <a className="w-full rounded shadow-lg hover:shadow-normal hover:cursor-pointer hover:scale-[1.01] transition-transform">
+            <a className="w-full rounded-md overflow-hidden shadow-lg hover:shadow-normal hover:cursor-pointer hover:scale-[1.01] transition-transform">
               <div className="flex items-center h-[118px] md:h-[200px] bg-white">
                 <div className="h-full aspect-square">
                   <img

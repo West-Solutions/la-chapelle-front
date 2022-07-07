@@ -4,8 +4,8 @@ import PropTypes from "prop-types";
 import useColor from "@Hooks/useColor";
 import ColorsContext from "@Contexts/ColorsContext";
 
-import NewsServices from "@Services/News";
 import Title from "@Display/Title";
+import NewsServices from "@Services/News";
 import NewsResultList from "@Display/News/ResultList";
 
 const NewsIndexPage = ({ page }) => {
@@ -23,7 +23,7 @@ const NewsIndexPage = ({ page }) => {
 };
 
 export const getStaticProps = async () => {
-  const { data } = await NewsServices.getAll({ populate: "illustration" });
+  const { data } = await NewsServices.getAll({ populate: "illustration", sort: ["updatedAt:desc"] });
 
   return {
     props: { news: data },
