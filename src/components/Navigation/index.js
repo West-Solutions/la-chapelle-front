@@ -36,6 +36,7 @@ const Navigation = ({ items, config }) => {
       }
     };
     window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   });
 
   // Change the dropdown state when user click outside

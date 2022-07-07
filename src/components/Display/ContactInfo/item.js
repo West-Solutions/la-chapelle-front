@@ -3,9 +3,11 @@ import PropTypes from "prop-types";
 
 const ContactInfoItem = ({ icon, text }) => (
   <div className="flex gap-2 items-start">
-    {icon && icon}
+    <div>
+      {icon && icon}
+    </div>
     {text && (
-      <div>{text}</div>
+      <div className="font-light w-full">{text}</div>
     )}
   </div>
 );

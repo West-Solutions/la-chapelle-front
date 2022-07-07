@@ -10,12 +10,12 @@ const ContactInfo = ({ contact }) => {
   if (!contact) return null;
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-2 items-center md:items-start">
       <ContactInfoItem
-        icon={<Icon>map</Icon>}
+        icon={<span className="hidden md:inline"><Icon>map</Icon></span>}
         text={(
-          <div>
-            <div>{contact.street}</div>
+          <div className="flex flex-col items-center md:block">
+            <div className="flex flex-row gap-2"><span className="md:hidden"><Icon>map</Icon></span>{contact.street}</div>
             <div>{contact.zipCode} - {contact.city}</div>
           </div>
         )}
@@ -23,7 +23,7 @@ const ContactInfo = ({ contact }) => {
       <ContactInfoItem
         icon={<Icon>phone</Icon>}
         text={(
-          <Link href={`tel:${contact.phoneNumber}`}>
+          <Link className="w-full" href={`tel:${contact.phoneNumber}`}>
             <a href={`tel:${contact.phoneNumber}`}>
               {contact.phoneNumber}
             </a>
@@ -33,7 +33,7 @@ const ContactInfo = ({ contact }) => {
       <ContactInfoItem
         icon={<Icon>email</Icon>}
         text={(
-          <Link href={`mailto:${contact.email}`}>
+          <Link className="w-full" href={`mailto:${contact.email}`}>
             <a>
               {contact.email}
             </a>
