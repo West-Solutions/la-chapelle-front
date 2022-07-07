@@ -35,10 +35,10 @@ export const getStaticProps = async () => {
     });
     if (!news || !news.data.attributes || news.data.attributeslength < newsNumber) {
       // WIP
-      const newsCompletion = await NewsServices.getAll({
-        populate: "illustration",
-        "filters[homePage][$eq]": true,
-      });
+      // const newsCompletion = await NewsServices.getAll({
+      //   populate: "illustration",
+      //   "filters[homePage][$eq]": true,
+      // });
 
     }
     quickAccesses = await QuickAccesses.getAll({
