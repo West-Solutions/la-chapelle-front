@@ -17,6 +17,13 @@ const PageRenderer = ({ app, page }) => {
   const colors = useContext(ColorsContext);
   const sectionColor = useColor(colors);
 
+  React.useEffect(() => {
+    const colorHasHexa = colors.find(({ attributes }) => attributes.var === sectionColor);
+    if (typeof document !== "undefined" && colorHasHexa)
+      document.body.style.setProperty("--current", colorHasHexa.attributes.hexa);
+  }, [sectionColor]);
+
+
   const { data } = page;
   const { Contenu = [], title } = data.attributes;
 
