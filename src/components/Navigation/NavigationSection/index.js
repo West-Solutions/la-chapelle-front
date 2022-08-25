@@ -69,7 +69,7 @@ const NavigationSection = ({ item, dropdown, color, openingSide }) => {
         )
       }
       {
-        item.items && item.type ==="WRAPPER" &&
+        item.items && item.type === "WRAPPER" &&
         <div className={`md:absolute ${
           openingSide === "left" ? "right-full shadow-normal-left" : " left-full shadow-normal"
         } flex flex-col top-0 bg-${color} ${subDropDown ? "show" : "hidden"}`}>
