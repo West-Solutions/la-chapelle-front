@@ -5,7 +5,7 @@ const OpeningDays = ({ openingDays }) => {
 
 
   return (
-    <div>
+    <div className="flex-1 text-center">
       {openingDays.map(({ id, weekDay, openingHours }) => (
         <p key={id}>{weekDay} : {openingHours}</p>
       )

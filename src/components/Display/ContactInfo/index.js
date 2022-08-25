@@ -10,7 +10,7 @@ const ContactInfo = ({ contact }) => {
   if (!contact) return null;
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-1 flex-col gap-2">
       <ContactInfoItem
         icon={<Icon>map</Icon>}
         text={(

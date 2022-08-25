@@ -2,6 +2,8 @@ import React  from "react";
 import dynamic from "next/dynamic";
 import PropTypes from "prop-types";
 
+import Link from "next/link";
+
 import ContactInfo from "@Display/ContactInfo";
 import OpeningDays from "@Display/OpeningDays";
 const MapWithNoSSR = dynamic(() => import("@Display/Map"), {
@@ -14,10 +16,15 @@ const Footer = ({ app }) => {
   const { height, width, position } = mapFooter || {};
   return (
     <footer className="bg-pied-de-page text-white">
-      <div className="container mx-auto flex flex-col md:flex-row gap-4 justify-between items-center mx-auto p-4 overflow-hidden">
+      <div className="container mx-auto flex flex-col md:flex-row gap-4 justify-between items-center py-6 overflow-hidden">
         <ContactInfo contact={contact} />
         <MapWithNoSSR style={{ height, width }} position={position} />
         <OpeningDays openingDays={openingDays} />
+      </div>
+      <div className="container mx-auto text-center pb-4">
+        <Link href="/mentions-legales">
+          <a className="text-white">Mentions légales</a>
+        </Link>
       </div>
     </footer>
   );
