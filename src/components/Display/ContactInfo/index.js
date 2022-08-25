@@ -19,6 +19,7 @@ const ContactInfo = ({ contact }) => {
             <div>{contact.zipCode} - {contact.city}</div>
           </div>
         )}
+        className="font-light"
       />
       <ContactInfoItem
         icon={<Icon>phone</Icon>}
@@ -29,6 +30,7 @@ const ContactInfo = ({ contact }) => {
             </a>
           </Link>
         )}
+        className="font-light"
       />
       <ContactInfoItem
         icon={<Icon>email</Icon>}
@@ -39,6 +41,7 @@ const ContactInfo = ({ contact }) => {
             </a>
           </Link>
         )}
+        className="font-light"
       />
     </div>
   );
