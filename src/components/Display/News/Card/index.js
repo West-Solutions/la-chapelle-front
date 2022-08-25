@@ -31,6 +31,7 @@ const NewsCard = ({ news }) => {
             <img
               className="h-full w-full object-cover object-center"
               src={pathAsAbsolute(fetchFromDataAttribute(illustration).url)}
+              alt={fetchFromDataAttribute(illustration).alternativeText}
             />
           </div>
           <div className="flex flex-col h-full overflow-hidden items-center transition-all duration-500">
