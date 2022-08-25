@@ -45,7 +45,7 @@ const Hero = ({ config, contact }) => {
           </a>
         </Link>
       </div>
-      <div className="text-xl flex flex-col bg-gray-100 bg-opacity-70 p-4 h-full 2xl:w-2/6 xl:w-2/5 lg:w-1/2 w-3/5">
+      <div className="text-xl flex flex-col bg-gray-300 bg-opacity-80 p-4 h-full 2xl:w-2/6 xl:w-2/5 lg:w-1/2 w-3/5">
         <div className="flex flex-col gap-2">
           <h2 className="text-center font-bold text-4xl mb-2">{websiteName}</h2>
           <ContactInfoItem
