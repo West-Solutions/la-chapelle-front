@@ -9,7 +9,6 @@ const Image = ({ src, imageClassName, containerClassName, isFullscreen, onCloseF
 
   const [fullscreen, setFullscreen] = React.useState(isFullscreen);
 
-
   const handleFullscreen = () => {
     if (fullscreen){
       onCloseFullscreen();
@@ -25,6 +24,7 @@ const Image = ({ src, imageClassName, containerClassName, isFullscreen, onCloseF
           className={`rounded-md cursor-pointer ${imageClassName}`}
           src={pathAsAbsolute(fetchFromDataAttribute(src).url)}
           onClick={handleFullscreen}
+          alt={fetchFromDataAttribute(src).alternativeText}
         />
       )}
       <div
@@ -34,6 +34,7 @@ const Image = ({ src, imageClassName, containerClassName, isFullscreen, onCloseF
         <img
           className="rounded-md object-contain mx-auto max-h-[95%] max-w-[95%]"
           src={pathAsAbsolute(fetchFromDataAttribute(src).url)}
+          alt={fetchFromDataAttribute(src).alternativeText}
         />
       </div>
     </div>

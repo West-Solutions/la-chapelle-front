@@ -23,6 +23,7 @@ const NewsResultList = ({ news }) => {
                   <img
                     className="w-full h-full object-cover rounded-l"
                     src={pathAsAbsolute(fetchFromDataAttribute(illustration).url)}
+                    alt={fetchFromDataAttribute(illustration).alternativeText}
                   />
                 </div>
                 <div className=" flex flex-col justify-center gap-2 p-2 border border-l-0 border-slate-100 h-full">

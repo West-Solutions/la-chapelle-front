@@ -41,6 +41,7 @@ const Hero = ({ config, contact }) => {
             <img
               className="object-center w-60 h-auto p-2 bg-white bg-opacity-80 rounded-md"
               src={logoUrl}
+              alt={`${websiteName}-hero-image`}
             />
           </a>
         </Link>

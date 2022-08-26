@@ -21,6 +21,7 @@ const QuickAccess = ({ quickAccesses }) => {
             <img
               className="h-full w-full text-xl object-contain rounded-t-md"
               src={pathAsAbsolute(fetchFromDataAttribute(logo).url)}
+              alt={fetchFromDataAttribute(logo).alternativeText}
             />
           </div>
           <div className="h-1/3 flex text-zinc-700 w-full justify-center items-center border-t pt-3 pb-2">

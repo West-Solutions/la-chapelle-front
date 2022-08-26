@@ -70,6 +70,7 @@ const Navigation = ({ items, config }) => {
               <img
                 className="p-2 h-16"
                 src={faviconUrl}
+                alt={pathAsAbsolute(fetchFromDataAttribute(favicon).alternativeText)}
               />
               <span className="w-1/2 text-center">{websiteName}</span>
             </a>
