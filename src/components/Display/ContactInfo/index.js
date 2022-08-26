@@ -10,7 +10,7 @@ const ContactInfo = ({ contact }) => {
   if (!contact) return null;
 
   return (
-    <div className="flex flex-col gap-2 items-center md:items-start">
+    <div className="flex flex-1 flex-col gap-2 items-center md:items-start">
       <ContactInfoItem
         icon={<span className="hidden md:inline"><Icon>map</Icon></span>}
         text={(
@@ -19,6 +19,7 @@ const ContactInfo = ({ contact }) => {
             <div>{contact.zipCode} - {contact.city}</div>
           </div>
         )}
+        className="font-light"
       />
       <ContactInfoItem
         icon={<Icon>phone</Icon>}
@@ -29,6 +30,7 @@ const ContactInfo = ({ contact }) => {
             </a>
           </Link>
         )}
+        className="font-light"
       />
       <ContactInfoItem
         icon={<Icon>email</Icon>}
@@ -39,6 +41,7 @@ const ContactInfo = ({ contact }) => {
             </a>
           </Link>
         )}
+        className="font-light"
       />
     </div>
   );

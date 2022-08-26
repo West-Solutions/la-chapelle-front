@@ -5,9 +5,9 @@ const OpeningDays = ({ openingDays }) => {
 
 
   return (
-    <div className="flex flex-col items-center md:items-start">
+    <div className="flex flex-1 flex-col items-center">
       {openingDays.map(({ id, weekDay, openingHours }) => (
-        <p className="font-light" key={id}><span className="font-normal">{weekDay}</span> : {openingHours}</p>
+        <p className="font-light text-center" key={id}><span className="font-normal">{weekDay}</span> : {openingHours}</p>
       )
       )}
     </div>
