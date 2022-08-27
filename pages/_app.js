@@ -8,7 +8,8 @@ import ConfigServices from "@Services/Config";
 import ContactServices from "@Services/Contact";
 import NavigationServices from "@Services/Navigation";
 
-import { cleanResults } from "@Utils/strapi/core";
+import { pathAsAbsolute } from "@Utils/strapi/media";
+import { cleanResults, fetchFromDataAttribute } from "@Utils/strapi/core";
 
 import Header from "@Display/Header";
 import Footer from "@Display/Footer";
@@ -19,12 +20,29 @@ import "../src/styles/index.scss";
 import Breadcrumb from "@Display/Breadcrumb";
 
 const App = ({ Component, pageProps: page, app }) => {
+  const favicon = app.config.favicon;
+  const faviconUrl = pathAsAbsolute(fetchFromDataAttribute(favicon).url);
   return (
     <React.Fragment>
       <Head>
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        />
+        <link rel="icon" type="image/png" href={faviconUrl} />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta
+          name="Content-Security-Policy"
+          content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:;"
+        />
+        <meta name="Cache-Control" content="max-age=31536000" />
+        <meta name="X-Frame-Options" content="SAMEORIGIN" />
+        <meta name="X-Content-Type-Options" content="nosniff" />
+        <meta name="X-XSS-Protection" content="1; mode=block" />
+        <meta name="Referrer-Policy" content="strict-origin-when-cross-origin" />
+        <meta
+          name="Feature-Policy"
+          content="accelerometer 'none'; ambient-light-sensor 'none'; autoplay 'none'; camera 'none'; encrypted-media 'none'; geolocation 'none'; gyroscope 'none'; magnetometer 'none'; microphone 'none'; midi 'none'; payment 'none'; picture-in-picture 'none'; speaker 'none'; sync-xhr 'none'; usb 'none'; vr 'none';"
         />
       </Head>
       <ColorsContext.Provider value={app.colors}>

@@ -40,7 +40,8 @@ export const getStaticProps = async () => {
       ...page,
       news: news.data,
       quickAccesses: quickAccesses.data
-    }
+    },
+    revalidate: 31536000,
   };
 };
 

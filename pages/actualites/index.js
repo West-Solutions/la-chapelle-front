@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
+import Head from "next/head";
 
 import useColor from "@Hooks/useColor";
 import ColorsContext from "@Contexts/ColorsContext";
@@ -15,10 +16,15 @@ const NewsIndexPage = ({ page }) => {
   const sectionColor = useColor(colors);
 
   return (
-    <main className="container mx-auto">
-      <Title text="Actualités" semantic="H1" color={sectionColor} position="center" />
-      <NewsResultList news={news} />
-    </main>
+    <React.Fragment>
+      <Head>
+        <title>{"La Chapelle Aux Filtzméens | Actualités"}</title>
+      </Head>
+      <main className="container mx-auto">
+        <Title text="Actualités" semantic="H1" color={sectionColor} position="center" />
+        <NewsResultList news={news} />
+      </main>
+    </React.Fragment>
   );
 };
 
@@ -27,7 +33,7 @@ export const getStaticProps = async () => {
 
   return {
     props: { news: data },
-    revalidate: 1,
+    revalidate: 31536000,
   };
 };
 

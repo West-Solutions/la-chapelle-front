@@ -23,14 +23,17 @@ const PageRenderer = ({ app, page }) => {
       document.body.style.setProperty("--current", colorHasHexa.attributes.hexa);
   }, [sectionColor]);
 
-
   const { data } = page;
-  const { Contenu = [], title } = data.attributes;
+  const { Contenu = [], title, description = "" } = data.attributes;
+
+  const websiteDescription = app.config.websiteDescription;
 
   return (
     <React.Fragment>
       <Head>
         <title>{`${app.config.websiteName} | ${title}`}</title>
+        <meta name="keywords" content={`${title}, ${app.config.websiteName}`} />
+        <meta name="description" content={description || websiteDescription} />
       </Head>
       <main className="container mx-auto p-4 pb-12 lg:px-20">
         <Title text={title} semantic="H1" color={sectionColor} position="center" />
@@ -50,6 +53,7 @@ const PageRenderer = ({ app, page }) => {
 PageRenderer.propTypes = {
   app: PropTypes.shape({
     config: PropTypes.shape({
+      websiteDescription: PropTypes.string,
       websiteName: PropTypes.string
     }),
     news: PropTypes.arrayOf(PropTypes.shape({})),
@@ -58,6 +62,7 @@ PageRenderer.propTypes = {
   page: PropTypes.shape({
     data: PropTypes.shape({
       attributes: PropTypes.shape({
+        description: PropTypes.string,
         title: PropTypes.string,
         Contenu: PropTypes.arrayOf(
           PropTypes.shape({

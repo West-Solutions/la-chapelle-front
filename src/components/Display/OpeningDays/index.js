@@ -6,6 +6,7 @@ const OpeningDays = ({ openingDays }) => {
 
   return (
     <div className="flex flex-1 flex-col items-center">
+      <p className="text-xl lg:text-2xl font-semibold">Horaires d&apos;ouverture :</p>
       {openingDays.map(({ id, weekDay, openingHours }) => (
         <p className="font-light text-center" key={id}><span className="font-normal">{weekDay}</span> : {openingHours}</p>
       )
