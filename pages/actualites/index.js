@@ -28,8 +28,12 @@ const NewsIndexPage = ({ page }) => {
   );
 };
 
-export const getStaticProps = async () => {
+export const getStaticProps = async (_, res) => {
   const { data } = await NewsServices.getAll({ populate: "illustration" });
+  res.setHeader(
+    "Cache-Control",
+    "public, s-maxage=31536000, stale-while-revalidate"
+  );
 
   return {
     props: { news: data },
