@@ -8,7 +8,8 @@ import ConfigServices from "@Services/Config";
 import ContactServices from "@Services/Contact";
 import NavigationServices from "@Services/Navigation";
 
-import { cleanResults } from "@Utils/strapi/core";
+import { pathAsAbsolute } from "@Utils/strapi/media";
+import { cleanResults, fetchFromDataAttribute } from "@Utils/strapi/core";
 
 import Header from "@Display/Header";
 import Footer from "@Display/Footer";
@@ -19,6 +20,8 @@ import "../src/styles/index.scss";
 import Breadcrumb from "@Display/Breadcrumb";
 
 const App = ({ Component, pageProps: page, app }) => {
+  const favicon = app.config.favicon;
+  const faviconUrl = pathAsAbsolute(fetchFromDataAttribute(favicon).url);
   return (
     <React.Fragment>
       <Head>
@@ -26,6 +29,8 @@ const App = ({ Component, pageProps: page, app }) => {
           rel="stylesheet"
           href="https://fonts.googleapis.com/icon?family=Material+Icons"
         />
+        <link rel="icon" type="image/png" href={faviconUrl} />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <ColorsContext.Provider value={app.colors}>
         <div className="min-h-screen flex flex-col justify-between bg-zinc-100">
