@@ -35,7 +35,7 @@ const App = ({ Component, pageProps: page, app }) => {
           name="Content-Security-Policy"
           content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:;"
         />
-        <meta httpEquiv="Cache-Control" content="max-age=31536000" />
+        <meta name="Cache-Control" content="max-age=31536000" />
         <meta name="X-Frame-Options" content="SAMEORIGIN" />
         <meta name="X-Content-Type-Options" content="nosniff" />
         <meta name="X-XSS-Protection" content="1; mode=block" />
