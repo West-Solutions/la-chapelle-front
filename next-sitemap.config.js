@@ -9,8 +9,7 @@ const NEXT_SSG_FILES = [
   "/*.json$",
   "/*_buildManifest.js$",
   "/*_middlewareManifest.js$",
-  "/*_ssgManifest.js$",
-  "/*.js$",
+  "/*_ssgManifest.js$"
 ];
 
 module.exports = {
