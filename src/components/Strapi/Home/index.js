@@ -18,7 +18,7 @@ const StrapiHome = ({ page, sectionColor }) => {
         </div>
       </div>
       <div className={"w-full lg:w-1/3"}>
-        <h2 className={`text-4xl pb-4 text-${sectionColor}`}>Acces rapides</h2>
+        <h2 className={`text-4xl pb-4 text-${sectionColor}`}>Accès rapides</h2>
         <div className='grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-2 gap-4 bg-quick-access rounded-md p-2 lg:p-4 shadow-lg border-px border-zinc-400'>
           {quickAccesses.map(({ id, attributes }) => (
             <QuickAccess key={id} quickAccesses={attributes} />
