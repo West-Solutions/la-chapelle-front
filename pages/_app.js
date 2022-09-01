@@ -35,15 +35,6 @@ const App = ({ Component, pageProps: page, app }) => {
           name="Content-Security-Policy"
           content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:;"
         />
-        <meta name="Cache-Control" content="max-age=31536000" />
-        <meta name="X-Frame-Options" content="SAMEORIGIN" />
-        <meta name="X-Content-Type-Options" content="nosniff" />
-        <meta name="X-XSS-Protection" content="1; mode=block" />
-        <meta name="Referrer-Policy" content="strict-origin-when-cross-origin" />
-        <meta
-          name="Feature-Policy"
-          content="accelerometer 'none'; ambient-light-sensor 'none'; autoplay 'none'; camera 'none'; encrypted-media 'none'; geolocation 'none'; gyroscope 'none'; magnetometer 'none'; microphone 'none'; midi 'none'; payment 'none'; picture-in-picture 'none'; speaker 'none'; sync-xhr 'none'; usb 'none'; vr 'none';"
-        />
       </Head>
       <ColorsContext.Provider value={app.colors}>
         <div className="min-h-screen flex flex-col justify-between bg-zinc-100">
