@@ -9,7 +9,6 @@ import { fetchFromDataAttribute } from "@Utils/strapi/core";
 const NewsResultList = ({ news }) => {
   return (
     <div className="flex flex-col max-w-3xl m-auto gap-4 md:gap-8">
-      <h5 className="text-3xl w-full m-auto text-center">Les derniéres actualités</h5>
       {news.map(({ id, attributes }) => {
         const { title, updatedAt, illustration, slug, description } = attributes;
         return (
