@@ -17,7 +17,7 @@ const ButtonLink = ({ text, src, color, position }) => {
       { isInternal ? (
         <Link href={src}>
           <a
-            className={`w-full max-w-lg self-center text-center text-white bg-${color} p-2 rounded-md font-bold shadow-md hover:shadow-normal hover:opacity-80 transition-all`}
+            className={`w-full max-w-lg self-center text-center text-white bg-${color} p-2 rounded-md font-bold shadows-lg hover:shadow-normal hover:opacity-90 transition-all`}
           >
             {text}
           </a>
@@ -27,7 +27,7 @@ const ButtonLink = ({ text, src, color, position }) => {
           href={src}
           target="_blank"
           rel="noopener noreferrer"
-          className={`w-full max-w-lg self-center text-center text-white bg-${color} p-2 rounded-md font-bold shadow-md hover:shadow-normal hover:opacity-80 transition-all`}
+          className={`w-full max-w-lg self-center text-center text-white bg-${color} p-2 rounded-md font-bold shadows-lg hover:shadow-normal hover:opacity-90 transition-all`}
         >
           {text}
         </a>

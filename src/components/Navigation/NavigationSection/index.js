@@ -33,7 +33,7 @@ const NavigationSection = ({ item, dropdown, color, openingSide }) => {
 
   return (
     <div
-      className={`bg-${color} ${dropdown ? "show" : "hidden"} md:relative`}
+      className={`bg-${color} hover:bg-${color}-light ${dropdown ? "show" : "hidden"} md:relative`}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       ref={ref}
