@@ -13,7 +13,7 @@ const ButtonDocument = ({ color, text, src, position }) => {
       <a
         href={src}
         target={"_blank"}
-        className={`bg-${color} w-full max-w-lg flex items-center gap-2 justify-center text-center text-white text-lg p-2 font-bold rounded-lg hover:opacity-75 hover:shadow-normal transition-all`}
+        className={`bg-${color} w-full max-w-lg flex items-center gap-2 justify-center text-center text-white text-lg p-2 font-bold rounded-lg shadow-md hover:opacity-75 hover:shadow-normal transition-all`}
         rel="noreferrer"
       >
         <Icon>picture_as_pdf_icon</Icon><span>{text}</span>
