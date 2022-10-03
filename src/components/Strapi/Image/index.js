@@ -12,8 +12,7 @@ const StrapiImage = ({ legend, src, showLegend, position }) => {
   return (
     <div className="w-full flex flex-col">
       <Image src={src} containerClassName={`flex ${imagePosition}`} imageClassName="max-h-[80vh] shadow-normal"/>
-      {showLegend && <p className={"text-center text-gray-600 text-xs mt-2"}>{legend}</p>}
-
+      {showLegend && <p className={`text-${positionValue} text-gray-600 text-xs mt-2`}>{legend}</p>}
     </div>
   );
 };
