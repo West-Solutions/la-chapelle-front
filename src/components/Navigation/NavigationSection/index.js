@@ -83,7 +83,7 @@ const NavigationSection = ({ item, dropdown, color, openingSide }) => {
                   <a
                     target={subItem.external ? "_blank" : ""}
                     rel={subItem.external ? "noopener noreferrer" : ""}
-                    className="text-white text-xl text-center py-2 px-4 whitespace-nowrap"
+                    className={`text-white text-xl text-center py-2 px-4 whitespace-nowrap hover:bg-${color}-light`}
                   >
                     {subItem.title}
                   </a>

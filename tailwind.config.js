@@ -7,6 +7,7 @@ const safelistColors = () => {
   Object.keys(colors).forEach(key => {
     safelist.push(
       `bg-${key}`,
+      `hover:bg-${key}`,
       `text-${key}`,
       `fill-${key}`,
       `border-${key}`,

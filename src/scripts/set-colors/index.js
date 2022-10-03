@@ -35,7 +35,7 @@ fetchColor().then(colors => {
   const colorsObject = {};
   colors.data.forEach(({ attributes }) => {
     colorsObject[attributes.var] = attributes.hexa;
-    colorsObject[`${attributes.var}-light`] = _shadeColor(attributes.hexa, 20);
+    colorsObject[`${attributes.var}-light`] = _shadeColor(attributes.hexa, 10);
   });
   writeColorJson(colorsObject);
   console.info("✅ Colors setted!");
