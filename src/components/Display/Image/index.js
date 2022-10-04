@@ -5,7 +5,7 @@ import { pathAsAbsolute } from "@Utils/strapi/media";
 import { fetchFromDataAttribute } from "@Utils/strapi/core";
 
 
-const Image = ({ src, imageClassName, containerClassName, isFullscreen, onCloseFullscreen }) => {
+const Image = ({ src, imageClassName, containerClassName, isFullscreen, onCloseFullscreen, legend, showLegend }) => {
 
   const [fullscreen, setFullscreen] = React.useState(isFullscreen);
 
@@ -19,14 +19,17 @@ const Image = ({ src, imageClassName, containerClassName, isFullscreen, onCloseF
 
   return (
     <div className={`w-full h-full ${containerClassName}`}>
-      {!isFullscreen && (
-        <img
-          className={`rounded-md cursor-pointer ${imageClassName}`}
-          src={pathAsAbsolute(fetchFromDataAttribute(src).url)}
-          onClick={handleFullscreen}
-          alt={fetchFromDataAttribute(src).alternativeText}
-        />
-      )}
+      <div>
+        {!isFullscreen && (
+          <img
+            className={`rounded-md cursor-pointer ${imageClassName}`}
+            src={pathAsAbsolute(fetchFromDataAttribute(src).url)}
+            onClick={handleFullscreen}
+            alt={fetchFromDataAttribute(src).alternativeText}
+          />
+        )}
+        {showLegend && <p className={"text-center text-gray-600 text-xs mt-2"}>{legend}</p>}
+      </div>
       <div
         className={`fixed ${fullscreen ? "block" : "hidden"} flex items-center z-[9999] h-screen top-0 right-0 left-0 cursor-pointer bg-zinc-500 bg-opacity-70`}
         onClick={handleFullscreen}
@@ -52,7 +55,9 @@ Image.propTypes = {
     })
   }),
   isFullscreen: PropTypes.bool,
-  onCloseFullscreen: PropTypes.func
+  onCloseFullscreen: PropTypes.func,
+  legend: PropTypes.string,
+  showLegend: PropTypes.bool
 };
 
 Image.defaultProps = {
@@ -60,7 +65,9 @@ Image.defaultProps = {
   imageClassName: "",
   src: {},
   isFullscreen: false,
-  onCloseFullscreen: () => {}
+  onCloseFullscreen: () => {},
+  legend: "",
+  showLegend: false
 };
 
 export default Image;
