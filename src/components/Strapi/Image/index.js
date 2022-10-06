@@ -11,7 +11,12 @@ const StrapiImage = ({ legend, src, showLegend, position }) => {
   const imagePosition = positionValue === "left" ? "justify-start" : positionValue === "right" ? "justify-end" : "justify-center";
   return (
     <div className="w-full">
-      <Image src={src} containerClassName={`flex ${imagePosition}`} imageClassName="max-h-[80vh] shadow-normal" legend={legend} showLegend={showLegend} />
+      <Image
+        src={src}
+        containerClassName={`flex ${imagePosition}`}
+        imageClassName="max-h-[80vh] shadow-normal"
+        legend={legend}
+        showLegend={showLegend} />
     </div>
   );
 };
