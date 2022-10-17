@@ -13,11 +13,11 @@ const Title = ({ text, semantic, color, position }) => {
     case "H2":
       return <h2 className={`${className}  text-3xl my-4 lg:text-4xl font-semibold`}>{text}</h2>;
     case "H3":
-      return <h3 className={`${className} text-2xl my-4 lg:text-3xl font-semibold`}>{text}</h3>;
+      return <h3 className={`${className} text-2xl my-3 lg:text-3xl font-semibold`}>{text}</h3>;
     case "H4":
-      return <h4 className={`${className} text-xl my-4 lg:text-2xl font-semibold`}>{text}</h4>;
+      return <h4 className={`${className} text-xl my-3 lg:text-2xl font-semibold`}>{text}</h4>;
     case "H5":
-      return <h5 className={`${className} text-lg my-3 lg:text-xl font-semibold`}>{text}</h5>;
+      return <h5 className={`${className} text-lg my-2 lg:text-xl font-semibold`}>{text}</h5>;
     case "H6":
       return <h6 className={`${className} text-md my-2 lg:text-lg font-bold`}>{text}</h6>;
     default:

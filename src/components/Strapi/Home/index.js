@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 import NewsCard from "@Display/News/Card";
 import QuickAccess from "@Display/QuickAccess";
+import ButtonLink from "@Components/Controls/Button/Link";
 
 const StrapiHome = ({ page, sectionColor }) => {
   const { quickAccesses, news } = page;
@@ -15,11 +16,17 @@ const StrapiHome = ({ page, sectionColor }) => {
           {news.map(({ id, attributes }) => (
             <NewsCard key={id} news={attributes} />
           ))}
+          <ButtonLink
+            text={"Voir toutes les actualités"}
+            src={"/actualites"}
+            color={sectionColor}
+            position={"left"}
+          />
         </div>
       </div>
       <div className={"w-full lg:w-1/3"}>
         <h2 className={`text-4xl pb-4 text-${sectionColor}`}>Accès rapides</h2>
-        <div className='grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-2 gap-4 bg-quick-access rounded-md p-2 lg:p-4 shadow-lg border-px border-zinc-400'>
+        <div className='grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-2 gap-4 bg-quick-access rounded-md p-2 lg:p-4 shadow-lg border-px border-zinc-400'>
           {quickAccesses.map(({ id, attributes }) => (
             <QuickAccess key={id} quickAccesses={attributes} />
           ))}
