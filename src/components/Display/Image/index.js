@@ -28,7 +28,7 @@ const Image = ({ src, imageClassName, containerClassName, isFullscreen, onCloseF
             alt={fetchFromDataAttribute(src).alternativeText}
           />
         )}
-        {showLegend && <p className={"text-center text-gray-600 text-xs mt-2"}>{legend}</p>}
+        {showLegend && <p className={"text-center text-gray-600 text-sm mt-2"}>{legend}</p>}
       </div>
       <div
         className={`fixed ${fullscreen ? "block" : "hidden"} flex items-center z-[9999] h-screen top-0 right-0 left-0 cursor-pointer bg-zinc-500 bg-opacity-70`}
