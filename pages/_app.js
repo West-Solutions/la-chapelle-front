@@ -25,10 +25,6 @@ const App = ({ Component, pageProps: page, app }) => {
   return (
     <React.Fragment>
       <Head>
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/icon?family=Material+Icons"
-        />
         <link rel="icon" type="image/png" href={faviconUrl} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
@@ -39,9 +35,9 @@ const App = ({ Component, pageProps: page, app }) => {
       <ColorsContext.Provider value={app.colors}>
         <div className="min-h-screen flex flex-col justify-between bg-zinc-100">
           <div>
-            <Header app={app}/>
+            <Header app={app} />
             <Breadcrumb app={app} />
-            <Component { ...{ page, app }} />
+            <Component {...{ page, app }} />
           </div>
           <Footer app={app} />
         </div>
@@ -56,16 +52,12 @@ App.getInitialProps = async () => {
     ContactServices.get(),
     ColorsServices.getAll(),
     NavigationServices.getMain(),
-    NewsServices.getAll({ populate: "illustration" })
+    NewsServices.getAll({ populate: "illustration" }),
   ];
 
-  const [
-    config,
-    contact,
-    colors,
-    navigation,
-    news,
-  ] = cleanResults(await Promise.all(promises));
+  const [config, contact, colors, navigation, news] = cleanResults(
+    await Promise.all(promises)
+  );
 
   return {
     app: {
@@ -73,7 +65,7 @@ App.getInitialProps = async () => {
       colors,
       config,
       contact,
-      navigation
+      navigation,
     },
   };
 };
@@ -81,7 +73,7 @@ App.getInitialProps = async () => {
 App.propTypes = {
   app: PropTypes.object.isRequired,
   pageProps: PropTypes.object.isRequired,
-  Component: PropTypes.elementType.isRequired
+  Component: PropTypes.elementType.isRequired,
 };
 
 export default App;
