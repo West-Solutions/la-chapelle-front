@@ -29,7 +29,7 @@ const Navigation = ({ items, config }) => {
   // Change the dropdown state when the window is resized
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth >= 768 ) {
+      if (window.innerWidth >= 768) {
         setMobileDropdown(true);
       } else {
         setMobileDropdown(false);
@@ -42,7 +42,12 @@ const Navigation = ({ items, config }) => {
   // Change the dropdown state when user click outside
   useEffect(() => {
     const handler = (event) => {
-      if (mobileDropdown && ref.current && !ref.current.contains(event.target) && window.innerWidth < 768) {
+      if (
+        mobileDropdown &&
+        ref.current &&
+        !ref.current.contains(event.target) &&
+        window.innerWidth < 768
+      ) {
         setMobileDropdown(false);
       }
     };
@@ -57,27 +62,33 @@ const Navigation = ({ items, config }) => {
     if (window.innerWidth < 768) {
       setMobileDropdown(false);
     }
-  },[router.asPath]);
+  }, [router.asPath]);
 
   let ref = useRef();
 
   return (
     <div className="relative">
-      <nav className={"header flex flex-col md:flex-row shadow-normal"}  ref={ref}>
+      <nav
+        className={"header flex flex-col md:flex-row shadow-normal"}
+        ref={ref}
+      >
         <div className="w-full flex justify-between text-white md:hidden h-16">
           <Link href="/">
             <a className="flex items-center">
               <img
                 className="p-2 h-16"
                 src={faviconUrl}
-                alt={pathAsAbsolute(fetchFromDataAttribute(favicon).alternativeText)}
+                alt={pathAsAbsolute(
+                  fetchFromDataAttribute(favicon).alternativeText
+                )}
               />
               <span className="w-1/2 text-center">{websiteName}</span>
             </a>
           </Link>
           <button
             className="p-3"
-            onClick= {() => setMobileDropdown((prev) => !prev)}
+            onClick={() => setMobileDropdown((prev) => !prev)}
+            aria-label="Toggle navigation"
           >
             <svg
               className="w-8 h-8 text-white"
@@ -94,26 +105,29 @@ const Navigation = ({ items, config }) => {
           </button>
         </div>
 
-        { mobileDropdown && (
+        {mobileDropdown &&
           cleanItems.map((item, index) => {
-            const openingSide = index > cleanItems.length/2 ? "left" : "right";
-            return <MainNavigationButton key={`${item.uiRouterKey}-${item.id}`} item={item} openingSide={openingSide} />;
-          })
-        )}
+            const openingSide =
+              index > cleanItems.length / 2 ? "left" : "right";
+            return (
+              <MainNavigationButton
+                key={`${item.uiRouterKey}-${item.id}`}
+                item={item}
+                openingSide={openingSide}
+              />
+            );
+          })}
       </nav>
     </div>
   );
 };
 
 Navigation.propTypes = {
-  items: PropTypes.arrayOf(
-    PropTypes.object
-  ).isRequired,
+  items: PropTypes.arrayOf(PropTypes.object).isRequired,
   config: PropTypes.shape({
     favicon: PropTypes.shape({}),
-    websiteName: PropTypes.string
-  })
+    websiteName: PropTypes.string,
+  }),
 };
-
 
 export default Navigation;

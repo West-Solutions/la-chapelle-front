@@ -14,6 +14,7 @@ const Document = () => {
           rel="stylesheet"
           href="https://fonts.googleapis.com/icon?family=Material+Icons"
         />
+        <meta httpEquiv="Cache-Control" content="public, max-age=86400" />
       </Head>
       <body>
         <Main />
