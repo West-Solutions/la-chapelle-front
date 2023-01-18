@@ -4,7 +4,7 @@ on:
   push:
     branches: ["feat/caprover"]
   repository_dispatch:
-    types: [on-demand-test]
+    types: [strapi_updated]
 
 jobs:
   build-and-deploy:
