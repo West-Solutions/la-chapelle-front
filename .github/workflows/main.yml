@@ -20,11 +20,15 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
         env:
-          API_URL: ${{ env.API_URL }}
-          NEXT_PUBLIC_API_URL: ${{ env.NEXT_PUBLIC_API_URL }}
-          NEXT_PUBLIC_BACK_URL: ${{ env.NEXT_PUBLIC_BACK_URL }}
+          API_URL: ${{ secrets.API_URL }}
+          NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
+          NEXT_PUBLIC_BACK_URL: ${{ secrets.NEXT_PUBLIC_BACK_URL }}
       - run: npm install
       - run: npm run build
+        env:
+          API_URL: ${{ secrets.API_URL }}
+          NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
+          NEXT_PUBLIC_BACK_URL: ${{ secrets.NEXT_PUBLIC_BACK_URL }}
 
       - uses: a7ul/tar-action@v1.1.0
         with:
@@ -50,7 +54,7 @@ jobs:
       - name: Deploy App to CapRover
         uses: caprover/deploy-from-github@v1.0.1
         with:
-          server: "${{ env.CAPROVER_SERVER }}"
-          app: "${{ env.APP_NAME }}"
-          token: "${{ env.APP_TOKEN }}"
+          server: "${{ secrets.CAPROVER_SERVER }}"
+          app: "${{ secrets.APP_NAME }}"
+          token: "${{ secrets.APP_TOKEN }}"
 
