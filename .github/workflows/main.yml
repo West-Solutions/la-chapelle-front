@@ -3,6 +3,8 @@ name: Build & Deploy
 on:
   push:
     branches: ["feat/caprover"]
+  repository_dispatch:
+    types: [on-demand-test]
 
 jobs:
   build-and-deploy:
