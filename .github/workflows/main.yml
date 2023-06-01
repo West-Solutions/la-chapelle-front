@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [16.x]
+        node-version: [18.x]
 
     steps:
       - uses: actions/checkout@v3
@@ -38,19 +38,19 @@ jobs:
           cwd: "./"
           #all files
           files: |
-            ./
-          #exclude files
-          exclude: |
-            ./.github/*
-            ./.gitignore
-            ./.gitattributes
-            ./.git/*
-            ./.vscode/*
-            ./.next/*
-            ./node_modules/*
-            ./package-lock.json
-            ./README.md
-            ./yarn.lock
+            ./.next
+            ./pages
+            ./public
+            ./src
+            ./.eslintrc.js
+            ./captain-definition
+            ./Dockerfile
+            ./jsconfig.json
+            ./next-sitemap.config.js
+            ./next.config.js
+            ./package.json
+            ./postcss.config.js
+            ./tailwind.config.js
           outPath: deploy.tar
 
       - name: Deploy App to CapRover
