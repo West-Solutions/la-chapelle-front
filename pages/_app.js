@@ -23,7 +23,7 @@ const App = ({ Component, pageProps: page, app }) => {
   const favicon = app.config.favicon;
   const faviconUrl = pathAsAbsolute(fetchFromDataAttribute(favicon).url);
   return (
-    <React.Fragment>
+    <>
       <Head>
         <link
           rel="stylesheet"
@@ -46,7 +46,7 @@ const App = ({ Component, pageProps: page, app }) => {
           <Footer app={app} />
         </div>
       </ColorsContext.Provider>
-    </React.Fragment>
+    </>
   );
 };
 
