@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "npm run set-colors && npm run build-next-layers && next dev",
-    "build": "npm run set-colors && npm run build-next-layers && npm run set-colors && next build",
+    "build": "npm run set-colors && npm run build-next-layers && next build",
     "postbuild": "next-sitemap",
     "start": "next start",
     "lint": "npm run build-next-layers && next lint",

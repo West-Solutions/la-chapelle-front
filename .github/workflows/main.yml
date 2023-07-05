@@ -1,0 +1,61 @@
+name: Build & Deploy
+
+on:
+  push:
+    branches: ["feat/caprover"]
+  repository_dispatch:
+    types: [strapi_updated]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+        env:
+          API_URL: ${{ secrets.API_URL }}
+          NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
+          NEXT_PUBLIC_BACK_URL: ${{ secrets.NEXT_PUBLIC_BACK_URL }}
+      - run: npm install
+      - run: npm run build
+        env:
+          API_URL: ${{ secrets.API_URL }}
+          NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
+          NEXT_PUBLIC_BACK_URL: ${{ secrets.NEXT_PUBLIC_BACK_URL }}
+
+      - uses: a7ul/tar-action@v1.1.0
+        with:
+          command: c
+          cwd: "./"
+          #all files
+          files: |
+            ./.next
+            ./pages
+            ./public
+            ./src
+            ./.eslintrc.js
+            ./captain-definition
+            ./Dockerfile
+            ./jsconfig.json
+            ./next-sitemap.config.js
+            ./next.config.js
+            ./package.json
+            ./postcss.config.js
+            ./tailwind.config.js
+          outPath: deploy.tar
+
+      - name: Deploy App to CapRover
+        uses: caprover/deploy-from-github@v1.0.1
+        with:
+          server: "${{ secrets.CAPROVER_SERVER }}"
+          app: "${{ secrets.APP_NAME }}"
+          token: "${{ secrets.APP_TOKEN }}"
