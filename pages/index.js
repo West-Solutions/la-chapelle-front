@@ -38,8 +38,8 @@ export const getStaticProps = async () => {
   return {
     props: {
       ...page,
-      news: news.data,
-      quickAccesses: quickAccesses.data
+      news: news?.data || null,
+      quickAccesses: quickAccesses?.data || null
     },
     revalidate: 31536000,
   };
